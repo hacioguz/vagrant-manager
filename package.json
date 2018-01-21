@@ -2,7 +2,7 @@
   "name": "vagrant-manager",
   "productName": "Vagrant Manager",
   "companyName": "Absalom Media",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Manage your vagrant machines in one place with Vagrant Manager",
   "scripts": {
     "start": "electron ./app",
@@ -17,7 +17,7 @@
     "lint": "./node_modules/.bin/standard"
   },
   "build": {
-    "productName": "vagrant-manager",
+    "productName": "Vagrant Manager",
     "appId": "com.electron.vagrant-manager",
     "copyright": "© 2017 Absalom Media",
     "mac": {

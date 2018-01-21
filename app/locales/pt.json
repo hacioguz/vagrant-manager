@@ -1,0 +1,42 @@
+{
+  "main": {
+    "header": "Vagrant Manager",
+    "version": "V {{version}}",
+    "downloadLatest": "Faça o download mais recente",
+    "about": "Sobre",
+    "aboutVM": "Sobre | Vagrant Manager",
+    "settings": "Configurações",
+    "quit": "Sair",
+    "startAtLogin": "Começo automático",
+    "resetToDefaults": "Redefinir os padrões",
+    "areYouSure": "Redefinir os padrões",
+    "yes": "Sim",
+    "no": "Não",
+    "up": "Pra cima",
+    "refresh": "Refrescar",
+    "provision": "Provisão",
+    "suspend": "Suspender",
+    "resume": "Retomar",
+    "halt": "Parar",
+    "destroy": "Destruir",
+    "update": "Atualização do plugin",
+    "repair": "Reparação do plugin",
+    "box": "Caixa",
+    "provider": "Provedor",
+    "status": "Estado" 
+  },
+   "about": {
+    "vm":  "Vagrant Manager",
+    "vmApp": "Gerencie suas máquinas vagabundas",
+    "latestVersion": "a última versão:",
+    "checking": "verificando ..."
+  },
+  "settings": {
+    "settings": "Configurações",
+    "language": "Língua",
+    "resetToDefaults": "Redefinir os padrões"
+  },
+  "process": {
+    "newVersion": "Nova versão está disponível!"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "main": {
+    "header": "バゲントマネージャー",
+    "version": "V {{version}}",
+    "downloadLatest": "最新のダウンロード",
+    "about": "約、",
+    "aboutVM": "約、| バゲントマネージャー",
+    "settings": "設定",
+    "quit": "終了する",
+    "startAtLogin": "自動スタート",
+    "resetToDefaults": "既定値にリセット",
+    "areYouSure": "本気ですか？",
+    "yes": "はい",
+    "no": "いいえ",
+    "up": "アップ",
+    "refresh": "リフレッシュ",
+    "provision": "規定",
+    "suspend": "サスペンド",
+    "resume": "再開",
+    "halt": "停止する",
+    "destroy": "破壊する",
+    "update": "プラグインの更新",
+    "repair": "プラグインの修理",
+    "box": "箱",
+    "provider": "プロバイダ",
+    "status": "プロバイダ" 
+  },
+   "about": {
+    "vm":  "バゲントマネージャー",
+    "vmApp": "あなたの放浪のマシンを管理します",
+    "latestVersion": "最新バージョン：",
+    "checking": "チェックしています..."
+  },
+  "settings": {
+    "settings": "設定",
+    "language": "言語",
+    "resetToDefaults": "既定値にリセット"
+  },
+  "process": {
+    "newVersion": "新しいバージョンが利用可能です！"
+  }
+}
