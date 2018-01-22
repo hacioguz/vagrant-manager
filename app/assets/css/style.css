@@ -9,6 +9,7 @@ body {
 	cursor: default;
 	font-family: 'Quicksand', sans-serif;
 	color: #fff;
+	overflow: hidden;
 }
 video {
 	position: fixed;

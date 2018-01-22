@@ -44,7 +44,7 @@ global.shared = {
   })
   
   if (shouldQuit) {
-	console.log('vagrant-manager is already running.')
+	console.log('Vagrant Manager is already running.')
 	app.quit()
 	return
   }
@@ -90,22 +90,29 @@ function startI18next () {
 	electron.powerMonitor.on('resume', () => {
 	  console.log('The system is resuming')
 	})
-  }
+	}
+	
+function winStyle(title) {
+   window = new BrowserWindow({
+	  width : 400,
+	  height : 600,
+	  resizable : false,
+		fullscreen : false,
+		frame: false,
+		titleBarStyle: 'customButtonsOnHover',		
+	  icon : icon,
+	  title: i18next.t(title)
+	})
+	return window 
+}
+
   function showAboutWindow () {
 	if (aboutWin) {
 	  aboutWin.show()
 	  return
 	}
 	const modalPath = `file://${__dirname}/about.html`
-	aboutWin = new BrowserWindow({
-	  width : 400,
-	  height : 600,
-	  resizable : false,
-		fullscreen : false,
-		frame: false,
-	  icon : icon,
-	  title: i18next.t('main.aboutVM', {version: app.getVersion()})
-	})
+	aboutWin = winStyle('main.aboutVM', {version: app.getVersion()})
 	aboutWin.loadURL(modalPath)
 	aboutWin.on('closed', () => {
 	  aboutWin = null
@@ -118,15 +125,7 @@ function showSettingsWindow () {
     return
   }
   const modalPath = `file://${__dirname}/settings.html`
-  settingsWin = new BrowserWindow({
-	width : 400,
-	height : 600,
-	resizable : false,
-	fullscreen : false,
-	frame: false,
-	icon : icon,
-    title: i18next.t('main.settings')
-  })
+  settingsWin = winStyle('main.settings')
   settingsWin.loadURL(modalPath)
   // settingsWin.webContents.openDevTools()
   settingsWin.on('closed', () => {
@@ -215,6 +214,111 @@ function boxDetails(callback)
    		 errorBox(404,i18next.t('main.missing'))
 	}
 }
+function boxMenu(menu, box) {
+	for(var index in box) {
+		menu.push(
+		{
+			label: box[index]['short_path'],
+			icon: getIcon(path.join(__dirname,"/assets/logo/"+box[index]['state']+".png")),
+			submenu: [
+				{
+				label: i18next.t('main.up'),
+				box: index,
+				id: box[index]['path'],
+				click: function(menuItem)
+				{
+					runShell(contextMenu, menuItem, "vagrant up")
+				}
+			},
+			{
+				label: i18next.t('main.provision'),
+				box: index,
+				id: box[index]['path'],
+				click: function(menuItem)
+				{
+					var cmd = 'up --provision'
+					if (box[index]['state'] === 'running') {
+						cmd = 'provision'
+					} 
+					runShell(contextMenu, menuItem, "vagrant "+cmd)
+				}
+			},					
+			{
+				label: i18next.t('main.suspend'),
+				box: index,
+				id: box[index]['path'],
+				click: function(menuItem)
+				{
+					runShell(contextMenu, menuItem, "vagrant suspend")
+				}
+			},
+			{
+				label:i18next.t('main.resume'),
+				box: index,
+				id: box[index]['path'],
+				click: function(menuItem)
+				{
+					runShell(contextMenu, menuItem, "vagrant resume")
+				}
+			},
+			{
+				label: i18next.t('main.halt'),
+				box: index,
+				id: box[index]['path'],
+				click: function(menuItem)
+				{
+					runShell(contextMenu, menuItem, "vagrant halt")
+				}
+			},
+			{
+				label: i18next.t('main.update'),
+				box: index,
+				id: box[index]['path'],
+				click: function(menuItem)
+				{
+					runShell(contextMenu, menuItem, "vagrant plugin update")
+				}
+			},
+			{
+				label: i18next.t('main.repair'),
+				box: index,
+				id: box[index]['path'],
+				click: function(menuItem)
+				{
+					runShell(contextMenu, menuItem, "vagrant plugin repair")
+				}
+			},										
+			{
+										label: i18next.t('main.destroy'),
+										box: index,
+										id: box[index]['path'],
+										click: function(menuItem)
+										{
+												function getDialog() {
+														dialog.showMessageBox({
+																type: 'warning',
+																buttons: [i18next.t('main.yes'), i18next.t('main.no')],
+																message: 'Are you sure to destroy this vagrant instance?',
+																cancelId: 1,
+																defaultId: 1
+														}, function(response) {
+																if(response === 0) {
+																		runShell(contextMenu, menuItem, "vagrant destroy -f")
+																}
+														});
+												}
+												getDialog();
+										}
+			},
+			sept(),
+			boxStatus(index,i18next.t('main.box'),box,'name'),
+			boxStatus(index,i18next.t('main.provider'),box,'provider'),
+			boxStatus(index,i18next.t('main.status'),box,'state')
+			]
+		})
+	}
+	return menu
+}
 
 function buildTray() {
 	tray = new Tray(trayActive)
@@ -244,109 +348,7 @@ function buildMenu() {
 			}
 		},
 		sept())
-
-		for(var index in box) {
-			menu.push(
-			{
-				label: box[index]['short_path'],
-				icon: getIcon(path.join(__dirname,"/assets/logo/"+box[index]['state']+".png")),
-				submenu: [
-					{
-					label: i18next.t('main.up'),
-					box: index,
-					id: box[index]['path'],
-					click: function(menuItem)
-					{
-						runShell(contextMenu, menuItem, "vagrant up")
-					}
-				},
-				{
-					label: i18next.t('main.provision'),
-					box: index,
-					id: box[index]['path'],
-					click: function(menuItem)
-					{
-						var cmd = 'up --provision'
-						if (box[index]['state'] === 'running') {
-							cmd = 'provision'
-						} 
-						runShell(contextMenu, menuItem, "vagrant "+cmd)
-					}
-				},					
-				{
-					label: i18next.t('main.suspend'),
-					box: index,
-					id: box[index]['path'],
-					click: function(menuItem)
-					{
-						runShell(contextMenu, menuItem, "vagrant suspend")
-					}
-				},
-				{
-					label:i18next.t('main.resume'),
-					box: index,
-					id: box[index]['path'],
-					click: function(menuItem)
-					{
-						runShell(contextMenu, menuItem, "vagrant resume")
-					}
-				},
-				{
-					label: i18next.t('main.halt'),
-					box: index,
-					id: box[index]['path'],
-					click: function(menuItem)
-					{
-						runShell(contextMenu, menuItem, "vagrant halt")
-					}
-				},
-				{
-					label: i18next.t('main.update'),
-					box: index,
-					id: box[index]['path'],
-					click: function(menuItem)
-					{
-						runShell(contextMenu, menuItem, "vagrant plugin update")
-					}
-				},
-				{
-					label: i18next.t('main.repair'),
-					box: index,
-					id: box[index]['path'],
-					click: function(menuItem)
-					{
-						runShell(contextMenu, menuItem, "vagrant plugin repair")
-					}
-				},										
-				{
-											label: i18next.t('main.destroy'),
-											box: index,
-											id: box[index]['path'],
-											click: function(menuItem)
-											{
-													function getDialog() {
-															dialog.showMessageBox({
-																	type: 'warning',
-																	buttons: [i18next.t('main.yes'), i18next.t('main.no')],
-																	message: 'Are you sure to destroy this vagrant instance?',
-																	cancelId: 1,
-																	defaultId: 1
-															}, function(response) {
-																	if(response === 0) {
-																			runShell(contextMenu, menuItem, "vagrant destroy -f")
-																	}
-															});
-													}
-													getDialog();
-											}
-				},
-				sept(),
-				boxStatus(index,i18next.t('main.box'),box,'name'),
-				boxStatus(index,i18next.t('main.provider'),box,'provider'),
-				boxStatus(index,i18next.t('main.status'),box,'state')
-				]
-			})
-		}
+		boxMenu(menu,box),
 		menu.push(
 		sept(),
 		{

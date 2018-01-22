@@ -7,7 +7,7 @@
     "aboutVM": "About | Vagrant Manager",
     "settings": "Settings",
     "quit": "Quit",
-    "startAtLogin": "Start at login",
+    "startAtLogin": "Auto start",
     "resetToDefaults": "Reset to defaults",
     "areYouSure": "Are you sure?",
     "yes": "Yes",
