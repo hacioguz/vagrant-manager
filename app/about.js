@@ -12,5 +12,5 @@ document.addEventListener('drop', event => event.preventDefault())
 
 document.getElementById('close').addEventListener('click', function (e) {
   var window = remote.getCurrentWindow();
-  window.close();
+  window.close()
 })

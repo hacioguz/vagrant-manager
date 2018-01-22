@@ -175,7 +175,7 @@ function errorBox(code,stderr)
 function sept() 
 {
 	var text  = {
-					type: "separator"
+					type: 'separator'
 				}
 	return text
 }
@@ -298,7 +298,7 @@ function boxMenu(menu, box) {
 														dialog.showMessageBox({
 																type: 'warning',
 																buttons: [i18next.t('main.yes'), i18next.t('main.no')],
-																message: 'Are you sure to destroy this vagrant instance?',
+																message:  i18next.t('main.areYouSure'),
 																cancelId: 1,
 																defaultId: 1
 														}, function(response) {
@@ -307,7 +307,7 @@ function boxMenu(menu, box) {
 																}
 														});
 												}
-												getDialog();
+												getDialog()
 										}
 			},
 			sept(),
