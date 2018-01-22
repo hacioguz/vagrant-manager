@@ -12,7 +12,7 @@ const shellPath = require('shell-path')
 const fs = require('fs')
 const path = require('path')
 const proc = require('child_process')
-process.env.PATH = shellPath.sync();
+process.env.PATH = shellPath.sync()
 
 function getIcon(path_icon) {
     return nativeImage.createFromPath(path_icon).resize({width: 16})
@@ -51,7 +51,7 @@ global.shared = {
 
 
 if(process.platform === 'darwin') {
-    app.dock.hide();
+    app.dock.hide()
 }
 
 function startI18next () {
@@ -219,7 +219,7 @@ function boxMenu(menu, box) {
 		menu.push(
 		{
 			label: box[index]['short_path'],
-			icon: getIcon(path.join(__dirname,"/assets/logo/"+box[index]['state']+".png")),
+			icon: getIcon(path.join(__dirname,'/assets/logo/'+box[index]['state']+'.png')),
 			submenu: [
 				{
 				label: i18next.t('main.up'),
@@ -227,7 +227,7 @@ function boxMenu(menu, box) {
 				id: box[index]['path'],
 				click: function(menuItem)
 				{
-					runShell(contextMenu, menuItem, "vagrant up")
+					runShell(contextMenu, menuItem, 'vagrant up')
 				}
 			},
 			{
@@ -240,7 +240,7 @@ function boxMenu(menu, box) {
 					if (box[index]['state'] === 'running') {
 						cmd = 'provision'
 					} 
-					runShell(contextMenu, menuItem, "vagrant "+cmd)
+					runShell(contextMenu, menuItem, 'vagrant '+cmd)
 				}
 			},					
 			{
@@ -249,7 +249,7 @@ function boxMenu(menu, box) {
 				id: box[index]['path'],
 				click: function(menuItem)
 				{
-					runShell(contextMenu, menuItem, "vagrant suspend")
+					runShell(contextMenu, menuItem, 'vagrant suspend')
 				}
 			},
 			{
@@ -258,7 +258,7 @@ function boxMenu(menu, box) {
 				id: box[index]['path'],
 				click: function(menuItem)
 				{
-					runShell(contextMenu, menuItem, "vagrant resume")
+					runShell(contextMenu, menuItem, 'vagrant resume')
 				}
 			},
 			{
@@ -267,7 +267,7 @@ function boxMenu(menu, box) {
 				id: box[index]['path'],
 				click: function(menuItem)
 				{
-					runShell(contextMenu, menuItem, "vagrant halt")
+					runShell(contextMenu, menuItem, 'vagrant halt')
 				}
 			},
 			{
@@ -276,7 +276,7 @@ function boxMenu(menu, box) {
 				id: box[index]['path'],
 				click: function(menuItem)
 				{
-					runShell(contextMenu, menuItem, "vagrant plugin update")
+					runShell(contextMenu, menuItem, 'vagrant plugin update')
 				}
 			},
 			{
@@ -285,7 +285,7 @@ function boxMenu(menu, box) {
 				id: box[index]['path'],
 				click: function(menuItem)
 				{
-					runShell(contextMenu, menuItem, "vagrant plugin repair")
+					runShell(contextMenu, menuItem, 'vagrant plugin repair')
 				}
 			},										
 			{
@@ -303,7 +303,7 @@ function boxMenu(menu, box) {
 																defaultId: 1
 														}, function(response) {
 																if(response === 0) {
-																		runShell(contextMenu, menuItem, "vagrant destroy -f")
+																		runShell(contextMenu, menuItem, 'vagrant destroy -f')
 																}
 														});
 												}
@@ -416,7 +416,7 @@ app.on('window-all-closed', () => {
 
 function loadSettings () {
 	const dir = app.getPath('userData')
-	const settingsFile = `${dir}/config.json`
+	const settingsFile = '${dir}/config.json'
 	settings = new AppSettings(settingsFile)
 	i18next.changeLanguage(settings.get('language'))
 }
