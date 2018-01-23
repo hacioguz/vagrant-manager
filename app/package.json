@@ -28,10 +28,12 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "jquery": "^3.1.1",
-    "shell-path": "^2.1.0",
-    "shelljs": "^0.7.4",
+    "docker-machine": "^2.1.0",
     "i18next": "^10.2.1",
-    "i18next-node-fs-backend": "^1.0.0"  
+    "i18next-node-fs-backend": "^1.0.0",
+    "jquery": "^3.1.1",
+    "node-vbox": "^0.1.7",
+    "shell-path": "^2.1.0",
+    "shelljs": "^0.7.4"
   }
 }
