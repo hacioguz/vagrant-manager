@@ -1,4 +1,4 @@
-const {app, Menu, Tray, BrowserWindow, ipcMain, shell, nativeImage, dialog, remote} = require('electron')
+const {app, Menu, Tray, BrowserWindow, ipcMain, shell, nativeImage, dialog} = require('electron')
 const i18next = require('i18next')
 const Backend = require('i18next-node-fs-backend')
 
@@ -214,111 +214,6 @@ function boxDetails(callback)
    		 errorBox(404,i18next.t('main.missing'))
 	}
 }
-function boxMenu(menu, box) {
-	for(var index in box) {
-		menu.push(
-		{
-			label: box[index]['short_path'],
-			icon: getIcon(path.join(__dirname,'/assets/logo/'+box[index]['state']+'.png')),
-			submenu: [
-				{
-				label: i18next.t('main.up'),
-				box: index,
-				id: box[index]['path'],
-				click: function(menuItem)
-				{
-					runShell(contextMenu, menuItem, 'vagrant up')
-				}
-			},
-			{
-				label: i18next.t('main.provision'),
-				box: index,
-				id: box[index]['path'],
-				click: function(menuItem)
-				{
-					var cmd = 'up --provision'
-					if (box[index]['state'] === 'running') {
-						cmd = 'provision'
-					} 
-					runShell(contextMenu, menuItem, 'vagrant '+cmd)
-				}
-			},					
-			{
-				label: i18next.t('main.suspend'),
-				box: index,
-				id: box[index]['path'],
-				click: function(menuItem)
-				{
-					runShell(contextMenu, menuItem, 'vagrant suspend')
-				}
-			},
-			{
-				label:i18next.t('main.resume'),
-				box: index,
-				id: box[index]['path'],
-				click: function(menuItem)
-				{
-					runShell(contextMenu, menuItem, 'vagrant resume')
-				}
-			},
-			{
-				label: i18next.t('main.halt'),
-				box: index,
-				id: box[index]['path'],
-				click: function(menuItem)
-				{
-					runShell(contextMenu, menuItem, 'vagrant halt')
-				}
-			},
-			{
-				label: i18next.t('main.update'),
-				box: index,
-				id: box[index]['path'],
-				click: function(menuItem)
-				{
-					runShell(contextMenu, menuItem, 'vagrant plugin update')
-				}
-			},
-			{
-				label: i18next.t('main.repair'),
-				box: index,
-				id: box[index]['path'],
-				click: function(menuItem)
-				{
-					runShell(contextMenu, menuItem, 'vagrant plugin repair')
-				}
-			},										
-			{
-										label: i18next.t('main.destroy'),
-										box: index,
-										id: box[index]['path'],
-										click: function(menuItem)
-										{
-												function getDialog() {
-														dialog.showMessageBox({
-																type: 'warning',
-																buttons: [i18next.t('main.yes'), i18next.t('main.no')],
-																message:  i18next.t('main.areYouSure'),
-																cancelId: 1,
-																defaultId: 1
-														}, function(response) {
-																if(response === 0) {
-																		runShell(contextMenu, menuItem, 'vagrant destroy -f')
-																}
-														});
-												}
-												getDialog()
-										}
-			},
-			sept(),
-			boxStatus(index,i18next.t('main.box'),box,'name'),
-			boxStatus(index,i18next.t('main.provider'),box,'provider'),
-			boxStatus(index,i18next.t('main.status'),box,'state')
-			]
-		})
-	}
-	return menu
-}
 
 function buildTray() {
 	tray = new Tray(trayActive)
@@ -348,7 +243,110 @@ function buildMenu() {
 			}
 		},
 		sept())
-		boxMenu(menu,box),
+
+		for(var index in box) {
+			menu.push(
+			{
+				label: box[index]['short_path'],
+				icon: getIcon(path.join(__dirname,'/assets/logo/'+box[index]['state']+'.png')),
+				submenu: [
+					{
+					label: i18next.t('main.up'),
+					box: index,
+					id: box[index]['path'],
+					click: function(menuItem)
+					{
+						runShell(contextMenu, menuItem, 'vagrant up')
+					}
+				},
+				{
+					label: i18next.t('main.provision'),
+					box: index,
+					id: box[index]['path'],
+					click: function(menuItem)
+					{
+						var cmd = 'up --provision'
+						if (box[index]['state'] === 'running') {
+							cmd = 'provision'
+						} 
+						runShell(contextMenu, menuItem, 'vagrant '+cmd)
+					}
+				},					
+				{
+					label: i18next.t('main.suspend'),
+					box: index,
+					id: box[index]['path'],
+					click: function(menuItem)
+					{
+						runShell(contextMenu, menuItem, 'vagrant suspend')
+					}
+				},
+				{
+					label:i18next.t('main.resume'),
+					box: index,
+					id: box[index]['path'],
+					click: function(menuItem)
+					{
+						runShell(contextMenu, menuItem, 'vagrant resume')
+					}
+				},
+				{
+					label: i18next.t('main.halt'),
+					box: index,
+					id: box[index]['path'],
+					click: function(menuItem)
+					{
+						runShell(contextMenu, menuItem, 'vagrant halt')
+					}
+				},
+				{
+					label: i18next.t('main.update'),
+					box: index,
+					id: box[index]['path'],
+					click: function(menuItem)
+					{
+						runShell(contextMenu, menuItem, 'vagrant plugin update')
+					}
+				},
+				{
+					label: i18next.t('main.repair'),
+					box: index,
+					id: box[index]['path'],
+					click: function(menuItem)
+					{
+						runShell(contextMenu, menuItem, 'vagrant plugin repair')
+					}
+				},										
+				{
+											label: i18next.t('main.destroy'),
+											box: index,
+											id: box[index]['path'],
+											click: function(menuItem)
+											{
+													function getDialog() {
+															dialog.showMessageBox({
+																	type: 'warning',
+																	buttons: [i18next.t('main.yes'), i18next.t('main.no')],
+																	message:  i18next.t('main.areYouSure'),
+																	cancelId: 1,
+																	defaultId: 1
+															}, function(response) {
+																	if(response === 0) {
+																			runShell(contextMenu, menuItem, 'vagrant destroy -f')
+																	}
+															});
+													}
+													getDialog()
+											}
+				},
+				sept(),
+				boxStatus(index,i18next.t('main.box'),box,'name'),
+				boxStatus(index,i18next.t('main.provider'),box,'provider'),
+				boxStatus(index,i18next.t('main.status'),box,'state')
+				]
+			})
+		}
+
 		menu.push(
 		sept(),
 		{
