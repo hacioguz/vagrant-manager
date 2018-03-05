@@ -127,7 +127,6 @@ function showSettingsWindow () {
   const modalPath = `file://${__dirname}/settings.html`
   settingsWin = winStyle('main.settings')
   settingsWin.loadURL(modalPath)
-  // settingsWin.webContents.openDevTools()
   settingsWin.on('closed', () => {
     settingsWin = null
   })
@@ -400,6 +399,7 @@ function runShell(contextMenu, menuItem, command)
 	contextMenu.items[parentID].enabled = false
 	tray.setContextMenu(contextMenu)
 	proc.exec('cd '+ menuItem.id + ' && ' + command)
+	console.log('cd '+ menuItem.id + ' && ' + command);
 	buildMenu()		
 }
 

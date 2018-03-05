@@ -6,6 +6,18 @@
 
 Vagrant Manager is a status bar menu app that lets you manage all of your vagrant machines from one central location. It covers multiple languages and plugin management. 
 
+It has now been translated into the following languages:
+
+* Chinese
+* Czech
+* English
+* French
+* Hindi
+* Japanese
+* Spanish
+* Portugese
+* Ukrainian
+
 A menubar/taskbar App based on <a href="http://electron.atom.io" target="_blank">Electron</a>.
 
 [![Build Status](https://travis-ci.org/absalomedia/vagrant-manager.svg?branch=master)](https://travis-ci.org/absalomedia/vagrant-manager) [![Build status](https://ci.appveyor.com/api/projects/status/1ju13idwcwthuvpf/branch/master?svg=true)](https://ci.appveyor.com/project/absalomedia/vagrant-manager/branch/master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a6e3bb668722444d8a6bf8bf5af44b53)](https://www.codacy.com/app/media/vagrant-manager?utm_source=github.com&utm_medium=referral&utm_content=absalomedia/vagrant-manager&utm_campaign=badger)
@@ -15,15 +27,10 @@ A menubar/taskbar App based on <a href="http://electron.atom.io" target="_blank"
 
 ## Download
 
-Download the portable version of Vagrant Manager from [here](https://github.com/absalomedia/vagrant-manager/releases/latest).
+Download the latest release of Vagrant Manager from [here](https://github.com/absalomedia/vagrant-manager/releases/latest).
 
 ## How To Use
-You can run by cloning this repo and using this command, make sure you have Node and NPM already install.
-
-```
-$> cd PATH-TO-VAGRANT-MANAGER
-$> npm install && npm start
-```
+Install Vagrant if you haven't already & run the installer for either the Windows or OSX build. Manage Vagrant boxes & plugins from the app.
 
 ### License
 >The [MIT license](https://opensource.org/licenses/MIT) (MIT)

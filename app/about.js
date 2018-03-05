@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', event => {
 document.addEventListener('dragover', event => event.preventDefault())
 document.addEventListener('drop', event => event.preventDefault())
 
-document.getElementById('close').addEventListener('click', function (e) {
-  var window = remote.getCurrentWindow();
+document.getElementById('close-btn').addEventListener('click', function (e) {
   window.close()
 })

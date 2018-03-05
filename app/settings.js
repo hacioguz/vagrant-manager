@@ -36,3 +36,7 @@ document.getElementById('language').addEventListener('change', function (e) {
   ipcRenderer.send('save-setting', 'language', e.target.value)
   window.location.reload()
 })
+
+document.getElementById('close-btn').addEventListener('click', function (e) {
+  window.close()
+})
