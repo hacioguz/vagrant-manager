@@ -51,12 +51,13 @@ small{
 .btn{
 	border: 0;
 }
-button {
-	color: #fff;
-    border: none;
-    outline: none;
+#close-btn {
+	color: #cccccc;
+	border: none;
+	outline: none;
+	font-size: 2em;
 }
-button:hover {
-	cursor: pointer;
+#close-btn:hover {
+	cursor: pointer !important;
 	opacity: 0.8;
 }
