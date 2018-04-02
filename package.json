@@ -5,8 +5,8 @@
   "version": "1.2.3",
   "description": "Manage your vagrant machines in one place with Vagrant Manager",
   "scripts": {
-    "start": "electron ./app",
-    "dev": "NODE_ENV='development' electron ./app --enable-logging --remote-debugging-port=9222",
+    "start": "electron app",
+    "dev": "NODE_ENV='development' electron app --enable-logging --remote-debugging-port=9222",
     "postinstall": "electron-builder install-app-deps",
     "pack-all": "build --dir -mwl --x64 --ia32",
     "dist-all": "build -mwl --x64 --ia32",
@@ -45,9 +45,19 @@
       "icon": "build/icon.ico",
       "target": [
         "nsis",
+        "nsis-web",
         "7z",
-        "zip"
+        "zip",
+        "appx"
       ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "nsisWeb": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
     },
     "linux": {
       "icon": "build/icons/512x512.png",
@@ -98,6 +108,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "genversion": "^2.0.1",
     "i18next": "^10.3.0",
     "i18next-node-fs-backend": "^1.0.0",
     "jquery": "^3.3.1",
