@@ -315,7 +315,15 @@ function buildMenu() {
 					{
 						runShell(contextMenu, menuItem, 'vagrant plugin repair')
 					}
-				},										
+				},
+				label: i18next.t('main.box-updater'),
+				box: index,
+				id: box[index]['path'],
+				click: function(menuItem)
+				{
+					runShell(contextMenu, menuItem, 'vagrant box update')
+				}
+			},														
 				{
 											label: i18next.t('main.destroy'),
 											box: index,
@@ -325,7 +333,7 @@ function buildMenu() {
 													function getDialog() {
 															dialog.showMessageBox({
 																	type: 'warning',
-																	buttons: [i18next.t('main.yes'), i18next.t('main.no')],
+																	buttons: [i18next.t('main.no'), i18next.t('main.yes')],
 																	message:  i18next.t('main.areYouSure'),
 																	cancelId: 1,
 																	defaultId: 1
