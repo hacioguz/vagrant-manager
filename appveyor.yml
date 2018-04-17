@@ -9,7 +9,7 @@ platform:
 skip_tags: true
 
 environment:
-  nodejs_version: "7.9.0"
+  nodejs_version: "8.2.1"
 
 cache:
   - node_modules -> package.json
@@ -26,4 +26,4 @@ test_script:
   - istanbul cover .\node_modules\mocha\bin\_mocha
 
 after_test:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
