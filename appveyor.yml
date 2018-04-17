@@ -13,9 +13,10 @@ environment:
 
 cache:
   - node_modules -> package.json
-
+  
 install:
   - ps: Install-Product node $env:nodejs_version
+  - npm cache clean --force
   - npm install npm -g
   - npm install
   - npm install -g istanbul
