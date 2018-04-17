@@ -30,8 +30,6 @@ describe('vagrant-manager', function () {
   })
 
   it('app starts', function () {
-    return this.app.client.waitUntilWindowLoaded()
-      .getWindowCount().should.eventually.equal(1)
-      .windowByIndex(0).browserWindow.isVisible().should.eventually.be.false
+       return app.client.debug();
   })
 })
