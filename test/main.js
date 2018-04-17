@@ -28,8 +28,5 @@ describe('vagrant-manager', function () {
       return this.app.stop()
     }
   })
-
-  it('app starts', function () {
-       return app.client.debug();
-  })
+  
 })
