@@ -8,15 +8,16 @@ Vagrant Manager is a status bar menu app that lets you manage all of your vagran
 
 It has now been translated into the following languages:
 
-* Chinese
-* Czech
+* Čeština
+* Deutsch
 * English
-* French
-* Hindi
-* Japanese
-* Spanish
-* Portugese
-* Ukrainian
+* Español
+* Français
+* "िंदी
+* 日本語
+* Português
+* Українець
+* 简体中文
 
 A menubar/taskbar App based on <a href="http://electron.atom.io" target="_blank">Electron</a>.
 
