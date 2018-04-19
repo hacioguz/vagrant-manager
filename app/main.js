@@ -1,6 +1,7 @@
 const {app, Menu, Tray, BrowserWindow, ipcMain, shell, nativeImage, dialog} = require('electron')
 const i18next = require('i18next')
 const Backend = require('i18next-node-fs-backend')
+const vag = require('node-vagrant')
 
 startI18next()
 
@@ -186,6 +187,10 @@ function getUserHome() {
 function boxDetails(callback)
 {
 	var box = []
+
+	vag.globalStatus(function(err, out) {
+		console.dir(out);
+	})
 	var path = getUserHome()+'/.vagrant.d/data/machine-index/index'
 	try {
     fs.accessSync(path, fs.F_OK);
@@ -315,15 +320,7 @@ function buildMenu() {
 					{
 						runShell(contextMenu, menuItem, 'vagrant plugin repair')
 					}
-				},
-				label: i18next.t('main.box-updater'),
-				box: index,
-				id: box[index]['path'],
-				click: function(menuItem)
-				{
-					runShell(contextMenu, menuItem, 'vagrant box update')
-				}
-			},														
+				},													
 				{
 											label: i18next.t('main.destroy'),
 											box: index,
