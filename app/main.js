@@ -19,9 +19,9 @@ function getIcon(path_icon) {
     return nativeImage.createFromPath(path_icon).resize({width: 16})
 }
 
-const trayActive = getIcon(path.join(__dirname,'assets/logo/trayIcon.png'));
-const trayWait = getIcon(path.join(__dirname,'assets/logo/trayIconWait.png'));
-const icon = path.join(__dirname,'/assets/logo/windowIcon.png');
+const trayActive = getIcon(path.join(__dirname,'assets/logo/trayIcon.png'))
+const trayWait = getIcon(path.join(__dirname,'assets/logo/trayIconWait.png'))
+const icon = path.join(__dirname,'/assets/logo/windowIcon.png')
 
 
 let aboutUs = null
@@ -181,7 +181,7 @@ function sept()
 }
 
 function getUserHome() {
-	return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+	return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME']
 }
 
 function boxDetails(callback)
@@ -195,7 +195,7 @@ function boxDetails(callback)
 			var jsonData = JSON.parse(JSON.stringify(data))
 			console.log(jsonData)
 			for(var index in jsonData) {
-				var short_path = jsonData[index]['cwd'];
+				var short_path = jsonData[index]['cwd']
 				short_path = short_path.split('/').reverse().filter((v, i) => {
 					return i < 1;
 				}).reverse().join('/');
@@ -363,7 +363,7 @@ function buildMenu() {
 			label: i18next.t('main.quit'),
 			click: function (menuItem)
 			{
-					app.quit();
+					app.quit()
 			}
 		})
 
@@ -396,7 +396,7 @@ function runShell(contextMenu, menuItem, command)
 	contextMenu.items[parentID].enabled = false
 	tray.setContextMenu(contextMenu)
 	proc.exec('cd '+ menuItem.id + ' && ' + command)
-	console.log('cd '+ menuItem.id + ' && ' + command);
+	console.log('cd '+ menuItem.id + ' && ' + command)
 	buildMenu()		
 }
 
@@ -457,4 +457,3 @@ ipcMain.on('change-language', function (event, language) {
     settingsWin.webContents.send('renderSettings', settings.data)
   }
 })
-
