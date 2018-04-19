@@ -11,12 +11,6 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update && sudo apt-get install -q libxss-dev; fi
 
 before_script:
-  - composer self-update -q
-  - if [ -n "$GH_TOKEN" ]; then composer config github-oauth.github.com ${GH_TOKEN}; fi;
-  - if [ -z "$dependencies" ]; then composer install; fi;
-  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest -n; fi;
-  - if [ "$dependencies" = "highest" ]; then composer update -n; fi;
-  - composer show -i 
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0 && sh -e /etc/init.d/xvfb start && sleep 3; fi
 
 script:
@@ -36,12 +30,3 @@ after_success:
 notifications:
   on_success: never
   on_failure: never
-
-deploy:
-  provider: releases
-  api_key: ${GH_TOKEN}
-  file: "FILE TO UPLOAD"
-  skip_cleanup: true
-  on:
-    tags: true
-
