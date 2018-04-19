@@ -1,7 +1,7 @@
 const {app, Menu, Tray, BrowserWindow, ipcMain, shell, nativeImage, dialog} = require('electron')
 const i18next = require('i18next')
 const Backend = require('i18next-node-fs-backend')
-const vag = require('node-vagrant')
+const vagrant = require('node-vagrant')
 
 startI18next()
 
@@ -187,36 +187,28 @@ function getUserHome() {
 function boxDetails(callback)
 {
 	var box = []
-
-	vag.globalStatus(function(err, out) {
-		console.dir(out);
-	})
-	var path = getUserHome()+'/.vagrant.d/data/machine-index/index'
-	try {
-    fs.accessSync(path, fs.F_OK);
-		fs.readFile(path, 'utf8', function (err, data)
+	
+	vagrant.globalStatus(function(err, data) 
 		{
+
 			if (err) throw err
-			var jsonData = JSON.parse(data)
-			for(var index in jsonData.machines) {
-				var short_path = jsonData.machines[index]['vagrantfile_path'];
+			var jsonData = JSON.parse(JSON.stringify(data))
+			console.log(jsonData)
+			for(var index in jsonData) {
+				var short_path = jsonData[index]['cwd'];
 				short_path = short_path.split('/').reverse().filter((v, i) => {
-					return i < 2;
+					return i < 1;
 				}).reverse().join('/');
 				box.push({
 					'short_path': short_path,
-					'path' 		: jsonData.machines[index]['vagrantfile_path'],
-					'state' 	: jsonData.machines[index]['state'],
-					'name' 		: jsonData.machines[index]['extra_data']['box']['name'],
-					'provider'	: jsonData.machines[index]['extra_data']['box']['provider'],
+					'path' 		: jsonData[index]['cwd'],
+					'state' 	: jsonData[index]['state'],
+					'name' 		: jsonData[index]['name'],
+					'provider'	: jsonData[index]['provider'],
 				})
-			}
-	
+			}	
 			return callback(box)
 		})
-	}	 catch (e) {
-   		 errorBox(404,i18next.t('main.missing'))
-	}
 }
 
 function buildTray() {
