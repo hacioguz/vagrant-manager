@@ -197,8 +197,8 @@ function boxDetails(callback)
 			for(var index in jsonData) {
 				var short_path = jsonData[index]['cwd']
 				short_path = short_path.split('/').reverse().filter((v, i) => {
-					return i < 1;
-				}).reverse().join('/');
+					return i < 1
+				}).reverse().join('/')
 				box.push({
 					'short_path': short_path,
 					'path' 		: jsonData[index]['cwd'],
@@ -328,9 +328,9 @@ function buildMenu() {
 																	defaultId: 1
 															}, function(response) {
 																	if(response === 0) {
-																			runShell(contextMenu, menuItem, 'vagrant destroy -f')
+																		runShell(contextMenu, menuItem, 'vagrant destroy -f')
 																	}
-															});
+															})
 													}
 													getDialog()
 											}
