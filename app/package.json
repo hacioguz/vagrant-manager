@@ -21,7 +21,7 @@
     "virtualbox",
     "vmware"
   ],
-  "author": "Lawrence Meckan",
+  "author": "Lawrence Meckan <media@absalom.biz>",
   "contributors": [
     "Andrii Kostetskyi <kostyandrew@gmail.com>",
     "Vaibhav Sidapara <vaibhav.sidapara@gmail.com>"
