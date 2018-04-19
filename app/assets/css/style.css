@@ -58,6 +58,6 @@ small{
 	font-size: 2em;
 }
 #close-btn:hover {
-	cursor: pointer !important;
+	cursor: pointer;
 	opacity: 0.8;
 }
