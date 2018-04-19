@@ -12,19 +12,22 @@ environment:
   nodejs_version: "8.2.1"
 
 cache:
-  - node_modules -> package.json
+  - "node_modules -> package.json"
+  - "src\\node_modules -> src\\package.json"
+  - "%APPDATA%\\npm-cache"
   
 install:
-  - ps: Install-Product node $env:nodejs_version
-  - npm cache clean --force
+  - npm install -g npm@2
+  - set PATH=%APPDATA%\npm;%PATH%
   - npm install npm -g
-  - npm install
+  - npm install -g yarn
   - npm install -g istanbul
 
 test_script:
   - node --version
   - npm --version
   - istanbul cover .\node_modules\mocha\bin\_mocha
+  - yarn dist-all
 
 after_test:
 - bash <(curl -s https://codecov.io/bash)
