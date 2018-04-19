@@ -17,7 +17,7 @@ script:
   - npm install -g istanbul
   - istanbul cover ./node_modules/mocha/bin/_mocha
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then yarn dist; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then yarn dist-all; f
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then yarn dist-all; fi
 
 notifications:
   email:
