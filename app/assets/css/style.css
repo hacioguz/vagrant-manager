@@ -50,14 +50,15 @@ small{
 }
 .btn{
 	border: 0;
+	display: inline-flex;
 }
-#close-btn {
+#close-btn{
 	color: #cccccc;
 	border: none;
 	outline: none;
 	font-size: 2em;
 }
-#close-btn:hover {
+#close-btn:hover{
 	cursor: pointer;
 	opacity: 0.8;
 }
