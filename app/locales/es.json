@@ -17,6 +17,7 @@
     "provision": "Provisión",
     "suspend": "Suspender",
     "resume": "Reanudar",
+    "reload": "Recargar",
     "halt": "Detener",
     "destroy": "Destruir",
     "update": "Actualización de complementos",

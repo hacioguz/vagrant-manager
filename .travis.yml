@@ -30,3 +30,21 @@ after_success:
 notifications:
   on_success: never
   on_failure: never
+
+deploy:
+  provider: releases
+  api_key: '$GITHUB_API_KEY'
+  file:
+    - 'dist/vagrant-manager.dmg'
+    - 'dist/vagrant-manager.appx'
+    - 'dist/vagrant-manager.exe'
+    - 'dist/vagrant-manager-web-setup.exe'
+    - 'dist/vagrant-manager-i386.AppImage'
+    - 'dist/vagrant-manager-x86_64.AppImage'
+    - 'dist/vagrant-manager-i386.rpm'
+    - 'dist/vagrant-manager-x86_64.rpm'
+    - 'dist/vagrant-manager_i386.deb'
+    - 'dist/vagrant-manager-x86_64.deb' 
+  skip_cleanup: true
+  on:
+    tags: true

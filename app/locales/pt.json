@@ -17,6 +17,7 @@
     "provision": "Provisão",
     "suspend": "Suspender",
     "resume": "Retomar",
+    "reload": "Zarepetować",
     "halt": "Parar",
     "destroy": "Destruir",
     "update": "Atualização do plugin",

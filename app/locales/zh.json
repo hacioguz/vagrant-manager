@@ -17,6 +17,7 @@
     "provision": "規定",
     "suspend": "中止",
     "resume": "簡歷",
+    "reload": "刷新",
     "halt": "停",
     "destroy": "破壞",
     "update": "插件更新",

@@ -17,6 +17,7 @@
     "provision": "Disposition",
     "suspend": "Suspendre",
     "resume": "Reprendre",
+    "reload": "Recharger",    
     "halt": "Arrêt",
     "destroy": "Détruire",
     "update": "Mise à jour du plugin",

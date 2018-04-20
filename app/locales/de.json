@@ -17,6 +17,7 @@
     "provision": "Bereitstellung",
     "suspend": "Aussetzen",
     "resume": "Fortsetzen",
+    "reload": "Neu laden",
     "halt": "Halt",
     "destroy": "Zerstören",
     "update": "Plugin-Aktualisierung",

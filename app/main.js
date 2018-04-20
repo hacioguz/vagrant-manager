@@ -287,6 +287,15 @@ function buildMenu() {
 					}
 				},
 				{
+					label:i18next.t('main.reload'),
+					box: index,
+					id: box[index]['path'],
+					click: function(menuItem)
+					{
+						runShell(contextMenu, menuItem, 'vagrant reload')
+					}
+				},				
+				{
 					label: i18next.t('main.halt'),
 					box: index,
 					id: box[index]['path'],

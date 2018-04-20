@@ -17,6 +17,7 @@
     "provision": "Ustanovení",
     "suspend": "Pozastavit",
     "resume": "Životopis",
+    "reload": "Znovu načíst",
     "halt": "Stůj",
     "destroy": "Zničit",
     "update": "Aktualizace pluginů",

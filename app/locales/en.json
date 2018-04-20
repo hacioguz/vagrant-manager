@@ -17,6 +17,7 @@
     "provision": "Provision",
     "suspend": "Suspend",
     "resume": "Resume",
+    "reload": "Reload",
     "halt": "Halt",
     "destroy": "Destroy",
     "update": "Plugin Update",

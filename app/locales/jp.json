@@ -17,6 +17,7 @@
     "provision": "規定",
     "suspend": "サスペンド",
     "resume": "再開",
+    "reload": "補充する",
     "halt": "停止する",
     "destroy": "破壊する",
     "update": "プラグインの更新",

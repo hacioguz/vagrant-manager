@@ -14,11 +14,15 @@
     "dist": "build --x64 --ia32",
     "test": "mocha test",
     "tdd": "mocha --watch test",
-    "lint": "./node_modules/.bin/standard"
+    "lint": "./node_modules/.bin/standard",
+    "clean": "rm -rf dist",
+    "clean:osx": "rm -rf dist/osx",
+    "clean:win": "rm -rf dist/win"
   },
   "build": {
     "productName": "Vagrant Manager",
     "appId": "com.electron.vagrant-manager",
+    "artifactName": "${name}-${arch}.${ext}",
     "copyright": "© 2018 Absalom Media",
     "mac": {
       "category": "public.app-category.developer-tools"
@@ -108,7 +112,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "genversion": "^2.0.1",
     "i18next": "^10.3.0",
     "i18next-node-fs-backend": "^1.0.0",
     "jquery": "^3.3.1",
