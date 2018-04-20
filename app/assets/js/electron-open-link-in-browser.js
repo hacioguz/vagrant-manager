@@ -47,16 +47,16 @@ function drainQueue() {
     if (draining) {
         return
     }
-    var timeout = setTimeout(cleanUpNextTick);
+    var timeout = setTimeout(cleanUpNextTick)
     draining = true
 
     var len = queue.length
     while(len) {
         currentQueue = queue
-        queue = [];
+        queue = []
         while (++queueIndex < len) {
             if (currentQueue) {
-                currentQueue[queueIndex].run();
+                currentQueue[queueIndex].run()
             }
         }
         queueIndex = -1
@@ -82,8 +82,8 @@ process.nextTick = function (fun) {
 
 // v8 likes predictible objects
 function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
+    this.fun = fun
+    this.array = array
 }
 Item.prototype.run = function () {
     this.fun.apply(null, this.array)
