@@ -14,6 +14,7 @@ const fs = require('fs')
 const path = require('path')
 const proc = require('child_process')
 process.env.PATH = shellPath.sync()
+process.env.NODE_DEBUG = true
 
 function getIcon(path_icon) {
     return nativeImage.createFromPath(path_icon).resize({width: 16})
@@ -139,7 +140,7 @@ function saveDefaultsFor (array, next) {
   }
 }
 
-function boxOptions(note,box,index,path,contextMenu, action)
+function boxOptions(note,box,index,contextMenu, action)
 {
 	var text = 	{
 					label: note,
@@ -147,7 +148,7 @@ function boxOptions(note,box,index,path,contextMenu, action)
 					id: box[index]['path'],
 					click: function(menuItem)
 					{
-						runShell(contextMenu, menuItem, 'vagrant '+action)
+						runMachine(contextMenu, menuItem,action)
 					}
 				}
 	return text
@@ -187,14 +188,14 @@ function getUserHome() {
 function boxDetails(callback)
 {
 	var box = []
-	
+
 	vagrant.globalStatus(function(err, data) 
 		{
 
 			if (err) throw err
 			var jsonData = JSON.parse(JSON.stringify(data))
 			console.log(jsonData)
-			for(var index in jsonData) {
+			for(var index in jsonData) { 
 				var short_path = jsonData[index]['cwd']
 				short_path = short_path.split('/').reverse().filter((v, i) => {
 					return i < 1
@@ -204,7 +205,7 @@ function boxDetails(callback)
 					'path' 		: jsonData[index]['cwd'],
 					'state' 	: jsonData[index]['state'],
 					'name' 		: jsonData[index]['name'],
-					'provider'	: jsonData[index]['provider'],
+					'provider'	: jsonData[index]['provider']
 				})
 			}	
 			return callback(box)
@@ -252,7 +253,7 @@ function buildMenu() {
 					id: box[index]['path'],
 					click: function(menuItem)
 					{
-						runShell(contextMenu, menuItem, 'vagrant up')
+						runMachine(contextMenu, menuItem, 'up')
 					}
 				},
 				{
@@ -261,11 +262,7 @@ function buildMenu() {
 					id: box[index]['path'],
 					click: function(menuItem)
 					{
-						var cmd = 'up --provision'
-						if (box[index]['state'] === 'running') {
-							cmd = 'provision'
-						} 
-						runShell(contextMenu, menuItem, 'vagrant '+cmd)
+						runMachine(contextMenu, menuItem, 'provision')
 					}
 				},					
 				{
@@ -274,7 +271,7 @@ function buildMenu() {
 					id: box[index]['path'],
 					click: function(menuItem)
 					{
-						runShell(contextMenu, menuItem, 'vagrant suspend')
+						runMachine(contextMenu, menuItem, 'suspend')
 					}
 				},
 				{
@@ -283,7 +280,7 @@ function buildMenu() {
 					id: box[index]['path'],
 					click: function(menuItem)
 					{
-						runShell(contextMenu, menuItem, 'vagrant resume')
+						runMachine(contextMenu, menuItem, 'resume')
 					}
 				},
 				{
@@ -292,7 +289,7 @@ function buildMenu() {
 					id: box[index]['path'],
 					click: function(menuItem)
 					{
-						runShell(contextMenu, menuItem, 'vagrant reload')
+						runMachine(contextMenu, menuItem, 'reload')
 					}
 				},				
 				{
@@ -301,7 +298,7 @@ function buildMenu() {
 					id: box[index]['path'],
 					click: function(menuItem)
 					{
-						runShell(contextMenu, menuItem, 'vagrant halt')
+						runMachine(contextMenu, menuItem, 'halt')
 					}
 				},
 				{
@@ -310,7 +307,7 @@ function buildMenu() {
 					id: box[index]['path'],
 					click: function(menuItem)
 					{
-						runShell(contextMenu, menuItem, 'vagrant plugin update')
+						runMachine(contextMenu, menuItem, 'update')
 					}
 				},
 				{
@@ -319,7 +316,7 @@ function buildMenu() {
 					id: box[index]['path'],
 					click: function(menuItem)
 					{
-						runShell(contextMenu, menuItem, 'vagrant plugin repair')
+						runMachine(contextMenu, menuItem, 'repair')
 					}
 				},													
 				{
@@ -337,7 +334,7 @@ function buildMenu() {
 																	defaultId: 1
 															}, function(response) {
 																	if(response === 0) {
-																		runShell(contextMenu, menuItem, 'vagrant destroy -f')
+																		runMachine(contextMenu, menuItem, 'destroy')
 																	}
 															})
 													}
@@ -396,16 +393,34 @@ function buildMenu() {
 	})
 }
 
-
-function runShell(contextMenu, menuItem, command)
+function runMachine(contextMenu, menuItem, command)
 {
+	machine = vagrant.create({ cwd: menuItem.id})
 	tray.setImage(trayWait)
 	contextMenu.items[0].enabled = false
 	var parentID = +menuItem.box + 2
 	contextMenu.items[parentID].enabled = false
 	tray.setContextMenu(contextMenu)
-	proc.exec('cd '+ menuItem.id + ' && ' + command)
-	console.log('cd '+ menuItem.id + ' && ' + command)
+	switch(command) {
+		case 'up': machine.up(function(err, out) {})
+							 break
+		case 'provision': machine.provision(function(err, out) {})
+							 break
+    case 'suspend': machine.suspend(function(err, out) {})
+							 break
+	  case 'resume': machine.resume(function(err, out) {})
+							 break							 
+		case 'halt': machine.halt(function(err, out) {})
+							 break
+		case 'reload': machine.reload(function(err, out) {})
+							 break
+		case 'destroy': machine.destroy(function(err, out) {})
+							 break
+		case 'update': machine.pluginUpdate(function(err, out) {})
+							 break							 
+		case 'repair': machine.pluginRepair(function(err, out) {})
+							 break							 
+	}
 	buildMenu()		
 }
 
