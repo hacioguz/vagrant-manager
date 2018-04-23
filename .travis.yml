@@ -41,10 +41,10 @@ deploy:
     - 'dist/vagrant-manager-web-setup.exe'
     - 'dist/vagrant-manager-i386.AppImage'
     - 'dist/vagrant-manager-x86_64.AppImage'
-    - 'dist/vagrant-manager-i386.rpm'
+    - 'dist/vagrant-manager-i686.rpm'
     - 'dist/vagrant-manager-x86_64.rpm'
-    - 'dist/vagrant-manager_i386.deb'
-    - 'dist/vagrant-manager-x86_64.deb' 
+    - 'dist/vagrant-manager-amd64.deb'
+    - 'dist/vagrant-manager-i386.deb' 
   skip_cleanup: true
   on:
     tags: true
