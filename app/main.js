@@ -14,7 +14,6 @@ const fs = require('fs')
 const path = require('path')
 const proc = require('child_process')
 process.env.PATH = shellPath.sync()
-process.env.NODE_DEBUG = true
 
 function getIcon(path_icon) {
     return nativeImage.createFromPath(path_icon).resize({width: 16})
@@ -142,10 +141,11 @@ function saveDefaultsFor (array, next) {
 
 function boxOptions(note,box,index,contextMenu, action)
 {
+	console.log(contextMenu)
 	var text = 	{
 					label: note,
 					box: index,
-					id: box[index]['path'],
+					id: box['path'],
 					click: function(menuItem)
 					{
 						runMachine(contextMenu, menuItem,action)
@@ -194,7 +194,6 @@ function boxDetails(callback)
 
 			if (err) throw err
 			var jsonData = JSON.parse(JSON.stringify(data))
-			console.log(jsonData)
 			for(var index in jsonData) { 
 				var short_path = jsonData[index]['cwd']
 				short_path = short_path.split('/').reverse().filter((v, i) => {
