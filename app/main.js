@@ -92,20 +92,119 @@ function startI18next () {
 	  console.log('The system is resuming')
 	})
 	}
+
+	function checkForLatestUpdate () {
+		const oldVersion = app.getVersion()
+		new VersionChecker()
+			.latest()
+			.then(version => {
+				const semantic = /^([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/
+				if (version.match(semantic) && oldVersion !== version) {
+					updateTrayForDownload()
+				}
+			})
+			.catch(exception => console.error(exception))
+	}
 	
-function winStyle(title) {
-   window = new BrowserWindow({
-	  width : 400,
-	  height : 600,
-	  resizable : false,
-		fullscreen : false,
-		frame: false,
-		titleBarStyle: 'customButtonsOnHover',		
-	  icon : icon,
-	  title: i18next.t(title)
-	})
-	return window 
-}
+	function updateTrayForDownload () {
+		processWin.webContents.send('showNotification', i18next.t('main.newVesionAvailable'))
+		isNewVersionAvailable = true
+		appIcon.setContextMenu(getTrayMenu())
+	}
+	
+	function downloadLatestUpdate () {
+		autoUpdater.checkForUpdates()
+		autoUpdater.on('update-available', () => {
+			dialog.showMessageBox({
+				type: 'info',
+				title: 'Update Available',
+				message: 'A new version of Vagrant Manager is available. Do you want to download the update?',
+				buttons: ['Yes', 'No']
+			}, (buttonIndex) => {
+				if (buttonIndex !== 0) return
+				autoUpdater.downloadUpdate()
+				let downloadProgressWindow = new BrowserWindow({
+					width: 400,
+					height: 70,
+					useContentSize: false,
+					autoHideMenuBar: true,
+					maximizable: false,
+					fullscreen: false,
+					resizable: false
+				})
+	
+				downloadProgressWindow.loadURL(`file://${__dirname}/autoupdate.html`)
+				downloadProgressWindow.on('closed', () => {
+					downloadProgressWindow = null
+				})
+				let downloadProgress
+	
+				autoUpdater.on('download-progress', (d) => {
+					downloadProgress = d.percent
+				})
+	
+				ipcMain.on('download-progress-request', (e) => {
+					e.returnValue = downloadProgress
+				})
+	
+				autoUpdater.on('update-downloaded', () => {
+					if (downloadProgressWindow) {
+						downloadProgressWindow.close()
+					}
+	
+					dialog.showMessageBox({
+						type: 'info',
+						title: 'Update Ready',
+						message: 'A new version is stretchly is ready. Quit and Install now?',
+						buttons: ['Yes', 'No']
+					}, (buttonIndex) => {
+						if (buttonIndex === 0) {
+							autoUpdater.quitAndInstall()
+						}
+					})
+				})
+			})
+		})
+	}
+	
+	function getTrayMenu () {
+		let trayMenu = []
+		if (!isNewVersionAvailable) {
+			trayMenu.push({
+				label: i18next.t('main.checkForlatestVersion'),
+				click: function () {
+					checkForLatestUpdate()
+				}
+			})
+		}
+	
+		if (isNewVersionAvailable) {
+			trayMenu.push({
+				label: i18next.t('main.downloadLatestVersion'),
+				click: function () {
+					downloadLatestUpdate()
+				}
+			})
+		}
+	
+	function checkVersion () {
+		processWin.webContents.send('checkVersion', `${app.getVersion()}`, settings.get('notifyNewVersion'))
+		planVersionCheck(3600 * 5)
+	}
+
+	function winStyle(title) {
+		window = new BrowserWindow({
+		 width : 400,
+		 height : 600,
+		 resizable : false,
+		 fullscreen : false,
+		 frame: false,
+		 titleBarStyle: 'customButtonsOnHover',		
+		 icon : icon,
+		 title: i18next.t(title)
+	 })
+	 return window 
+ }
 
   function showAboutWindow () {
 	if (aboutWin) {
@@ -216,7 +315,7 @@ function buildTray() {
 	return tray
 }
 
-function buildMenu() {
+function buildMenu(event) {
   let menu = []
 	tray.setImage(trayActive)
 	boxDetails( function(box)
