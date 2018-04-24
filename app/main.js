@@ -2,6 +2,8 @@ const {app, Menu, Tray, BrowserWindow, ipcMain, shell, nativeImage, dialog} = re
 const i18next = require('i18next')
 const Backend = require('i18next-node-fs-backend')
 const vagrant = require('node-vagrant')
+let VersionChecker = require('./utils/versionChecker')
+const {autoUpdater} = require('electron-updater')
 
 startI18next()
 
@@ -14,6 +16,7 @@ const fs = require('fs')
 const path = require('path')
 const proc = require('child_process')
 process.env.PATH = shellPath.sync()
+autoUpdater.autoDownload = false
 
 function getIcon(path_icon) {
     return nativeImage.createFromPath(path_icon).resize({width: 16})
@@ -78,7 +81,7 @@ function startI18next () {
   
   i18next.on('languageChanged', function (lng) {
 	if (appIcon) {
-	  buildmenu()
+	  buildMenu()
 	}
   })
 
@@ -109,12 +112,13 @@ function startI18next () {
 	function updateTrayForDownload () {
 		processWin.webContents.send('showNotification', i18next.t('main.newVesionAvailable'))
 		isNewVersionAvailable = true
-		appIcon.setContextMenu(getTrayMenu())
+		buildTray()
+		buildMenu()
 	}
 	
 	function downloadLatestUpdate () {
-		autoUpdater.checkForUpdates()
-		autoUpdater.on('update-available', () => {
+		autoupdate.checkForUpdates()
+		autoupdate.on('update-available', () => {
 			dialog.showMessageBox({
 				type: 'info',
 				title: 'Update Available',
@@ -122,7 +126,7 @@ function startI18next () {
 				buttons: ['Yes', 'No']
 			}, (buttonIndex) => {
 				if (buttonIndex !== 0) return
-				autoUpdater.downloadUpdate()
+				autoupdate.downloadUpdate()
 				let downloadProgressWindow = new BrowserWindow({
 					width: 400,
 					height: 70,
@@ -139,7 +143,7 @@ function startI18next () {
 				})
 				let downloadProgress
 	
-				autoUpdater.on('download-progress', (d) => {
+				autoupdate.on('download-progress', (d) => {
 					downloadProgress = d.percent
 				})
 	
@@ -147,7 +151,7 @@ function startI18next () {
 					e.returnValue = downloadProgress
 				})
 	
-				autoUpdater.on('update-downloaded', () => {
+				autoupdate.on('update-downloaded', () => {
 					if (downloadProgressWindow) {
 						downloadProgressWindow.close()
 					}
@@ -155,11 +159,11 @@ function startI18next () {
 					dialog.showMessageBox({
 						type: 'info',
 						title: 'Update Ready',
-						message: 'A new version is stretchly is ready. Quit and Install now?',
+						message: 'A new version is Vagrant Manager is ready. Quit and Install now?',
 						buttons: ['Yes', 'No']
 					}, (buttonIndex) => {
 						if (buttonIndex === 0) {
-							autoUpdater.quitAndInstall()
+							autoupdate.quitAndInstall()
 						}
 					})
 				})
@@ -167,25 +171,6 @@ function startI18next () {
 		})
 	}
 	
-	function getTrayMenu () {
-		let trayMenu = []
-		if (!isNewVersionAvailable) {
-			trayMenu.push({
-				label: i18next.t('main.checkForlatestVersion'),
-				click: function () {
-					checkForLatestUpdate()
-				}
-			})
-		}
-	
-		if (isNewVersionAvailable) {
-			trayMenu.push({
-				label: i18next.t('main.downloadLatestVersion'),
-				click: function () {
-					downloadLatestUpdate()
-				}
-			})
-		}
 	
 	function checkVersion () {
 		processWin.webContents.send('checkVersion', `${app.getVersion()}`, settings.get('notifyNewVersion'))
@@ -324,7 +309,7 @@ function buildMenu(event) {
 			menu.push({
 				label: i18next.t('main.downloadLatest'),
 				click: function () {
-				shell.openExternal('https://github.com/absalomedia/vagrant-manager/releases')
+					downloadLatestUpdate()
 				}
 			})
 		}
