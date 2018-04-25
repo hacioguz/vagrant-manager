@@ -6,13 +6,18 @@ platform:
 cache:
   - node_modules
   - '%USERPROFILE%\.electron'
+  
+environment:
+    nodejs_version: "8.2.1" 
 
 init:
   - git config --global core.autocrlf input
 
 install:
-  - ps: Install-Product node 8 x64
-  - yarn
+  - ps: Install-Product node $nodejs_version x64
+  - npm install
+  - npm install npm -g 
+  - npm install -g istanbul
 
 build_script:
   - yarn dist
