@@ -474,6 +474,7 @@ function buildMenu(event) {
 		tray.setContextMenu(contextMenu)
 		return contextMenu	
 	})
+	buildmenu()
 }
 
 function runMachine(contextMenu, menuItem, command)
