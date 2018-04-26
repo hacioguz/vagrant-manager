@@ -12,6 +12,8 @@ init:
 
 install:
   - ps: Install-Product node 8 x64
+  - yarn install
+  - yarn upgrade
   - npm install -g istanbul
 
 build_script:
