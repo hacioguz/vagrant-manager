@@ -472,9 +472,10 @@ function buildMenu(event) {
 		var contextMenu = Menu.buildFromTemplate(menu)
 		tray.setToolTip(i18next.t('main.header'))
 		tray.setContextMenu(contextMenu)
-		return contextMenu	
+		return contextMenu
+
 	})
-	buildmenu()
+	
 }
 
 function runMachine(contextMenu, menuItem, command)
