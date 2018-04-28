@@ -29,7 +29,8 @@
     "vm": "Vagrant Manager",
     "vmApp": "Verwalte deine Landstreicher",
     "latestVersion": "Die neueste version:",
-    "checking": "Überprüfung..."
+    "checking": "Überprüfung...",
+    "downloading": "Wird Heruntergeladen ..."
   },
   "settings": {
     "settings": "Die Einstellungen",

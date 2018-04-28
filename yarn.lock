@@ -1264,6 +1264,13 @@ event-emitter@~0.3.5:
     d "1"
     es5-ext "~0.10.14"
 
+event@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/event/-/event-1.0.0.tgz#b51232b67ad4e0fe38c4a8cbaff2ff8685278ce3"
+  dependencies:
+    method "~1.0.0"
+    reducible "~1.0.1"
+
 execa@^0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/execa/-/execa-0.5.1.tgz#de3fb85cb8d6e91c85bcbceb164581785cb57b36"
@@ -2139,6 +2146,14 @@ meow@^3.1.0:
     redent "^1.0.0"
     trim-newlines "^1.0.0"
 
+method@~1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/method/-/method-1.0.2.tgz#291f8c29ee443847a2f8906f89fbaa372d4d0916"
+
+method@~2.0.x:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/method/-/method-2.0.0.tgz#e449848defa6daef10b8163d9d9aa2d071b7500f"
+
 mime-db@~1.33.0:
   version "1.33.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.33.0.tgz#a3492050a5cb9b63450541e39d9788d2272783db"
@@ -2654,6 +2669,12 @@ redent@^1.0.0:
   dependencies:
     indent-string "^2.1.0"
     strip-indent "^1.0.1"
+
+reducible@~1.0.1:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/reducible/-/reducible-1.0.6.tgz#331722d14189f8f392dc9b88341aec603b25c35e"
+  dependencies:
+    method "~2.0.x"
 
 regenerator-runtime@^0.11.0:
   version "0.11.1"

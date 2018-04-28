@@ -29,7 +29,8 @@
     "vm":  "Vagrant Manager",
     "vmApp": "Gerencie suas máquinas vagabundas",
     "latestVersion": "a última versão:",
-    "checking": "verificando ..."
+    "checking": "Verificando ...",
+    "downloading": "Downloading ..."
   },
   "settings": {
     "settings": "Configurações",

@@ -29,7 +29,8 @@
     "vm":  "バゲントマネージャー",
     "vmApp": "あなたの放浪のマシンを管理します",
     "latestVersion": "最新バージョン：",
-    "checking": "チェックしています..."
+    "checking": "チェックしています...",
+    "downloading": "ダウンロード ..."
   },
   "settings": {
     "settings": "設定",

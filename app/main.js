@@ -17,7 +17,7 @@ const fs = require('fs')
 const path = require('path')
 const proc = require('child_process')
 process.env.PATH = shellPath.sync()
-autoUpdater.autoDownload = false
+autoUpdater.autoDownload = true
 
 function getIcon(path_icon) {
     return nativeImage.createFromPath(path_icon).resize({width: 16})
@@ -122,9 +122,9 @@ function startI18next () {
 		autoupdate.on('update-available', () => {
 			dialog.showMessageBox({
 				type: 'info',
-				title: 'Update Available',
-				message: 'A new version of Vagrant Manager is available. Do you want to download the update?',
-				buttons: ['Yes', 'No']
+				title: i18next.t('about.checking')+' '+ i18next.t('about.vm'),
+				message: i18next.t('main.downloadLatest')+'?',
+				buttons: [i18next.t('main.yes'), i18next.t('main.no')]
 			}, (buttonIndex) => {
 				if (buttonIndex !== 0) return
 				autoupdate.downloadUpdate()
@@ -138,7 +138,7 @@ function startI18next () {
 					resizable: false
 				})
 	
-				downloadProgressWindow.loadURL(`file://${__dirname}/autoupdate.html`)
+				downloadProgressWindow.loadURL(`file://${__dirname}/autoUpdate.html`)
 				downloadProgressWindow.on('closed', () => {
 					downloadProgressWindow = null
 				})
@@ -159,9 +159,9 @@ function startI18next () {
 	
 					dialog.showMessageBox({
 						type: 'info',
-						title: 'Update Ready',
-						message: 'A new version is Vagrant Manager is ready. Quit and Install now?',
-						buttons: ['Yes', 'No']
+						title: i18next.t('about.checking')+' '+ i18next.t('about.vm'),
+						message: i18next.t('main.update')+': '+ i18next.t('main.areYouSure'),
+						buttons: [i18next.t('main.yes'), i18next.t('main.no')]
 					}, (buttonIndex) => {
 						if (buttonIndex === 0) {
 							autoupdate.quitAndInstall()
@@ -402,7 +402,7 @@ function buildMenu(event) {
 													function getDialog() {
 															dialog.showMessageBox({
 																	type: 'warning',
-																	buttons: [i18next.t('main.no'), i18next.t('main.yes')],
+																	buttons: [i18next.t('main.yes'), i18next.t('main.no')],
 																	message:  i18next.t('main.areYouSure'),
 																	cancelId: 1,
 																	defaultId: 1
@@ -426,13 +426,6 @@ function buildMenu(event) {
 		menu.push(
 		sept(),
 		{
-			label: i18next.t('main.about'),
-			click: function (menuItem)
-			{
-				showAboutWindow()
-			}
-		},
-		{
 			label: i18next.t('main.settings'),
 			click: function (menuItem)
 			{
@@ -440,12 +433,12 @@ function buildMenu(event) {
 			}
 		},
 		{
-			label: i18next.t('main.quit'),
+			label: i18next.t('main.about'),
 			click: function (menuItem)
 			{
-					app.quit()
+				showAboutWindow()
 			}
-		})
+		})	
 
 		if (process.platform === 'darwin' || process.platform === 'win32') {
 			let loginItemSettings = app.getLoginItemSettings()
@@ -459,6 +452,15 @@ function buildMenu(event) {
 				}
 			})
 		}
+
+		menu.push(
+			{
+				label: i18next.t('main.quit'),
+				click: function (menuItem)
+				{
+						app.quit()
+				}
+			})
 
 		var contextMenu = Menu.buildFromTemplate(menu)
 		tray.setToolTip(i18next.t('main.header'))
@@ -505,7 +507,6 @@ function trackMenu () {
 		buildMenu()
 	})
 }
-
 
 app.on('ready', loadSettings)
 app.on('ready', buildTray)

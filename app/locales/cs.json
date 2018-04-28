@@ -29,7 +29,8 @@
     "vm": "Vagrant Manager",
     "vmApp":  "Spravujte své vaganty",
     "latestVersion": "poslední verze:",
-    "checking": "kontrola ..."
+    "checking": "Kontrola ...",
+    "downloading": "Stahování ..."
   },
   "settings": {
     "settings": "Nastavení",

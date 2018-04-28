@@ -29,7 +29,8 @@
     "vm": "Gestionnaire Vagabond",
     "vmApp": "Gérer vos machines vagabondes",
     "latestVersion": "la dernière version:",
-    "checking": "vérification..."
+    "checking": "Vérification...",
+    "downloading": "Téléchargement"
   },
   "settings": {
     "settings": "Paramètres",

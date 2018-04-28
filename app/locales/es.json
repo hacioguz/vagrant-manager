@@ -29,7 +29,9 @@
     "vm": "Administrador vagabundo",
     "vmApp": "Gestiona tus máquinas vagabundas",
     "latestVersion": "la última versión:",
-    "checking": "comprobación..."
+    "checking": "Comprobación...",
+    "downloading": "Descargando..."
+
   },
   "settings": {
     "settings": "Configuraciones",

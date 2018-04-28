@@ -29,7 +29,8 @@
     "vm": "Vagrant Manager",
     "vmApp": "Manage your vagrant machines",
     "latestVersion": "the latest version:",
-    "checking": "checking..."
+    "checking": "Checking ...",
+    "downloading": "Downloading ..."
   },
   "settings": {
     "settings": "Settings",
