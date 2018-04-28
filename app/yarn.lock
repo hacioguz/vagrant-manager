@@ -152,6 +152,10 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
+heartbeats@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/heartbeats/-/heartbeats-5.0.1.tgz#c0d476151982e707faac49345143b9582de40cae"
+
 i18next-node-fs-backend@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/i18next-node-fs-backend/-/i18next-node-fs-backend-1.0.0.tgz#f5a625a3b287c1d098c7171b7dd376bb07299b59"

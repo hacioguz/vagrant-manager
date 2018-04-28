@@ -113,6 +113,7 @@
   "license": "MIT",
   "dependencies": {
     "electron-updater": "^2.21.8",
+    "heartbeats": "^5.0.1",
     "i18next": "^10.3.0",
     "i18next-node-fs-backend": "^1.0.0",
     "install-peers": "^1.0.2",
@@ -126,7 +127,6 @@
     "babel-eslint": "^8.0.3",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
-    "devtron": "^1.4.0",
     "electron": "^1.8.1",
     "electron-builder": "^19.55.1",
     "mocha": "^4.0.1",

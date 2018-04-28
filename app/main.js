@@ -2,6 +2,7 @@ const {app, Menu, Tray, BrowserWindow, ipcMain, shell, nativeImage, dialog} = re
 const i18next = require('i18next')
 const Backend = require('i18next-node-fs-backend')
 const vagrant = require('node-vagrant')
+const heartbeats = require('heartbeats')
 let VersionChecker = require('./utils/versionChecker')
 const {autoUpdater} = require('electron-updater')
 
@@ -25,7 +26,7 @@ function getIcon(path_icon) {
 const trayActive = getIcon(path.join(__dirname,'assets/logo/trayIcon.png'))
 const trayWait = getIcon(path.join(__dirname,'assets/logo/trayIconWait.png'))
 const icon = path.join(__dirname,'/assets/logo/windowIcon.png')
-
+const heart = heartbeats.createHeart(3000)
 
 let aboutUs = null
 let appIcon = null
@@ -314,16 +315,6 @@ function buildMenu(event) {
 			})
 		}
 
-		menu.push(
-		{
-			label: i18next.t('main.refresh'),
-			click: function(menuItem)
-			{
-				buildMenu()
-			}
-		},
-		sept())
-
 		for(var index in box) {
 			menu.push(
 			{
@@ -509,13 +500,24 @@ function runMachine(contextMenu, menuItem, command)
 	buildMenu()		
 }
 
+function trackMenu () {
+	heart.createEvent(1, function(count, last) {
+		buildMenu()
+	})
+}
+
 
 app.on('ready', loadSettings)
 app.on('ready', buildTray)
 app.on('ready', buildMenu)
 app.on('ready', startPowerMonitoring)
+app.on('ready', trackMenu)
 app.on('window-all-closed', () => {
   // do nothing, so app wont get closed
+})
+
+app.on('before-quit', () => {
+  heart.kill()
 })
 
 function loadSettings () {
