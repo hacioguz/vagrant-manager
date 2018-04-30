@@ -6,6 +6,7 @@
     "about": "Über",
     "aboutVM": "Über | Vagrant Manager",
     "settings": "Die Einstellungen",
+    "add": "Hinzufügen",
     "quit": "Verlassen",
     "startAtLogin": "Automatischer Start",
     "resetToDefaults": "Auf Standardeinstellung zurücksetzen",

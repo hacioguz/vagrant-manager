@@ -6,6 +6,7 @@
     "about": "About",
     "aboutVM": "About | Vagrant Manager",
     "settings": "Settings",
+    "add": "Add",
     "quit": "Quit",
     "startAtLogin": "Auto start",
     "resetToDefaults": "Reset to defaults",

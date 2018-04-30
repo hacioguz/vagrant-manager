@@ -6,6 +6,7 @@
     "about": "O",
     "aboutVM": "O | Vagrant Manager",
     "settings": "Nastavení",
+    "add": "Přidat",
     "quit": "Přestat",
     "startAtLogin": "Automatické spuštění",
     "resetToDefaults": "Obnovit výchozí nastavení",

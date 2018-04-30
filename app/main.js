@@ -75,14 +75,14 @@ function startI18next () {
 		  console.log(err.stack)
 		}
 		if (appIcon) {
-		  buildMenu()
+		  trackMenu()
 		}
 	  })
   }
   
   i18next.on('languageChanged', function (lng) {
 	if (appIcon) {
-	  buildMenu()
+	  trackMenu()
 	}
   })
 
@@ -114,7 +114,7 @@ function startI18next () {
 		processWin.webContents.send('showNotification', i18next.t('main.newVesionAvailable'))
 		isNewVersionAvailable = true
 		buildTray()
-		buildMenu()
+		trackMenu()
 	}
 	
 	function downloadLatestUpdate () {
@@ -191,6 +191,24 @@ function startI18next () {
 	 })
 	 return window 
  }
+
+ function addMachine () {
+	dialog.showOpenDialog({ filters: [
+		{ title: i18next.t('main.add'), name: 'Vagrantfile'}]},
+		(fileNames) => {
+    // fileNames is an array that contains all the selected
+    if(fileNames === undefined){
+        console.log("No file selected")
+        return
+    } 
+
+		if(fileNames[0].includes('Vagrantfile') === true) {
+				var cwder = fileNames[0].replace('Vagrantfile','')
+				machiner = vagrant.create({ cwd: cwder})
+				machiner.up(function(err, out) {})
+			}
+		})
+ 	}
 
   function showAboutWindow () {
 	if (aboutWin) {
@@ -433,6 +451,13 @@ function buildMenu(event) {
 			}
 		},
 		{
+			label: i18next.t('main.add'),
+			click: function (menuItem)
+			{
+				addMachine()
+			}
+		},		
+		{
 			label: i18next.t('main.about'),
 			click: function (menuItem)
 			{
@@ -498,14 +523,18 @@ function runMachine(contextMenu, menuItem, command)
 							 break							 
 		case 'repair': machine.pluginRepair(function(err, out) {})
 							 break							 
-	}
-	buildMenu()		
+	}	
 }
 
 function trackMenu () {
-	heart.createEvent(1, function(count, last) {
-		buildMenu()
-	})
+	var age = heart.age
+	
+	if (age === 0) {
+		heart.createEvent(1, function(count, last) {
+			buildMenu()
+		})
+	}
+	
 }
 
 app.on('ready', loadSettings)
