@@ -26,7 +26,7 @@ function getIcon(path_icon) {
 const trayActive = getIcon(path.join(__dirname,'assets/logo/trayIcon.png'))
 const trayWait = getIcon(path.join(__dirname,'assets/logo/trayIconWait.png'))
 const icon = path.join(__dirname,'/assets/logo/windowIcon.png')
-const heart = heartbeats.createHeart(3000)
+const heart = heartbeats.createHeart(15000)
 
 let aboutUs = null
 let appIcon = null
@@ -82,7 +82,7 @@ function startI18next () {
   
   i18next.on('languageChanged', function (lng) {
 	if (appIcon) {
-	  trackMenu()
+	  buildMenu()
 	}
   })
 
@@ -114,7 +114,7 @@ function startI18next () {
 		processWin.webContents.send('showNotification', i18next.t('main.newVesionAvailable'))
 		isNewVersionAvailable = true
 		buildTray()
-		trackMenu()
+		buildMenu()
 	}
 	
 	function downloadLatestUpdate () {
