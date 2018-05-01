@@ -500,7 +500,7 @@ function runMachine(contextMenu, menuItem, command)
 {
 	machine = vagrant.create({ cwd: menuItem.id})
 	tray.setImage(trayWait)
-	var parentID = +menuItem.box + 2
+	var parentID = +menuItem.box
 	contextMenu.items[parentID].enabled = false
 	tray.setContextMenu(contextMenu)
 	switch(command) {
@@ -508,9 +508,9 @@ function runMachine(contextMenu, menuItem, command)
 							 break
 		case 'provision': machine.provision(function(err, out) {})
 							 break
-    case 'suspend': machine.suspend(function(err, out) {})
+ 		case 'suspend': machine.suspend(function(err, out) {})
 							 break
-	  case 'resume': machine.resume(function(err, out) {})
+	 	case 'resume': machine.resume(function(err, out) {})
 							 break							 
 		case 'halt': machine.halt(function(err, out) {})
 							 break
