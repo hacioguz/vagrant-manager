@@ -500,7 +500,6 @@ function runMachine(contextMenu, menuItem, command)
 {
 	machine = vagrant.create({ cwd: menuItem.id})
 	tray.setImage(trayWait)
-	contextMenu.items[0].enabled = false
 	var parentID = +menuItem.box + 2
 	contextMenu.items[parentID].enabled = false
 	tray.setContextMenu(contextMenu)
