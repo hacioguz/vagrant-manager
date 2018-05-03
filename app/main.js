@@ -26,7 +26,7 @@ function getIcon(path_icon) {
 const trayActive = getIcon(path.join(__dirname,'assets/logo/trayIcon.png'))
 const trayWait = getIcon(path.join(__dirname,'assets/logo/trayIconWait.png'))
 const icon = path.join(__dirname,'/assets/logo/windowIcon.png')
-const heart = heartbeats.createHeart(15000)
+const heart = heartbeats.createHeart(10000)
 
 let aboutUs = null
 let appIcon = null
@@ -500,7 +500,7 @@ function runMachine(contextMenu, menuItem, command)
 {
 	machine = vagrant.create({ cwd: menuItem.id})
 	tray.setImage(trayWait)
-	var parentID = +menuItem.box
+	var parentID = +menuItem.box + 2
 	contextMenu.items[parentID].enabled = false
 	tray.setContextMenu(contextMenu)
 	switch(command) {
