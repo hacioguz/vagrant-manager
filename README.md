@@ -23,7 +23,6 @@ A menubar/taskbar App based on <a href="http://electron.atom.io" target="_blank"
 
 [![Build Status](https://travis-ci.org/absalomedia/vagrant-manager.svg?branch=master)](https://travis-ci.org/absalomedia/vagrant-manager) [![Build status](https://ci.appveyor.com/api/projects/status/1ju13idwcwthuvpf/branch/master?svg=true)](https://ci.appveyor.com/project/absalomedia/vagrant-manager/branch/master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a6e3bb668722444d8a6bf8bf5af44b53)](https://www.codacy.com/app/media/vagrant-manager?utm_source=github.com&utm_medium=referral&utm_content=absalomedia/vagrant-manager&utm_campaign=badger) [![codecov](https://codecov.io/gh/absalomedia/vagrant-manager/branch/master/graph/badge.svg)](https://codecov.io/gh/absalomedia/vagrant-manager)
 
-
 <h1 align="center">
     <img src="/app/assets/images/demo.gif" alt="Vagrant Manager Demo">
 </h1>
