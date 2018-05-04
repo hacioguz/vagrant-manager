@@ -26,7 +26,7 @@ function getIcon(path_icon) {
 const trayActive = getIcon(path.join(__dirname,'assets/logo/trayIcon.png'))
 const trayWait = getIcon(path.join(__dirname,'assets/logo/trayIconWait.png'))
 const icon = path.join(__dirname,'/assets/logo/windowIcon.png')
-const heart = heartbeats.createHeart(10000)
+const heart = heartbeats.createHeart(7000)
 
 let aboutUs = null
 let appIcon = null
@@ -34,6 +34,7 @@ let aboutWin = null
 let tray = null
 let settingsWin = null
 let settings
+let contentMenu
 
 global.shared = {
 	isNewVersion: false
@@ -75,7 +76,7 @@ function startI18next () {
 		  console.log(err.stack)
 		}
 		if (appIcon) {
-		  trackMenu()
+		  buildMenu()
 		}
 	  })
   }
@@ -320,7 +321,8 @@ function buildTray() {
 }
 
 function buildMenu(event) {
-  let menu = []
+	let menu = []
+		
 	tray.setImage(trayActive)
 	boxDetails( function(box)
 	{
@@ -487,7 +489,7 @@ function buildMenu(event) {
 				}
 			})
 
-		var contextMenu = Menu.buildFromTemplate(menu)
+		contextMenu = Menu.buildFromTemplate(menu)
 		tray.setToolTip(i18next.t('main.header'))
 		tray.setContextMenu(contextMenu)
 		return contextMenu
@@ -500,7 +502,8 @@ function runMachine(contextMenu, menuItem, command)
 {
 	machine = vagrant.create({ cwd: menuItem.id})
 	tray.setImage(trayWait)
-	var parentID = +menuItem.box + 2
+	contextMenu.items[0].enabled = false
+	var parentID = menuItem.box
 	contextMenu.items[parentID].enabled = false
 	tray.setContextMenu(contextMenu)
 	switch(command) {
@@ -508,9 +511,9 @@ function runMachine(contextMenu, menuItem, command)
 							 break
 		case 'provision': machine.provision(function(err, out) {})
 							 break
- 		case 'suspend': machine.suspend(function(err, out) {})
+    case 'suspend': machine.suspend(function(err, out) {})
 							 break
-	 	case 'resume': machine.resume(function(err, out) {})
+	  case 'resume': machine.resume(function(err, out) {})
 							 break							 
 		case 'halt': machine.halt(function(err, out) {})
 							 break
@@ -526,14 +529,12 @@ function runMachine(contextMenu, menuItem, command)
 }
 
 function trackMenu () {
-	var age = heart.age
-	
-	if (age === 0) {
-		heart.createEvent(1, function(count, last) {
-			buildMenu()
-		})
-	}
-	
+	heart.createEvent(1, function(count, last) {
+			if (typeof contextMenu !== 'undefined' && contextMenu !== null) {
+					contextMenu.destroy
+					buildMenu()
+		 	}
+	})
 }
 
 app.on('ready', loadSettings)
