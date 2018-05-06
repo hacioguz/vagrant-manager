@@ -60,6 +60,21 @@ if(process.platform === 'darwin') {
     app.dock.hide()
 }
 
+if (process.platform === 'win32') {
+	process.on("SIGINT", function () {
+	//graceful shutdown
+		vagrant.globalStatus(function(err, data) 
+		{
+		if (err) throw err
+		var jsonData = JSON.parse(JSON.stringify(data))
+		for(var index in jsonData) { 
+				machine = vagrant.create({ cwd: jsonData[index]['cwd']})
+				machine.halt(function(err, out) {})
+				}
+		})
+	}
+)}
+
 function startI18next () {
 	i18next
 	  .use(Backend)
