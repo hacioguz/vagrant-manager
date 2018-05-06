@@ -34,7 +34,7 @@ let aboutWin = null
 let tray = null
 let settingsWin = null
 let settings
-let contentMenu
+var contextMenu 
 
 global.shared = {
 	isNewVersion: false
@@ -199,7 +199,7 @@ function startI18next () {
 		(fileNames) => {
     // fileNames is an array that contains all the selected
     if(fileNames === undefined){
-        console.log("No file selected")
+        console.log('No file selected')
         return
     } 
 
