@@ -27,10 +27,6 @@ notifications:
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
-notifications:
-  on_success: never
-  on_failure: never
-
 deploy:
   provider: releases
   api_key: '$GITHUB_API_KEY'
