@@ -31,7 +31,9 @@
     "vmApp": "अपने आवारा मशीनों को प्रबंधित करें",
     "latestVersion": "नवीनतम संस्करण:",
     "checking":"जाँच ...",
-    "downloading": "अधीभारण ..."
+    "downloading": "अधीभारण ...",
+    "copyright": "ॉपीराइट",
+    "sponsor": "द्वारा प्रायोजित"
   },
   "settings": {
     "settings": "सेटिंग्स",

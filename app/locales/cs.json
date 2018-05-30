@@ -31,7 +31,9 @@
     "vmApp":  "Spravujte své vaganty",
     "latestVersion": "poslední verze:",
     "checking": "Kontrola ...",
-    "downloading": "Stahování ..."
+    "downloading": "Stahování ...",
+    "copyright": "Autorská práva",
+    "sponsor": "Sponzorováno"
   },
   "settings": {
     "settings": "Nastavení",

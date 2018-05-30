@@ -31,7 +31,9 @@
     "vmApp": "Gestiona tus máquinas vagabundas",
     "latestVersion": "la última versión:",
     "checking": "Comprobación...",
-    "downloading": "Descargando..."
+    "downloading": "Descargando...",
+    "copyright": "Derechos de autor",
+    "sponsor" : "Patrocinado por"
 
   },
   "settings": {

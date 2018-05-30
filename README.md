@@ -4,7 +4,7 @@
     Vagrant Manager
 </h1>
 
-Vagrant Manager is a status bar menu app that lets you manage all of your vagrant machines from one central location. It covers multiple languages and plugin management. 
+Vagrant Manager is a status bar menu app that lets you manage all of your vagrant machines from one central location. It covers multiple languages and plugin management.
 
 It has now been translated into the following languages:
 
@@ -35,20 +35,22 @@ A menubar/taskbar App based on <a href="http://electron.atom.io" target="_blank"
 Download the latest release of Vagrant Manager from [here](https://github.com/absalomedia/vagrant-manager/releases/latest).
 
 ## How To Use
+
 Install Vagrant if you haven't already & run the installer for either the Windows or OSX build. Manage Vagrant boxes & plugins from the app.
 
 ### License
->The [MIT license](https://opensource.org/licenses/MIT) (MIT)
->
->Copyright (c) [Vaibhav Sidapara](mailto:vaibhav.sidapara@gmail.com)
->Copyright (c) [Lawrence Meckan](http://www.absalom.biz) 
->
->Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
->
->The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
->
->THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+> The [MIT license](https://opensource.org/licenses/MIT) (MIT)
+>
+> Copyright (c) [Vaibhav Sidapara](mailto:vaibhav.sidapara@gmail.com)
+> Copyright (c) [Lawrence Meckan](http://www.absalom.biz)
+>
+> Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+>
+> The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+>
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-___
-*Inspired by [Vagrant Manager for OS X](http://vagrantmanager.com/)*
+---
+
+_Inspired by [Vagrant Manager for OS X](http://vagrantmanager.com/)_

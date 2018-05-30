@@ -30,8 +30,10 @@
     "vm":  "Vagrant Manager",
     "vmApp": "Gerencie suas máquinas vagabundas",
     "latestVersion": "a última versão:",
-    "checking": "Verificando ...",
-    "downloading": "Downloading ..."
+    "checking": "Verificação ...",
+    "downloading": "Downloading ...",
+    "copyright": "Direito autoral",
+    "sponsor": "Patrocinado por"
   },
   "settings": {
     "settings": "Configurações",

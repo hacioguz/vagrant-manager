@@ -31,7 +31,9 @@
     "vmApp": "Verwalte deine Landstreicher",
     "latestVersion": "Die neueste version:",
     "checking": "Überprüfung...",
-    "downloading": "Wird Heruntergeladen ..."
+    "downloading": "Wird Heruntergeladen ...",
+    "copyright": "Urheberrechte",
+    "sponsor" : "Gefördert durch"
   },
   "settings": {
     "settings": "Die Einstellungen",

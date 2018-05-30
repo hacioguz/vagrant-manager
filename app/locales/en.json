@@ -31,7 +31,9 @@
     "vmApp": "Manage your vagrant machines",
     "latestVersion": "the latest version:",
     "checking": "Checking ...",
-    "downloading": "Downloading ..."
+    "downloading": "Downloading ...",
+    "copyright": "Copyright",
+    "sponsor": "Sponsored by"
   },
   "settings": {
     "settings": "Settings",

@@ -61,7 +61,7 @@ if(process.platform === 'darwin') {
 }
 
 if (process.platform === 'win32') {
-	process.on("SIGINT", function () {
+	process.on('SIGINT', function () {
 	//graceful shutdown
 		vagrant.globalStatus(function(err, data) 
 		{
@@ -546,7 +546,6 @@ function runMachine(contextMenu, menuItem, command)
 function trackMenu () {
 	heart.createEvent(1, function(count, last) {
 			if (typeof contextMenu !== 'undefined' && contextMenu !== null) {
-					webFrame.clearCache()
 					contextMenu.destroy
 					buildMenu()
 		 	}

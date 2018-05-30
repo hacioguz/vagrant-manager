@@ -31,7 +31,9 @@
     "vmApp": "管理你的流浪機器",
     "latestVersion": "最新版本:",
     "checking": "檢查...",
-    "downloading": "下載..."
+    "downloading": "下載...",
+    "copyright": "版權",
+    "sponsor": "由...贊助"
   },
   "settings": {
     "settings": "設置",
