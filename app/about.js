@@ -4,17 +4,14 @@ const open = require('open')
 const VersionChecker = require('./utils/versionChecker')
 const HtmlTranslate = require('./utils/htmlTranslate')
 const packager = require('./package.json')
-var details = []
 
 document.addEventListener('DOMContentLoaded', event => {
   new HtmlTranslate(document).translate()
 })
 
-details.push('v ' + packager.version)
-details.push(i18next.t('about.copyright') +' \u00A9 ' + new Date().getFullYear() + ' ' + packager.author )
-details.push(i18next.t('about.sponsor') + ' ' + packager.companyName)
-
-document.getElementById('versioner').innerHTML = details.join('<br />')
+document.getElementById('versioner').innerHTML = packager.version
+document.getElementById('copyier').innerHTML = ' \u00A9 ' + new Date().getFullYear() + ' ' + packager.author
+document.getElementById('sponsor').innerHTML = packager.companyName
 document.addEventListener('dragover', event => event.preventDefault())
 document.addEventListener('drop', event => event.preventDefault())
 
