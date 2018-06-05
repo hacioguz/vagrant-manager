@@ -551,10 +551,17 @@ function getMemory() {
   Object.entries(process.memoryUsage()).map(logBytes)
 }
 
+function gc() {
+  global.gc()
+  console.log("gc")
+}
+
 function trackMenu () {
 	heart.createEvent(1, function(count, last) {
 			if (typeof contextMenu !== 'undefined' && contextMenu !== null) {
 					contextMenu.destroy
+					getMemory()
+					gc()
 					buildMenu()
 		 	}
 	})
