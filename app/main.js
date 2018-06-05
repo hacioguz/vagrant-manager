@@ -1,4 +1,4 @@
-const {app, Menu, Tray, BrowserWindow, ipcMain, shell, nativeImage, dialog, webFrame} = require('electron')
+const {app, Menu, Tray, BrowserWindow, ipcMain, shell, nativeImage, dialog} = require('electron')
 const i18next = require('i18next')
 const Backend = require('i18next-node-fs-backend')
 const vagrant = require('node-vagrant')
@@ -541,6 +541,14 @@ function runMachine(contextMenu, menuItem, command)
 		case 'repair': machine.pluginRepair(function(err, out) {})
 							 break							 
 	}	
+}
+
+function logBytes(x) {
+  console.log(x[0], x[1] / (1000.0*1000), "MB")
+}
+
+function getMemory() {
+  Object.entries(process.memoryUsage()).map(logBytes)
 }
 
 function trackMenu () {
