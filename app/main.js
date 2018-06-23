@@ -543,26 +543,16 @@ function runMachine(contextMenu, menuItem, command)
 	}	
 }
 
-function logBytes(x) {
-  console.log(x[0], x[1] / (1000.0*1000), "MB")
-}
-
-function getMemory() {
-  Object.entries(process.memoryUsage()).map(logBytes)
-}
-
-function gc() {
-  global.gc()
-  console.log("gc")
-}
-
 function trackMenu () {
 	heart.createEvent(1, function(count, last) {
 			if (typeof contextMenu !== 'undefined' && contextMenu !== null) {
 					contextMenu.destroy
-					getMemory()
-					gc()
 					buildMenu()
+
+				if (heart.age === 10285) {
+					app.relaunch()
+					app.exit()
+				}
 		 	}
 	})
 }

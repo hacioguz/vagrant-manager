@@ -10,10 +10,12 @@ It has now been translated into the following languages:
 
 * Čeština
 * Deutsch
+* Ελληνικά
 * English
 * Español
 * Français
 * "िंदी
+* bahasa Indonesia
 * 日本語
 * Português
 * Українець

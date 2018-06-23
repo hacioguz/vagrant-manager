@@ -1,0 +1,46 @@
+{
+  "main": {
+    "header": "Pengelola Vagina",
+    "version": "V {{version}}",
+    "downloadLatest": "Unduh terbaru",
+    "about": "Tentang",
+    "aboutVM": "Tentang | Pengelola Vagina",
+    "settings": "Pengaturan",
+    "add": "Tambahkan",
+    "quit": "Keluar",
+    "startAtLogin": "Mulai otomatis",
+    "resetToDefaults": "Setel ulang ke default",
+    "AreYouSure": "Apakah Anda yakin?",
+    "yes": "Ya",
+    "no": "Tidak",
+    "up": "Naik",
+    "provision": "Ketentuan",
+    "suspend": "Tangguhkan",
+    "resume": "Lanjutkan",
+    "reload": "Reload",
+    "halt": "Menghentikan",
+    "destroy": "Hancurkan",
+    "update": "Pembaruan Plugin",
+    "repair": "Perbaikan Plugin",
+    "box": "Kotak",
+    "provider": "Penyedia",
+    "status": "Status"
+  },
+  "about": {
+    "vm": "Pengelola Vagina",
+    "vmApp": "Kelola mesin gelandangan Anda",
+    "latestVersion": "versi terbaru:",
+    "checking": "Memeriksa ...",
+    "downloading": "Mengunduh ...",
+    "copyright": "Hak Cipta",
+    "sponsor": "Disponsori oleh"
+  },
+  "settings": {
+    "settings": "Pengaturan",
+    "language": "Bahasa",
+    "resetToDefaults": "Setel ulang ke default"
+  },
+  "process": {
+    "newVersion": "Versi baru tersedia!"
+  }
+}

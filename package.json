@@ -2,7 +2,7 @@
   "name": "vagrant-manager",
   "productName": "Vagrant Manager",
   "companyName": "Absalom Media",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Manage your vagrant machines in one place with Vagrant Manager",
   "scripts": {
     "start": "electron app app --js-flags='--expose-gc'",
@@ -126,7 +126,6 @@
     "chai-as-promised": "^7.1.1",
     "electron": "^1.8.1",
     "electron-builder": "^19.55.1",
-    "electron-debugger": "^2.1.2",
     "mocha": "^4.0.1",
     "sinon": "^4.2.0",
     "spectron": "^3.8.0",
