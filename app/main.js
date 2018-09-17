@@ -544,16 +544,24 @@ function runMachine(contextMenu, menuItem, command)
 }
 
 function trackMenu () {
-	heart.createEvent(1, function(count, last) {
-			if (typeof contextMenu !== 'undefined' && contextMenu !== null) {
+	boxDetails( function(box)
+	{
+		if (Object.keys(box).length === 0 && box.constructor === Object) {
+			// Don't rebuild menu when box list is empty
+			heart.kill()
+		} else {
+			heart.createEvent(1, function(count, last) {
+				if (typeof contextMenu !== 'undefined' && contextMenu !== null) {
 					contextMenu.destroy
 					buildMenu()
 
 				if (heart.age === 10285) {
 					app.relaunch()
 					app.exit()
-				}
-		 	}
+						}
+		 			}
+			})
+		}
 	})
 }
 
