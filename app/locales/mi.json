@@ -1,0 +1,46 @@
+{
+    "main": {
+        "header": "Kaiwhakahaere Vagrant",
+        "version": "V {{version}}",
+        "downloadLatest": "Tikiake hou",
+        "about": "Mō",
+        "aboutVM": "Mō | Kaiwhakahaere Vagrant",
+        "settings": "Tautuhinga",
+        "add": "Tāpirihia",
+        "quit": "Whakamutua",
+        "startAtLogin": "Tīmata aunoa",
+        "resetToDefaults": "Tautuhi anō ki nga hapa",
+        "areYouSure": "E mohio ana koe?",
+        "yes": "Ae",
+        "no": "Kahore",
+        "up": "Ake",
+        "provision": "Whakaaetanga",
+        "suspend": "Whakamutua",
+        "resume": "Whakahou",
+        "reload": "Reload",
+        "halt": "Whakamutua",
+        "destroy": "whakangaro",
+        "update": "Whakaaturanga Apa",
+        "repair": "Whakapinga Tae",
+        "box": "Pouaka",
+        "provider": "Kaiwhakarato",
+        "status": "Tūnga"
+    },
+    "about": {
+        "vm": "Kaiwhakahaere Vagrant",
+        "vmApp": "Whakahaerehia o au mīhini ngohe",
+        "latestVersion": "te putanga hou:",
+        "checking": "Te arowhai ...",
+        "downloading": "Tikiake ...",
+        "copyright": "Mana",
+        "sponsor": "Ka tautokona e"
+    },
+    "settings": {
+        "settings": "Tautuhinga",
+        "language": "Reo",
+        "resetToDefaults": "Tautuhi anō ki nga hapa"
+    },
+    "process": {
+        "newVersion": "Kei te wātea te putanga hou!"
+    }
+}

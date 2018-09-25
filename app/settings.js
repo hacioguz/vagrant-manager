@@ -1,5 +1,8 @@
 const {ipcRenderer} = require('electron')
 const HtmlTranslate = require('./utils/htmlTranslate')
+const remote = electron.remote
+
+var window = remote.getCurrentWindow()
 
 document.addEventListener('DOMContentLoaded', event => {
   new HtmlTranslate(document).translate()

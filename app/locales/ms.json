@@ -1,0 +1,46 @@
+{
+    "main": {
+        "header": "Pengurus Vagrant",
+        "version": "V {{version}}",
+        "downloadLatest": "Muat turun terkini",
+        "about": "Perihal",
+        "aboutVM": "About | Vagrant Manager",
+        "settings": "Tetapan",
+        "add": "Tambah",
+        "quit": "Berhenti",
+        "startAtLogin": "Permulaan automatik",
+        "resetToDefaults": "Tetapkan semula kepada lalai",
+        "areYouSure": "Adakah anda pasti?",
+        "yes": "Ya",
+        "no": "Tidak",
+        "up": "Naik",
+        "provision": "Peruntukan",
+        "suspend": "Menggantung",
+        "resume": "Resume",
+        "reload": "Muat semula",
+        "halt": "Menghentikan",
+        "destroy": "Memusnahkan",
+        "update": "Kemas kini Plugin",
+        "repair": "Pembaikan Plugin",
+        "box": "Kotak",
+        "provider": "Penyedia",
+        "status": "Status"
+    },
+    "about": {
+        "vm": "Pengurus Vagrant",
+        "vmApp": "Urus mesin vagrant anda",
+        "latestVersion": "versi terkini:",
+        "checking": "Menyemak ...",
+        "downloading": "Memuat turun ...",
+        "copyright": "Hak Cipta",
+        "sponsor": "Ditaja oleh"
+    },
+    "settings": {
+        "settings": "Tetapan",
+        "language": "Bahasa",
+        "resetToDefaults": "Tetapkan semula kepada lalai"
+    },
+    "process": {
+        "newVersion": "Versi baru boleh didapati!"
+    }
+}

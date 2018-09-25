@@ -17,6 +17,8 @@ It has now been translated into the following languages:
 * "िंदी
 * bahasa Indonesia
 * 日本語
+* Melayu
+* Māori
 * Português
 * Українець
 * 简体中文

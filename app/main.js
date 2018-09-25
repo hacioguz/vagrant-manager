@@ -5,8 +5,14 @@ const vagrant = require('node-vagrant')
 const heartbeats = require('heartbeats')
 let VersionChecker = require('./utils/versionChecker')
 const {autoUpdater} = require('electron-updater')
+const isDev = require('electron-is-dev')
+const log = require('electron-log')
+const unhandled = require('electron-unhandled')
 
 startI18next()
+
+log.transports.file.level = 'debug'
+log.transports.console.level = 'debug'
 
 const AppSettings = require('./utils/settings')
 const defaultSettings = require('./utils/defaultSettings')
@@ -50,7 +56,7 @@ global.shared = {
   })
   
   if (shouldQuit) {
-	console.log('Vagrant Manager is already running.')
+	log.info('Vagrant Manager is already running.')
 	app.quit()
 	return
   }
@@ -65,7 +71,10 @@ if (process.platform === 'win32') {
 	//graceful shutdown
 		vagrant.globalStatus(function(err, data) 
 		{
-		if (err) throw err
+		if (err) {
+			errorBox('Shutdown',err)
+			log.error(err)
+		} 
 		var jsonData = JSON.parse(JSON.stringify(data))
 		for(var index in jsonData) { 
 				machine = vagrant.create({ cwd: jsonData[index]['cwd']})
@@ -88,7 +97,8 @@ function startI18next () {
 		}
 	  }, function (err, t) {
 		if (err) {
-		  console.log(err.stack)
+			log.error(err.stack)
+			errorBox('i18',err.stack)
 		}
 		if (appIcon) {
 		  buildMenu()
@@ -104,12 +114,16 @@ function startI18next () {
 
 
   function startPowerMonitoring () {
+	if (!isDev) {
+		unhandled()
+	}
+
 	const electron = require('electron')
 	electron.powerMonitor.on('suspend', () => {
-	  console.log('The system is going to sleep')
+		log.info('The system is going to sleep')
 	})
 	electron.powerMonitor.on('resume', () => {
-	  console.log('The system is resuming')
+		log.info('The system is resuming')
 	})
 	}
 
@@ -214,7 +228,7 @@ function startI18next () {
 		(fileNames) => {
     // fileNames is an array that contains all the selected
     if(fileNames === undefined){
-        console.log('No file selected')
+				log.warn('No file selected')
         return
     } 
 
@@ -311,7 +325,11 @@ function boxDetails(callback)
 	vagrant.globalStatus(function(err, data) 
 		{
 
-			if (err) throw err
+			if (err) {
+				errorBox(err)
+				log.error(err)
+			}
+		
 			var jsonData = JSON.parse(JSON.stringify(data))
 			for(var index in jsonData) { 
 				var short_path = jsonData[index]['cwd']
@@ -554,7 +572,6 @@ function trackMenu () {
 				if (typeof contextMenu !== 'undefined' && contextMenu !== null) {
 					contextMenu.destroy
 					buildMenu()
-
 				if (heart.age === 10285) {
 					app.relaunch()
 					app.exit()
