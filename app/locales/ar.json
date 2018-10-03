@@ -1,0 +1,46 @@
+{
+  "main": {
+    "header": "مدير المتعجرف",
+    "version": "V {{الإصدار}}",
+    "downloadLatest": "تنزيل أحدث",
+    "about": "حول",
+    "aboutVM": "حول | مدير المتعجرف",
+    "settings": "الإعدادات",
+    "إضافة": "إضافة",
+    "quit": "Quit",
+    "startAtLogin": "بدء التشغيل التلقائي",
+    "resetToDefaults": "إعادة تعيين إلى التخلف",
+    "areYouSure": "هل أنت متأكد؟",
+    "yes": "نعم",
+    "no": "لا",
+    "up": "اعلى",
+    "provision": "الحكم",
+    "suspend": "تعليق",
+    "resume": "استئناف",
+    "reload": "إعادة تحميل",
+    "halt": "وقف",
+    "destroy": "تدمير",
+    "update": "تحديث المكون الإضافي",
+    "repair": "إصلاح المكون الإضافي",
+    "box": "مربع",
+    "provider": "مقدم الخدمة",
+    "status": "الحالة"
+  },
+  "about": {
+    "vm": "مدير المتعجرف",
+    "vmApp": "إدارة أجهزة المتشردين",
+    "latestVersion": "الإصدار الأحدث:",
+    "checking": "جارٍ التحقق ...",
+    "downloading": "جارٍ التنزيل ...",
+    "copyright": "حقوق الطبع والنشر",
+    "sponsor": "برعاية"
+  },
+  "settings": {
+    "settings": "الإعدادات",
+    "language": "اللغة",
+    "resetToDefaults": "إعادة تعيين إلى التخلف"
+  },
+  "process": {
+    "newVersion": "يتوفر إصدار جديد!"
+  }
+}

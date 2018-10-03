@@ -8,12 +8,14 @@ Vagrant Manager is a status bar menu app that lets you manage all of your vagran
 
 It has now been translated into the following languages:
 
+* ربى
 * Čeština
 * Deutsch
 * Ελληνικά
 * English
 * Español
 * Français
+* עִברִית
 * "िंदी
 * bahasa Indonesia
 * 日本語

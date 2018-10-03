@@ -1,0 +1,46 @@
+{
+  "main": {
+    "header": "מנהל נוודים",
+    "version": "V {{version}}",
+    "downloadLatest": "הורד האחרונה",
+    "about": "על",
+    "aboutVM": "אודות | מנהל נוודים",
+    "settings": "הגדרות",
+    "add": "הוסף",
+    "quit": "לְהַפְסִיק",
+    "startAtLogin": "התחלה אוטומטית",
+    "resetToDefaults": "אפס לברירות מחדל",
+    "areYouSure?": "האם אתה בטוח?",
+    "yes": "כן",
+    "no": "לא",
+    "up": "למעלה",
+    "provision": "הפרשה",
+    "suspend": "להשעות",
+    "resume": "המשך",
+    "reload": "טען מחדש",
+    "halt": "עצור",
+    "destroy": "להרוס",
+    "update": "עדכון פלאגין",
+    "repair": "תוסף",
+    "box": "קופסא",
+    "provider": "ספק",
+    "status": "סטטוס"
+  },
+  "about": {
+    "vm": "מנהל נוודים",
+    "vmApp": "ניהול מכונות נודד שלך",
+    "LatestVersion": "הגירסה האחרונה:",
+    "checking": "בודק ...",
+    "downloading": "מוריד ...",
+    "copyright": "זכויות יוצרים",
+    "sponsor": "בחסות"
+  },
+  "settings": {
+    "settings": "הגדרות",
+    "language": "שפה",
+    "resetToDefaults": "אפס לברירות מחדל"
+  },
+  "process": {
+    "NewVersion": "גרסה חדשה זמינה!"
+  }
+}
