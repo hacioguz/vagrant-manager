@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="/app//assets/images/logo.gif" alt="Vagrant Manager" width="400px">
+    <img src="/app/assets/images/logo.gif" alt="Vagrant Manager" width="400px">
     <br>
     Vagrant Manager
 </h1>
