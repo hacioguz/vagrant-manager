@@ -1,0 +1,46 @@
+{
+  "main": {
+    "header": "Manager Vagabondo",
+    "version": "V {{version}}",
+    "downloadLatest": "Scarica l'ultima volta",
+    "about": "Informazioni su",
+    "aboutVM": "Informazioni su | Manager Vagabondo",
+    "settings": "Impostazioni",
+    "add": "Aggiungi",
+    "quit": "Esci",
+    "startAtLogin": "Avvio automatico",
+    "resetToDefaults": "Ripristina i valori predefiniti",
+    "areYouSure": "Sei sicuro?",
+    "yes": "Si",
+    "no": "No",
+    "up": "Su",
+    "provision": "Fornitura",
+    "suspend": "Suspend",
+    "resume": "Riprendi",
+    "reload": "Ricarica",
+    "halt": "Arresto",
+    "destroy": "Distruggi",
+    "update": "Aggiornamento plugin",
+    "repair": "Riparazione di plugin",
+    "box": "Scatola",
+    "provider": "Fornitore",
+    "status": "Stato"
+  },
+   "about": {
+    "vm": "Manager Vagabondo",
+    "vmApp": "Gestisci le tue macchine vagabonde",
+    "latestVersion": "l'ultima versione:",
+    "checking": "Verifica ...",
+    "downloading": "Scaricamento ...",
+    "copyright": "Diritto d'autore",
+    "sponsor": "Sponsorizzato da"
+  },
+  "settings": {
+    "settings": "Impostazioni",
+    "language": "Lingua",
+    "resetToDefaults": "Ripristina i valori predefiniti"
+  },
+  "process": {
+    "newVersion": "New version is available!"
+  }
+}

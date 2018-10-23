@@ -15,11 +15,6 @@ document.getElementById('sponsor').innerHTML = packager.companyName
 document.addEventListener('dragover', event => event.preventDefault())
 document.addEventListener('drop', event => event.preventDefault())
 
-document.on('new-window', function(event, url){
-  event.preventDefault()
-  open(url)
-})
-
 document.getElementById('close-btn').addEventListener('click', function (e) {
   window.close()
 })

@@ -1,0 +1,46 @@
+{
+  "main": {
+    "header": "Vagrant Manager",
+    "version": "V {{version}}",
+    "downloadLatest": "Last ned nyeste",
+    "about": "Om",
+    "aboutVM": "Om | Vagrant Manager",
+    "settings": "Innstillinger",
+    "add": "Legg til",
+    "quit": "Avslutt",
+    "startAtLogin": "Auto start",
+    "resetToDefaults": "Tilbakestill til standard",
+    "areYouSure": "Er du sikker?",
+    "yes": "Ya",
+    "no": "Nei",
+    "up": "Opp",
+    "provision": "Bestemmelse",
+    "suspend": "Henge",
+    "resume": "Gjenoppta",
+    "reload": "Last",
+    "halt": "Stoppe",
+    "destroy": "Ødelegge",
+    "update": "Oppdater plugin",
+    "repair": "Reparer plugin",
+    "box": "Boks",
+    "provider": "Leverandør",
+    "status": "Status" 
+  },
+   "about": {
+    "vm": "Vagrant Manager",
+    "vmApp": "Administrer vagrantmaskiner",
+    "latestVersion": "den nyeste versjonen:",
+    "checking": "Kontrollerer ...",
+    "downloading": "Nedlasting ...",
+    "copyright": "Opphavsrett",
+    "sponsor": "Sponset av"
+  },
+  "settings": {
+    "settings": "Innstillinger",
+    "language": "Språk",
+    "resetToDefaults": "Tilbakestill til standard"
+  },
+  "process": {
+    "newVersion": "Ny versjon er tilgjengelig!"
+  }
+}

@@ -5,9 +5,7 @@ const vagrant = require('node-vagrant')
 const heartbeats = require('heartbeats')
 let VersionChecker = require('./utils/versionChecker')
 const {autoUpdater} = require('electron-updater')
-const isDev = require('electron-is-dev')
 const log = require('electron-log')
-const unhandled = require('electron-unhandled')
 
 startI18next()
 
@@ -114,10 +112,6 @@ function startI18next () {
 
 
   function startPowerMonitoring () {
-	if (!isDev) {
-		unhandled()
-	}
-
 	const electron = require('electron')
 	electron.powerMonitor.on('suspend', () => {
 		log.info('The system is going to sleep')

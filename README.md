@@ -17,10 +17,12 @@ It has now been translated into the following languages:
 * Français
 * עִברִית
 * "िंदी
+* Italiano
 * bahasa Indonesia
 * 日本語
 * Melayu
 * Māori
+* Norsk
 * Português
 * Українець
 * 简体中文
