@@ -7,10 +7,13 @@ let VersionChecker = require('./utils/versionChecker')
 const {autoUpdater} = require('electron-updater')
 const log = require('electron-log')
 
+const server = 'hazel-server-nzhfigowai.now.sh'
+const feed = `${server}/update/${process.platform}/${app.getVersion()}`
+
 startI18next()
 
-log.transports.file.level = 'debug'
-log.transports.console.level = 'debug'
+log.transports.file.level = 'silly'
+log.transports.console.level = 'silly'
 
 const AppSettings = require('./utils/settings')
 const defaultSettings = require('./utils/defaultSettings')
@@ -197,11 +200,6 @@ function startI18next () {
 	}
 	
 	
-	function checkVersion () {
-		processWin.webContents.send('checkVersion', `${app.getVersion()}`, settings.get('notifyNewVersion'))
-		planVersionCheck(3600 * 5)
-	}
-
 	function winStyle(title) {
 		window = new BrowserWindow({
 		 width : 400,
@@ -558,13 +556,15 @@ function runMachine(contextMenu, menuItem, command)
 function trackMenu () {
 	boxDetails( function(box)
 	{
+		/*
 		if (Object.keys(box).length === 0 && box.constructor === Object) {
 			// Don't rebuild menu when box list is empty
 			heart.kill()
-		} else {
+		} else { */	
 			heart.createEvent(1, function(count, last) {
 				if (typeof contextMenu !== 'undefined' && contextMenu !== null) {
 					contextMenu.destroy
+					checkForLatestUpdate()
 					buildMenu()
 				if (heart.age === 10285) {
 					app.relaunch()
@@ -572,7 +572,6 @@ function trackMenu () {
 						}
 		 			}
 			})
-		}
 	})
 }
 
