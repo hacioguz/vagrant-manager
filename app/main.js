@@ -1,14 +1,15 @@
-const {app, Menu, Tray, BrowserWindow, ipcMain, shell, nativeImage, dialog} = require('electron')
+const {app, Menu, Tray, BrowserWindow, ipcMain, shell, nativeImage, dialog, autoUpdater} = require('electron')
 const i18next = require('i18next')
 const Backend = require('i18next-node-fs-backend')
 const vagrant = require('node-vagrant')
 const heartbeats = require('heartbeats')
 let VersionChecker = require('./utils/versionChecker')
-const {autoUpdater} = require('electron-updater')
 const log = require('electron-log')
 
 const server = 'hazel-server-nzhfigowai.now.sh'
 const feed = `${server}/update/${process.platform}/${app.getVersion()}`
+
+autoUpdater.setFeedURL(feed)
 
 startI18next()
 
@@ -124,80 +125,19 @@ function startI18next () {
 	})
 	}
 
-	function checkForLatestUpdate () {
-		const oldVersion = app.getVersion()
-		new VersionChecker()
-			.latest()
-			.then(version => {
-				const semantic = /^([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/
-				if (version.match(semantic) && oldVersion !== version) {
-					updateTrayForDownload()
-				}
-			})
-			.catch(exception => console.error(exception))
+	autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+		const dialogOpts = {
+			type: 'info',
+			buttons: [i18next.t('main.yes'), i18next.t('main.no')],
+			title: i18next.t('about.checking') + ' ' + i18next.t('about.vm'),
+			message: process.platform === 'win32' ? releaseNotes : releaseName,
+			detail: i18next.t('main.update') + ': ' + i18next.t('main.areYouSure')
 	}
-	
-	function updateTrayForDownload () {
-		processWin.webContents.send('showNotification', i18next.t('main.newVesionAvailable'))
-		isNewVersionAvailable = true
-		buildTray()
-		buildMenu()
-	}
-	
-	function downloadLatestUpdate () {
-		autoupdate.checkForUpdates()
-		autoupdate.on('update-available', () => {
-			dialog.showMessageBox({
-				type: 'info',
-				title: i18next.t('about.checking')+' '+ i18next.t('about.vm'),
-				message: i18next.t('main.downloadLatest')+'?',
-				buttons: [i18next.t('main.yes'), i18next.t('main.no')]
-			}, (buttonIndex) => {
-				if (buttonIndex !== 0) return
-				autoupdate.downloadUpdate()
-				let downloadProgressWindow = new BrowserWindow({
-					width: 400,
-					height: 70,
-					useContentSize: false,
-					autoHideMenuBar: true,
-					maximizable: false,
-					fullscreen: false,
-					resizable: false
-				})
-	
-				downloadProgressWindow.loadURL(`file://${__dirname}/autoUpdate.html`)
-				downloadProgressWindow.on('closed', () => {
-					downloadProgressWindow = null
-				})
-				let downloadProgress
-	
-				autoupdate.on('download-progress', (d) => {
-					downloadProgress = d.percent
-				})
-	
-				ipcMain.on('download-progress-request', (e) => {
-					e.returnValue = downloadProgress
-				})
-	
-				autoupdate.on('update-downloaded', () => {
-					if (downloadProgressWindow) {
-						downloadProgressWindow.close()
-					}
-	
-					dialog.showMessageBox({
-						type: 'info',
-						title: i18next.t('about.checking')+' '+ i18next.t('about.vm'),
-						message: i18next.t('main.update')+': '+ i18next.t('main.areYouSure'),
-						buttons: [i18next.t('main.yes'), i18next.t('main.no')]
-					}, (buttonIndex) => {
-						if (buttonIndex === 0) {
-							autoupdate.quitAndInstall()
-						}
-					})
-				})
-			})
-		})
-	}
+
+	dialog.showMessageBox(dialogOpts, (response) => {
+		if (response === 0) autoUpdater.quitAndInstall()
+	})
+})
 	
 	
 	function winStyle(title) {
@@ -564,7 +504,7 @@ function trackMenu () {
 			heart.createEvent(1, function(count, last) {
 				if (typeof contextMenu !== 'undefined' && contextMenu !== null) {
 					contextMenu.destroy
-					checkForLatestUpdate()
+					autoUpdater.checkForUpdates()
 					buildMenu()
 				if (heart.age === 10285) {
 					app.relaunch()
