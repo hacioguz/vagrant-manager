@@ -24,6 +24,7 @@ It has now been translated into the following languages:
 * Māori
 * Norsk
 * Português
+* தமிழ்
 * Українець
 * 简体中文
 

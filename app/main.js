@@ -125,6 +125,7 @@ function startI18next () {
 	})
 	}
 
+	/*
 	autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
 		const dialogOpts = {
 			type: 'info',
@@ -137,7 +138,7 @@ function startI18next () {
 	dialog.showMessageBox(dialogOpts, (response) => {
 		if (response === 0) autoUpdater.quitAndInstall()
 	})
-})
+}) */
 	
 	
 	function winStyle(title) {
@@ -504,7 +505,7 @@ function trackMenu () {
 			heart.createEvent(1, function(count, last) {
 				if (typeof contextMenu !== 'undefined' && contextMenu !== null) {
 					contextMenu.destroy
-					autoUpdater.checkForUpdates()
+					// autoUpdater.checkForUpdates()
 					buildMenu()
 				if (heart.age === 10285) {
 					app.relaunch()
