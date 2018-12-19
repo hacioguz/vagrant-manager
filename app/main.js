@@ -1,4 +1,4 @@
-const {app, Menu, Tray, BrowserWindow, ipcMain, shell, nativeImage, dialog, autoUpdater} = require('electron')
+const {app, Menu, Tray, BrowserWindow, ipcMain, shell, nativeImage, dialog} = require('electron')
 const i18next = require('i18next')
 const Backend = require('i18next-node-fs-backend')
 const vagrant = require('node-vagrant')
@@ -6,11 +6,14 @@ const heartbeats = require('heartbeats')
 let VersionChecker = require('./utils/versionChecker')
 const log = require('electron-log')
 
+if (process.platform === 'win32') {
+const autoUpdater = require('electron')
 const server = 'hazel-server-nzhfigowai.now.sh'
 const feed = `${server}/update/${process.platform}/${app.getVersion()}`
 
 autoUpdater.setFeedURL(feed)
-
+}
+	
 startI18next()
 
 log.transports.file.level = 'silly'
@@ -25,7 +28,7 @@ const fs = require('fs')
 const path = require('path')
 const proc = require('child_process')
 process.env.PATH = shellPath.sync()
-autoUpdater.autoDownload = true
+autoUpdater.autoDownload = false
 
 function getIcon(path_icon) {
     return nativeImage.createFromPath(path_icon).resize({width: 16})
@@ -125,7 +128,8 @@ function startI18next () {
 	})
 	}
 
-	/*
+	
+if (process.platform === 'win32') {
 	autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
 		const dialogOpts = {
 			type: 'info',
@@ -137,8 +141,9 @@ function startI18next () {
 
 	dialog.showMessageBox(dialogOpts, (response) => {
 		if (response === 0) autoUpdater.quitAndInstall()
+		})
 	})
-}) */
+}
 	
 	
 	function winStyle(title) {
