@@ -28,7 +28,10 @@ const fs = require('fs')
 const path = require('path')
 const proc = require('child_process')
 process.env.PATH = shellPath.sync()
-autoUpdater.autoDownload = false
+
+if (process.platform === 'win32') {
+autoUpdater.autoDownload = true
+}
 
 function getIcon(path_icon) {
     return nativeImage.createFromPath(path_icon).resize({width: 16})
@@ -510,7 +513,9 @@ function trackMenu () {
 			heart.createEvent(1, function(count, last) {
 				if (typeof contextMenu !== 'undefined' && contextMenu !== null) {
 					contextMenu.destroy
-					// autoUpdater.checkForUpdates()
+					if (process.platform === 'win32') {
+							autoUpdater.checkForUpdates()
+					}
 					buildMenu()
 				if (heart.age === 10285) {
 					app.relaunch()
