@@ -7,11 +7,13 @@ let VersionChecker = require('./utils/versionChecker')
 const log = require('electron-log')
 
 if (process.platform === 'win32') {
+/*
 const autoUpdater = require('electron')
 const server = 'hazel-server-nzhfigowai.now.sh'
 const feed = `${server}/update/${process.platform}/${app.getVersion()}`
 
 autoUpdater.setFeedURL(feed)
+*/
 }
 	
 startI18next()
@@ -30,7 +32,9 @@ const proc = require('child_process')
 process.env.PATH = shellPath.sync()
 
 if (process.platform === 'win32') {
+/*
 autoUpdater.autoDownload = true
+*/
 }
 
 function getIcon(path_icon) {
@@ -133,6 +137,7 @@ function startI18next () {
 
 	
 if (process.platform === 'win32') {
+	/*
 	autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
 		const dialogOpts = {
 			type: 'info',
@@ -146,6 +151,7 @@ if (process.platform === 'win32') {
 		if (response === 0) autoUpdater.quitAndInstall()
 		})
 	})
+	*/
 }
 	
 	
@@ -512,10 +518,10 @@ function trackMenu () {
 		} else { */	
 			heart.createEvent(1, function(count, last) {
 				if (typeof contextMenu !== 'undefined' && contextMenu !== null) {
-					contextMenu.destroy
+					contextMenu.destroy/*
 					if (process.platform === 'win32') {
 							autoUpdater.checkForUpdates()
-					}
+					}*/
 					buildMenu()
 				if (heart.age === 10285) {
 					app.relaunch()
