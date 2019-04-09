@@ -182,7 +182,7 @@ if (process.platform === 'win32') {
 		if(fileNames[0].includes('Vagrantfile') === true) {
 				var cwder = fileNames[0].replace('Vagrantfile','')
 				machiner = vagrant.create({ cwd: cwder})
-				machiner.up(function(err, out) {})
+				machiner.up(function(err, out) { responseOutput(out,err) })
 			}
 		})
  	}
@@ -217,6 +217,14 @@ function saveDefaultsFor (array, next) {
   for (let index in array) {
     settings.set(array[index], defaultSettings[array[index]])
   }
+}
+
+function responseOutput(out,err) {
+	if (err) {
+		errorBox('Halt',err)
+		log.error(err)
+	}
+	log.info(out)
 }
 
 function boxOptions(note,box,index,contextMenu, action)
@@ -487,23 +495,23 @@ function runMachine(contextMenu, menuItem, command)
 	contextMenu.items[parentID].enabled = false
 	tray.setContextMenu(contextMenu)
 	switch(command) {
-		case 'up': machine.up(function(err, out) {})
+		case 'up': machine.up(function(err, out) { responseOutput(out,err)})
 							 break
-		case 'provision': machine.provision(function(err, out) {})
+		case 'provision': machine.provision(function(err, out) { responseOutput(out,err) })
 							 break
-    case 'suspend': machine.suspend(function(err, out) {})
+    case 'suspend': machine.suspend(function(err, out) { responseOutput(out,err) })
 							 break
-	  case 'resume': machine.resume(function(err, out) {})
+	  case 'resume': machine.resume(function(err, out) {responseOutput(out,err) })
 							 break							 
-		case 'halt': machine.halt(function(err, out) {})
+		case 'halt': machine.halt(function(err, out) {responseOutput(out,err) })
 							 break
-		case 'reload': machine.reload(function(err, out) {})
+		case 'reload': machine.reload(function(err, out) {responseOutput(out,err) })
 							 break
-		case 'destroy': machine.destroy(function(err, out) {})
+		case 'destroy': machine.destroy(function(err, out) {responseOutput(out,err) })
 							 break
-		case 'update': machine.pluginUpdate(function(err, out) {})
+		case 'update': machine.pluginUpdate(function(err, out) {responseOutput(out,err)})
 							 break							 
-		case 'repair': machine.pluginRepair(function(err, out) {})
+		case 'repair': machine.pluginRepair(function(err, out) {responseOutput(out,err)})
 							 break							 
 	}	
 }
