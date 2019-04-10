@@ -38,6 +38,7 @@
   "settings": {
     "settings": "Ρυθμίσεις",
     "language": "Γλώσσα",
+    "consoleview": "Ενεργοποιήστε την κονσόλα",
     "resetToDefaults": "Επαναφορά στις προεπιλογές"
   },
   "process": {

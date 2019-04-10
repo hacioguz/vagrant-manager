@@ -38,6 +38,7 @@
     "settings": {
         "settings": "Tautuhinga",
         "language": "Reo",
+        "consoleview": "Whakahohea te papatohu",
         "resetToDefaults": "Tautuhi anō ki nga hapa"
     },
     "process": {

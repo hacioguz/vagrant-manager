@@ -38,6 +38,7 @@
   "settings": {
     "settings": "Nastavení",
     "language": "Jazyk",
+    "consoleview": "Povolit konzolu",
     "resetToDefaults": "Obnovit výchozí nastavení"
   },
   "process": {

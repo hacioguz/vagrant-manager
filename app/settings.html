@@ -23,18 +23,6 @@
         </div>
         <div class="col-xs-12 text-left"> 
           <div class="settings">
-           <div class="enabled">
-                <input type="checkbox" value="consoleview" class="enable">
-                <span data-i18next="settings.consoleview"></span>
-          </div>
-            <div id="defaults" class="pointer">
-                  <span data-i18next="settings.resetToDefaults"></span>
-            </div>
-          <span class="custom">
-          <br/>
-            <input type="checkbox" value="microbreakPostpone" class="enable">
-            <span data-i18next="settings.allowToPostpone"></span>
-          </span>
             <div class="form-group">
               <label data-i18next="settings.language"></label>
               <select class="form-control" name="language" id="language"> <!--Supplement an id here instead of using 'name'-->
@@ -59,7 +47,15 @@
                 <option value="ua">Українець</option>
                 <option value="zh">简体中文</option>
               </select>
-            </div>  
+            </div>
+            <span class="custom">
+              <br/>
+              <input type="checkbox" value="consoleview" class="enable">
+              <span data-i18next="settings.consoleview"></span>
+              </span>
+              <div id="defaults" class="pointer">
+                <span data-i18next="settings.resetToDefaults"></span>
+              </div>  
           </div>
         </div>
     <script>

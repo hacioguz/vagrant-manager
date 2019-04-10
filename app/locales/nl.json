@@ -38,6 +38,7 @@
   "settings": {
     "settings": "Innstillinger",
     "language": "Språk",
+    "consoleview": "Aktivér konsol",
     "resetToDefaults": "Tilbakestill til standard"
   },
   "process": {

@@ -38,6 +38,7 @@
   "settings": {
     "settings": "Налаштування",
     "language": "Мова",
+    "consoleview": " Увімкнути консоль",
     "resetToDefaults": "Скинути за замовчуванням"
   },
   "process": {

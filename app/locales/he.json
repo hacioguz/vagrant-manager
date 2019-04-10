@@ -38,6 +38,7 @@
   "settings": {
     "settings": "הגדרות",
     "language": "שפה",
+    "consoleview": "הפעל קונסולה",
     "resetToDefaults": "אפס לברירות מחדל"
   },
   "process": {

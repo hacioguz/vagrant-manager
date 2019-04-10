@@ -38,6 +38,7 @@
   "settings": {
     "settings": "Impostazioni",
     "language": "Lingua",
+    "consoleview": "Enable console",
     "resetToDefaults": "Ripristina i valori predefiniti"
   },
   "process": {

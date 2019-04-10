@@ -38,6 +38,7 @@
   "settings": {
     "settings": "الإعدادات",
     "language": "اللغة",
+    "consoleview": "تمكين وحدة التحكم",
     "resetToDefaults": "إعادة تعيين إلى التخلف"
   },
   "process": {

@@ -38,6 +38,7 @@
   "settings": {
     "settings": "Die Einstellungen",
     "language": "Sprache",
+    "consoleview": "Aktiviere Konsole",
     "resetToDefaults":  "Auf Standardeinstellung zurücksetzen"
   },
   "process": {

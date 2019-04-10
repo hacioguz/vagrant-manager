@@ -38,6 +38,7 @@
   "settings": {
     "settings": "Pengaturan",
     "language": "Bahasa",
+    "consoleview": "Aktifkan konsol",
     "resetToDefaults": "Setel ulang ke default"
   },
   "process": {

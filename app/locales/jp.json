@@ -38,6 +38,7 @@
   "settings": {
     "settings": "設定",
     "language": "言語",
+    "consoleview": "コンソールを有効にする",
     "resetToDefaults": "既定値にリセット"
   },
   "process": {

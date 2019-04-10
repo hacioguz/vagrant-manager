@@ -38,6 +38,7 @@
     "settings": {
         "settings": "Tetapan",
         "language": "Bahasa",
+        "consoleview": "Dayakan konsol",
         "resetToDefaults": "Tetapkan semula kepada lalai"
     },
     "process": {
