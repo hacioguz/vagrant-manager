@@ -92,7 +92,7 @@ if (process.platform === 'win32') {
 		var jsonData = JSON.parse(JSON.stringify(data))
 		for(var index in jsonData) { 
 				machine = vagrant.create({ cwd: jsonData[index]['cwd']})
-				machine.halt(function(err, out) {})
+				machine.halt(function(err, out) { responseOutput(out,err) })
 				}
 		})
 	}
