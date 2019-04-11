@@ -5,6 +5,8 @@ const vagrant = require('node-vagrant')
 const heartbeats = require('heartbeats')
 let VersionChecker = require('./utils/versionChecker')
 const log = require('electron-log')
+log.transports.file.format = '{h}:{i}:{s}:{ms} {text}'
+log.transports.file.maxSize = 5 * 1024 * 1024
 
 if (process.platform === 'win32') {
 /*
