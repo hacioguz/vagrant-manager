@@ -1,12 +1,15 @@
 const {app, Menu, Tray, BrowserWindow, ipcMain, shell, nativeImage, dialog} = require('electron')
+const remote =  require('electron').remote
 const i18next = require('i18next')
 const Backend = require('i18next-node-fs-backend')
 const vagrant = require('node-vagrant')
 const heartbeats = require('heartbeats')
 let VersionChecker = require('./utils/versionChecker')
 const log = require('electron-log')
+log.transports.file.appName = 'VagrantManager';
 log.transports.file.format = '{h}:{i}:{s}:{ms} {text}'
 log.transports.file.maxSize = 5 * 1024 * 1024
+log.transports.console.format = '{h}:{i}:{s}:{ms} {text}'
 
 if (process.platform === 'win32') {
 /*
