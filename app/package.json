@@ -2,7 +2,7 @@
   "name": "vagrant-manager",
   "productName": "Vagrant Manager",
   "companyName": "Absalom Media",
-  "version": "2.1.5",
+  "version": "2.2.0",
   "description": "Manage your vagrant machines in one place with Vagrant Manager",
   "main": "main.js",
   "repository": {

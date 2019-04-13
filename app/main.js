@@ -36,6 +36,7 @@ const path = require('path')
 const proc = require('child_process')
 process.env.PATH = shellPath.sync()
 
+
 if (process.platform === 'win32') {
 /*
 autoUpdater.autoDownload = true
@@ -66,7 +67,7 @@ global.shared = {
   let shouldQuit = app.makeSingleInstance(function (commandLine, workingDirectory) {
 	if (appIcon) {
 		dialog.showMessageBox({
-			buttons: [i18next.t('main.yes')],
+			buttons: [i18next.t('main.quit')],
 			message: 'Already running'
 		})
 	}
@@ -230,6 +231,15 @@ function responseOutput(out,err) {
 		log.error(err)
 	}
 	log.info(out)
+	consoler = settings.get('consoleview')
+	if (consoler === true) {
+		dialog.showMessageBox({
+			type: 'info',
+			buttons: [i18next.t('main.quit')],
+			message: i18next.t('main.header'),
+			detail : out
+		})
+	}
 }
 
 function boxOptions(note,box,index,contextMenu, action)
@@ -260,8 +270,8 @@ function errorBox(code,stderr)
 {
 	dialog.showMessageBox({
 		type: 'error',
-		buttons: [i18next.t('main.yes')],
-		message: 'Code ' + code,
+		buttons: [i18next.t('main.quit')],
+		message: 'Code: ' + code,
 		detail : stderr
 	})
 }
@@ -303,6 +313,10 @@ function boxDetails(callback)
 					'name' 		: jsonData[index]['name'],
 					'provider'	: jsonData[index]['provider']
 				})
+			}
+			consoler = settings.get('consoleview')
+			if (consoler === true) {
+				log.info(box)
 			}	
 			return callback(box)
 		})
@@ -563,6 +577,10 @@ function loadSettings () {
 	const settingsFile = '${dir}/config.json'
 	settings = new AppSettings(settingsFile)
 	i18next.changeLanguage(settings.get('language'))
+	consoler = settings.get('consoleview')
+	if (consoler === true) {
+		process.env.NODE_DEBUG = true
+	}
 }
 
 ipcMain.on('save-setting', function (event, key, value) {
