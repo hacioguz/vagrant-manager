@@ -24,7 +24,16 @@
     "repair": "Réparation de plugins",
     "box": "Boîte",
     "provider": "Fournisseur",
-    "status": "Statut" 
+    "status": "Statut",
+    "console": "Console",
+    "snapshot": "Instantané",
+    "push": "Pousser",
+    "pop": "Crever",
+    "list": "Liste",
+    "plugin": "Brancher",
+    "updater": "Réactualiser",
+    "repairer": "Réparer",
+    "expunge": "Effacer"  
   },
    "about": {
     "vm": "Gestionnaire Vagabond",

@@ -24,7 +24,16 @@
     "repair": "プラグインの修理",
     "box": "箱",
     "provider": "プロバイダ",
-    "status": "プロバイダ" 
+    "status": "プロバイダ",
+    "console": "コンソール",
+    "snapshot": "スナップショット",
+    "push": "押し付ける",
+    "pop": "爆ぜる",
+    "list": "名鑑",
+    "plugin": "プラグイン",
+    "updater": "更新",
+    "repairer": "修復",
+    "expunge": "削す" 
   },
    "about": {
     "vm":  "バゲントマネージャー",

@@ -24,7 +24,16 @@
         "repair": "Whakapinga Tae",
         "box": "Pouaka",
         "provider": "Kaiwhakarato",
-        "status": "Tūnga"
+        "status": "Tūnga",    
+        "console": "Paahoho",
+        "snapshot": "Whakaahua",
+        "push": "Pana",
+        "pop": "Pupuhia",
+        "list": "Rārangi",
+        "plugin": "Puta",
+        "updater": "Whakaaturanga",
+        "repairer": "Whakapinga",
+        "expunge": "Whakaoho"
     },
     "about": {
         "vm": "Kaiwhakahaere Vagrant",

@@ -24,7 +24,16 @@
     "repair": "Plugin Reparatur",
     "box": "Kasten",
     "provider": "Anbieter",
-    "status": "Status" 
+    "status": "Status",
+    "console": "Konsole",
+    "snapshot": "Schnappschuss",
+    "push": "Drücken",
+    "pop": "Versetzen",
+    "list": "Liste",
+    "plugin": "Plugin",
+    "updater": "Aktualisierung",
+    "repairer": "Reparatur",
+    "expunge": "Zničit" 
   },
    "about": {
     "vm": "Vagrant Manager",

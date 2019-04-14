@@ -20,11 +20,20 @@
         "reload": "Muat semula",
         "halt": "Menghentikan",
         "destroy": "Memusnahkan",
-        "update": "Kemas kini Plugin",
-        "repair": "Pembaikan Plugin",
+        "update": "Kemas kini Pasangkan",
+        "repair": "Pembaikan Pasangkan",
         "box": "Kotak",
         "provider": "Penyedia",
-        "status": "Status"
+        "status": "Taraf",
+        "console": "Konsol",
+        "snapshot": "Syot kilat",
+        "push": "Tolak",
+        "pop": "Terkeluar",
+        "list": "Senarai",
+        "plugin": "Pasangkan",
+        "updater": "Kemas kini",
+        "repairer": "Pembaikan",
+        "expunge": "Hentikan"
     },
     "about": {
         "vm": "Pengurus Vagrant",

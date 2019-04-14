@@ -24,7 +24,16 @@
     "repair": "Reparación de complementos",
     "box": "Caja",
     "provider": "Proveedor",
-    "status": "Estado" 
+    "status": "Estado",
+    "console": "Consola",
+    "snapshot": "Instantánea",
+    "push": "Empujar",
+    "pop": "¡Pum!",
+    "list": "Lista",
+    "plugin": "Enchufar",
+    "updater": "Actualizar",
+    "repairer": "Reparar",
+    "expunge": "Borrar"  
   },
    "about": {
     "vm": "Administrador vagabundo",

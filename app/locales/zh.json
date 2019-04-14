@@ -24,7 +24,16 @@
     "repair": "插件修復",
     "box": "框",
     "provider": "提供者",
-    "status": "狀態" 
+    "status": "狀態",
+    "console": "安慰",
+    "snapshot": "快照",
+    "push": "推",
+    "pop": "抛出",
+    "list": "目录",
+    "plugin": "插入",
+    "updater": "更新",
+    "repairer": "修复",
+    "expunge": "抹去"
   },
    "about": {
     "vm": "關於",

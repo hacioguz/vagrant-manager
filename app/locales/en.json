@@ -24,7 +24,16 @@
     "repair": "Plugin Repair",
     "box": "Box",
     "provider": "Provider",
-    "status": "Status" 
+    "status": "Status",
+    "console": "Console",
+    "snapshot": "Snapshot",
+    "push": "Push",
+    "pop": "Pop",
+    "list": "List",
+    "plugin": "Plugin",
+    "updater": "Update",
+    "repairer": "Repair",
+    "expunge": "Expunge"
   },
    "about": {
     "vm": "Vagrant Manager",

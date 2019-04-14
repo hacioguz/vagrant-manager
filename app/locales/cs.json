@@ -24,7 +24,16 @@
     "repair": "Oprava pluginů",
     "box": "Krabice",
     "provider": "Poskytovatel",
-    "status": "Postavení" 
+    "status": "Postavení",
+    "console": "Konzola",
+    "snapshot": "Momentka",
+    "push": "Tlačit",
+    "pop": "Vyčnívat",
+    "list": "Seznam",
+    "plugin": "Zapojit",
+    "updater": "Aktualizace",
+    "repairer": "Opravit",
+    "expunge": "Zničit"
   },
    "about": {
     "vm": "Vagrant Manager",

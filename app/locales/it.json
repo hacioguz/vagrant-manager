@@ -20,11 +20,20 @@
     "reload": "Ricarica",
     "halt": "Arresto",
     "destroy": "Distruggi",
-    "update": "Aggiornamento plugin",
-    "repair": "Riparazione di plugin",
+    "update": "Aggiornamento collegare",
+    "repair": "Riparazione di collegare",
     "box": "Scatola",
     "provider": "Fornitore",
-    "status": "Stato"
+    "status": "Stato",
+    "console": "La mensola",
+    "snapshot": "Istantanea",
+    "push": "Spingere",
+    "pop": "Scoppiare",
+    "list": "Elenco",
+    "plugin": "Collegare",
+    "updater": "Aggiornamento",
+    "repairer": "Riparazione",
+    "expunge": "Expunge"
   },
    "about": {
     "vm": "Manager Vagabondo",
@@ -38,7 +47,7 @@
   "settings": {
     "settings": "Impostazioni",
     "language": "Lingua",
-    "consoleview": "Enable console",
+    "consoleview": "Abilita la mensola",
     "resetToDefaults": "Ripristina i valori predefiniti"
   },
   "process": {

@@ -20,11 +20,20 @@
     "reload": "Zarepetować",
     "halt": "Parar",
     "destroy": "Destruir",
-    "update": "Atualização do plugin",
-    "repair": "Reparação do plugin",
+    "update": "Atualização do plugar",
+    "repair": "Reparação do plugar",
     "box": "Caixa",
     "provider": "Provedor",
-    "status": "Estado" 
+    "status": "Estado",
+    "console": "Console",
+    "snapshot": "Instantâneo",
+    "push": "Empurrar",
+    "pop": "Estourar",
+    "list": "Lista",
+    "plugin": "Plugar",
+    "updater": "Atualização",
+    "repairer": "Reparação",
+    "expunge": "Expurgar"
   },
    "about": {
     "vm":  "Vagrant Manager",

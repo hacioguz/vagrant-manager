@@ -236,7 +236,7 @@ function responseOutput(out,err) {
 		dialog.showMessageBox({
 			type: 'info',
 			buttons: [i18next.t('main.quit')],
-			message: i18next.t('main.header'),
+			message: i18next.t('main.console'),
 			detail : out
 		})
 	}
@@ -403,6 +403,38 @@ function buildMenu(event) {
 					}
 				},
 				{
+					label: i18next.t('main.snapshot'),
+					submenu: [
+						{
+						label: i18next.t('main.push'),
+						box: index,
+						id: box[index]['path'],
+						click: function(menuItem)
+						{
+							runMachine(contextMenu, menuItem, 'main.push')
+						}
+					 },
+					 {
+						label: i18next.t('main.pop'),
+						box: index,
+						id: box[index]['path'],
+						click: function(menuItem)
+						{
+							runMachine(contextMenu, menuItem, 'main.pop')
+						}
+					 },
+					 {
+						label: i18next.t('main.list'),
+						box: index,
+						id: box[index]['path'],
+						click: function(menuItem)
+						{
+							runMachine(contextMenu, menuItem, 'main.list')
+						}
+					 },
+					],
+				},
+				{
 					label: i18next.t('main.update'),
 					box: index,
 					id: box[index]['path'],
@@ -531,7 +563,13 @@ function runMachine(contextMenu, menuItem, command)
 		case 'update': machine.pluginUpdate(function(err, out) {responseOutput(out,err)})
 							 break							 
 		case 'repair': machine.pluginRepair(function(err, out) {responseOutput(out,err)})
-							 break							 
+							 break
+		case 'push': machine.snapshots().push(function(err, out) {responseOutput(out,err)})
+							 break
+		case 'pop': machine.snapshots().pop(function(err, out) {responseOutput(out,err)})
+							 break
+		case 'list': machine.snapshots().list(function(err, out) {responseOutput(out,err)})
+							 break					 							 
 	}	
 }
 
