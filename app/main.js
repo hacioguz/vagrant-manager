@@ -411,7 +411,7 @@ function buildMenu(event) {
 						id: box[index]['path'],
 						click: function(menuItem)
 						{
-							runMachine(contextMenu, menuItem, 'main.push')
+							runMachine(contextMenu, menuItem, 'push')
 						}
 					 },
 					 {
@@ -420,7 +420,7 @@ function buildMenu(event) {
 						id: box[index]['path'],
 						click: function(menuItem)
 						{
-							runMachine(contextMenu, menuItem, 'main.pop')
+							runMachine(contextMenu, menuItem, 'pop')
 						}
 					 },
 					 {
@@ -429,7 +429,7 @@ function buildMenu(event) {
 						id: box[index]['path'],
 						click: function(menuItem)
 						{
-							runMachine(contextMenu, menuItem, 'main.list')
+							runMachine(contextMenu, menuItem, 'list')
 						}
 					 },
 					],
