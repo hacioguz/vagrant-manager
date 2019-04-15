@@ -435,22 +435,36 @@ function buildMenu(event) {
 					],
 				},
 				{
-					label: i18next.t('main.update'),
-					box: index,
-					id: box[index]['path'],
-					click: function(menuItem)
-					{
-						runMachine(contextMenu, menuItem, 'update')
-					}
-				},
-				{
-					label: i18next.t('main.repair'),
-					box: index,
-					id: box[index]['path'],
-					click: function(menuItem)
-					{
-						runMachine(contextMenu, menuItem, 'repair')
-					}
+					label: i18next.t('main.plugin'),
+					submenu: [
+						{
+						label: i18next.t('main.update'),
+						box: index,
+						id: box[index]['path'],
+						click: function(menuItem)
+						{
+							runMachine(contextMenu, menuItem, 'update')
+						}
+					 },
+					 {
+						label: i18next.t('main.repair'),
+						box: index,
+						id: box[index]['path'],
+						click: function(menuItem)
+						{
+							runMachine(contextMenu, menuItem, 'repair')
+						}
+					 },
+					 {
+						label: i18next.t('main.expunge'),
+						box: index,
+						id: box[index]['path'],
+						click: function(menuItem)
+						{
+							runMachine(contextMenu, menuItem, 'expunge')
+						}
+					 },
+					],
 				},													
 				{
 											label: i18next.t('main.destroy'),
@@ -581,10 +595,12 @@ function runMachine(contextMenu, menuItem, command)
 							 break
 		case 'destroy': machine.destroy(function(err, out) {responseOutput(out,err) })
 							 break
-		case 'update': machine.pluginUpdate(function(err, out) {responseOutput(out,err)})
+		case 'update': machine.plugin().update(function(err, out) {responseOutput(out,err)})
 							 break							 
-		case 'repair': machine.pluginRepair(function(err, out) {responseOutput(out,err)})
+		case 'repair': machine.plugin().repair(function(err, out) {responseOutput(out,err)})
 							 break
+		case 'expunge': machine.plugin().expunge(function(err, out) {responseOutput(out,err)})
+							 break							 
 		case 'push': machine.snapshots().push(function(err, out) {responseOutput(out,err)})
 							 break
 		case 'pop': machine.snapshots().pop(function(err, out) {responseOutput(out,err)})
