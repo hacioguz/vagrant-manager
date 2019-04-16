@@ -438,7 +438,7 @@ function buildMenu(event) {
 					label: i18next.t('main.plugin'),
 					submenu: [
 						{
-						label: i18next.t('main.update'),
+						label: i18next.t('main.updater'),
 						box: index,
 						id: box[index]['path'],
 						click: function(menuItem)
@@ -447,7 +447,7 @@ function buildMenu(event) {
 						}
 					 },
 					 {
-						label: i18next.t('main.repair'),
+						label: i18next.t('main.repairer'),
 						box: index,
 						id: box[index]['path'],
 						click: function(menuItem)

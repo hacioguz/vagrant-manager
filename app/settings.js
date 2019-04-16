@@ -23,17 +23,24 @@ ipcRenderer.on('renderSettings', (event, data) => {
     }
   }
 
+  document.getElementById('consoleview').value = data['consoleview']
   document.getElementById('language').value = data['language']
   eventsAttached = true
 })
 
 document.getElementById('defaults').addEventListener('click', function (e) {
-  ipcRenderer.send('set-default-settings', [])
+  ipcRenderer.send('set-default-settings', ['language','consoleview'])
+  window.location.reload()
 })
 
 document.getElementById('language').addEventListener('change', function (e) {
   ipcRenderer.send('change-language', e.target.value)
   ipcRenderer.send('save-setting', 'language', e.target.value)
+  window.location.reload()
+})
+
+document.getElementById('consoleview').addEventListener('change', function (e) {
+  ipcRenderer.send('save-setting', 'consoleview', e.target.value)
   window.location.reload()
 })
 
