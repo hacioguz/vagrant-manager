@@ -48,6 +48,7 @@
     "settings": "Paramètres",
     "language": "La langue",
     "consoleview": "Enable console",
+    "boxupdate": "Mettre à jour automatiquement la boîte",
     "resetToDefaults": "Réinitialiser les paramètres par défaut"
   },
   "process": {

@@ -48,6 +48,7 @@
     "settings": "الإعدادات",
     "language": "اللغة",
     "consoleview": "تمكين وحدة التحكم",
+    "boxupdate": "مربع التحديث تلقائيا",
     "resetToDefaults": "إعادة تعيين إلى التخلف"
   },
   "process": {

@@ -48,6 +48,7 @@
     "settings": "Nastavení",
     "language": "Jazyk",
     "consoleview": "Povolit konzolu",
+    "boxupdate": "Automaticky aktualizovat pole",
     "resetToDefaults": "Obnovit výchozí nastavení"
   },
   "process": {

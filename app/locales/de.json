@@ -48,6 +48,7 @@
     "settings": "Die Einstellungen",
     "language": "Sprache",
     "consoleview": "Aktiviere Konsole",
+    "boxupdate": "Kasten automatisch aktualisieren",
     "resetToDefaults":  "Auf Standardeinstellung zurücksetzen"
   },
   "process": {

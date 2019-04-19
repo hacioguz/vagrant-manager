@@ -48,6 +48,7 @@
     "settings": "Configurações",
     "language": "Língua",
     "consoleview": "Ativar console",
+    "boxupdate": "Caixa de atualização automática",
     "resetToDefaults": "Redefinir os padrões"
   },
   "process": {

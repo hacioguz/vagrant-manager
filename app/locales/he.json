@@ -48,6 +48,7 @@
     "settings": "הגדרות",
     "language": "שפה",
     "consoleview": "הפעל קונסולה",
+    "boxupdate": "עדכון אוטומטי",
     "resetToDefaults": "אפס לברירות מחדל"
   },
   "process": {

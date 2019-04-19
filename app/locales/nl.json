@@ -48,6 +48,7 @@
     "settings": "Innstillinger",
     "language": "Språk",
     "consoleview": "Aktivér konsol",
+    "boxupdate": "Automatisch bijwerken vak",
     "resetToDefaults": "Tilbakestill til standard"
   },
   "process": {

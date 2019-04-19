@@ -48,6 +48,7 @@
         "settings": "அமைப்புகள்",
         "language": "மொழி",
         "consoleview": "பணியகத்தை இயக்கு",
+        "boxupdate": "தானாகவே பெட்டியை புதுப்பிக்கவும்",
         "resetToDefaults": "இயல்புநிலைக்கு மீட்டமை"
     },
     "process": {

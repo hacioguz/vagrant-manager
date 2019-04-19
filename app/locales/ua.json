@@ -33,7 +33,7 @@
     "plugin": "Підключати",
     "updater": "Оновлення",
     "repairer": "Ремонт",
-    "expunge": "Expunge"
+    "expunge": "викреслювати"
   },
    "about": {
     "vm": "Менеджер з бродяжників",
@@ -48,6 +48,7 @@
     "settings": "Налаштування",
     "language": "Мова",
     "consoleview": " Увімкнути консоль",
+    "boxupdate": "автоматично оновити",
     "resetToDefaults": "Скинути за замовчуванням"
   },
   "process": {

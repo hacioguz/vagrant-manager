@@ -48,6 +48,7 @@
     "settings": "設置",
     "language": "語言",
     "consoleview": "启用控制台",
+    "boxupdate": "自动更新框",
     "resetToDefaults": "重置為默認值"
   },
   "process": {

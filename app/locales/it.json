@@ -48,6 +48,7 @@
     "settings": "Impostazioni",
     "language": "Lingua",
     "consoleview": "Abilita la mensola",
+    "boxupdate": "Aggiorna automaticamente la scatola",
     "resetToDefaults": "Ripristina i valori predefiniti"
   },
   "process": {

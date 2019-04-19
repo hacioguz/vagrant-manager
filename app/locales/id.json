@@ -48,6 +48,7 @@
     "settings": "Pengaturan",
     "language": "Bahasa",
     "consoleview": "Aktifkan konsol",
+    "boxupdate": "Memperbarui kotak secara otomatis",
     "resetToDefaults": "Setel ulang ke default"
   },
   "process": {

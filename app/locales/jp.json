@@ -48,6 +48,7 @@
     "settings": "設定",
     "language": "言語",
     "consoleview": "コンソールを有効にする",
+    "boxupdate": "自動的にボックスを更新する",
     "resetToDefaults": "既定値にリセット"
   },
   "process": {

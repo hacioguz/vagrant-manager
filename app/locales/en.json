@@ -48,6 +48,7 @@
     "settings": "Settings",
     "language": "Language",
     "consoleview": "Enable console",
+    "boxupdate": "Automatically update box",
     "resetToDefaults": "Reset to defaults"
   },
   "process": {

@@ -551,7 +551,7 @@ function buildMenu(event) {
 }
 
 function boxChecking() {
-	vagrant.boxOutdated('', function(err, out) {
+	vagrant.boxOutdated(null, function(err, out) {
 		if (err) {
 			errorBox(err)
 			log.error(err)
@@ -562,8 +562,8 @@ function boxChecking() {
 			var boxStatus = jsonData[index]['status']
 			var boxName =  jsonData[index]['name']
 			if (boxStatus === 'out of date') {
-				vagrant.boxUpdate(boxName, provider, function(err, out) { responseOutput(out,err) } )
-							.on('progress', function(out) { responseOutput(out,'') } )
+				vagrant.boxUpdate(boxName, null, function(err, out) { responseOutput(out,err) } )
+							.on('progress', function(out) { responseOutput(out, null) } )
 				}
 		}
  })
@@ -579,7 +579,10 @@ function runMachine(contextMenu, menuItem, command)
 	tray.setContextMenu(contextMenu)
 	switch(command) {
 		case 'up': 
-							 boxChecking()
+							 boxCheck = settings.get('boxupdated')
+							 if (boxCheck === true) {
+							 	boxChecking()
+							 }
 							 machine.up(function(err, out) { responseOutput(out,err)})
 							 break
 		case 'provision': machine.provision(function(err, out) { responseOutput(out,err) })
