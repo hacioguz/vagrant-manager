@@ -23,7 +23,7 @@ ipcRenderer.on('renderSettings', (event, data) => {
     }
   }
 
-  document.getElementById().value = data['consoleview']
+  document.getElementById('consoleview').value = data['consoleview']
   document.getElementById('language').value = data['language']
   eventsAttached = true
 })
