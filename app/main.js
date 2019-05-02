@@ -197,9 +197,9 @@ if (process.platform === 'win32') {
 	  aboutWin.show()
 	  return
 	}
-	const modalPath = `file://${__dirname}/about.html`
+	const modalPath = '/about.html'
 	aboutWin = winStyle('main.aboutVM', {version: app.getVersion()})
-	aboutWin.loadURL(modalPath)
+	aboutWin.loadFile(modalPath)
 	aboutWin.on('closed', () => {
 	  aboutWin = null
 	})
@@ -210,9 +210,9 @@ function showSettingsWindow () {
     settingsWin.show()
     return
   }
-  const modalPath = `file://${__dirname}/settings.html`
+  const modalPath = 'settings.html'
   settingsWin = winStyle('main.settings')
-  settingsWin.loadURL(modalPath)
+  settingsWin.loadFile(modalPath)
   settingsWin.on('closed', () => {
     settingsWin = null
   })
@@ -691,7 +691,7 @@ ipcMain.on('send-settings', function (event) {
 
 ipcMain.on('show-debug', function (event) {
   const dir = app.getPath('userData')
-  const settingsFile = `${dir}/config.json`
+  const settingsFile = '${dir}/config.json'
   aboutWin.webContents.send('debugInfo', settingsFile)
 })
 
