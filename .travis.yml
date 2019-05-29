@@ -4,15 +4,24 @@ os:
   - linux
   - osx
 
-node_js: "8.2.1"
+node_js: "9"
 
+services: 
+  - xvfb
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+    - $HOME/.cache/electron
+    - $HOME/.cache/electron-builder
 
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update && sudo apt-get install -q libxss-dev; fi
 
 before_script:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0 && sh -e /etc/init.d/xvfb start && sleep 3; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then xvfb-run --server-args="-screen 0 1024x768x24" make test; fi
 
 script:
   - npm install -g istanbul

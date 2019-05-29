@@ -295,10 +295,10 @@ lodash.isequal@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
   integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
 
-lodash@3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.3.0.tgz#011ce52d01b14e60eaeea76acb9b8ba42c70581b"
-  integrity sha1-ARzlLQGxTmDq7qdqy5uLpCxwWBs=
+lodash@4.17.11:
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+  integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
 
 lru-cache@^4.0.1:
   version "4.1.5"
@@ -332,12 +332,12 @@ node-fetch@^2.1.2:
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.3.0.tgz#1a1d940bbfb916a1d3e0219f037e89e71f8c5fa5"
   integrity sha512-MOd8pV3fxENbryESLgVIeaGKrdl+uaYhCSSVkjeOb/31/njTpcis5aWfdqgNlHIrKOLRbMnfPINPOML2CIFeXA==
 
-node-vagrant@^1.3.2:
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/node-vagrant/-/node-vagrant-1.3.5.tgz#859202799c5993ef0a18e502a401705fff412888"
-  integrity sha512-3D+G3LI5TraIHrL0DBEnlsJYZUCGgKGODyMCopmQpYepYA7IPFDmQfafnBLpFJ90NtLFK0XPn7azL0pgEGae9A==
+node-vagrant@^1.3.9:
+  version "1.3.9"
+  resolved "https://registry.yarnpkg.com/node-vagrant/-/node-vagrant-1.3.9.tgz#3ff6d1e961e87efb6dce1c5174bfb91e6a5a3d86"
+  integrity sha512-eDy3WdykRDIR859x7jP7R14gscB07KQ/fdwI7ErojUPczxOsHeemU9X38k4ArbEHf053l9aRcafqkRGAGkMVow==
   dependencies:
-    lodash "3.3.0"
+    lodash "4.17.11"
 
 npm-run-path@^2.0.0:
   version "2.0.2"
