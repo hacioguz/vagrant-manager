@@ -671,7 +671,7 @@ ipcMain.on('update-tray', function (event) {
 	buildMenu()
 })
 
-ipcMain.on('set-default-settings', function (event, data) {
+ipcMain.on('set-default-settings', function (event, store) {
   const options = {
     type: 'info',
     title: i18next.t('main.resetToDefaults'),
