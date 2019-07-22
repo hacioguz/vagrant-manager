@@ -1,10 +1,11 @@
-const {app, Menu, Tray, BrowserWindow, ipcMain, shell, nativeImage, dialog} = require('electron')
-const remote =  require('electron').remote
+const {app, Menu, Tray, ipcMain, nativeImage, BrowserWindow, shell, dialog} = require('electron')
 const i18next = require('i18next')
 const Backend = require('i18next-node-fs-backend')
 const vagrant = require('node-vagrant')
 const heartbeats = require('heartbeats')
 let VersionChecker = require('./utils/versionChecker')
+const Store = require('electron-store')
+const store = new Store()
 const log = require('electron-log')
 log.transports.file.format = '{h}:{i}:{s}:{ms} {text}'
 log.transports.file.maxSize = 5 * 1024 * 1024
@@ -25,8 +26,6 @@ startI18next()
 log.transports.file.level = 'silly'
 log.transports.console.level = 'silly'
 
-const AppSettings = require('./utils/settings')
-const defaultSettings = require('./utils/defaultSettings')
 const command = require('shelljs/global')
 const jquery = require('jquery')
 const shellPath = require('shell-path')
@@ -50,8 +49,8 @@ const trayActive = getIcon(path.join(__dirname,'assets/logo/trayIcon.png'))
 const trayWait = getIcon(path.join(__dirname,'assets/logo/trayIconWait.png'))
 const icon = path.join(__dirname,'/assets/logo/windowIcon.png')
 const heart = heartbeats.createHeart(7000)
+const gotTheLock = app.requestSingleInstanceLock()
 
-let aboutUs = null
 let appIcon = null
 let aboutWin = null
 let tray = null
@@ -63,20 +62,19 @@ global.shared = {
 	isNewVersion: false
   }
   
-  let shouldQuit = app.makeSingleInstance(function (commandLine, workingDirectory) {
-	if (appIcon) {
-		dialog.showMessageBox({
-			buttons: [i18next.t('main.quit')],
-			message: 'Already running'
-		})
-	}
-  })
-  
-  if (shouldQuit) {
+  if (!gotTheLock) {
 	log.info('Vagrant Manager is already running.')
 	app.quit()
-	return
-  }
+} else {
+	app.on('second-instance', (event, commandLine, workingDirectory) => {
+		if (appIcon) {
+			dialog.showMessageBox({
+				buttons: [i18next.t('main.quit')],
+				message: 'Already running'
+			})
+		}
+	})
+}
 
 
 if(process.platform === 'darwin') {
@@ -169,7 +167,10 @@ if (process.platform === 'win32') {
 		 frame: false,
 		 titleBarStyle: 'customButtonsOnHover',		
 		 icon : icon,
-		 title: i18next.t(title)
+		 title: i18next.t(title),
+		 webPreferences: {
+			nodeIntegration: true
+		  }
 	 })
 	 return window 
  }
@@ -197,7 +198,7 @@ if (process.platform === 'win32') {
 	  aboutWin.show()
 	  return
 	}
-	const modalPath = '/about.html'
+	const modalPath = 'about.html'
 	aboutWin = winStyle('main.aboutVM', {version: app.getVersion()})
 	aboutWin.loadFile(modalPath)
 	aboutWin.on('closed', () => {
@@ -218,10 +219,13 @@ function showSettingsWindow () {
   })
 }
 
-function saveDefaultsFor (array, next) {
-  for (let index in array) {
-    settings.set(array[index], defaultSettings[array[index]])
-  }
+function saveDefaults () {
+	store.set({  
+		language: 'en',
+		consoleview: false,
+		boxupdate: false,
+		notifyNewVersion: true
+	})
 }
 
 function responseOutput(out,err) {
@@ -230,7 +234,7 @@ function responseOutput(out,err) {
 		log.error(err)
 	}
 	log.info(out)
-	consoler = settings.get('consoleview')
+	consoler = store.get('consoleview')
 	if (consoler === true) {
 		dialog.showMessageBox({
 			type: 'info',
@@ -313,7 +317,7 @@ function boxDetails(callback)
 					'provider'	: jsonData[index]['provider']
 				})
 			}
-			consoler = settings.get('consoleview')
+			consoler = store.get('consoleview')
 			if (consoler === true) {
 				log.info(box)
 			}	
@@ -579,7 +583,7 @@ function runMachine(contextMenu, menuItem, command)
 	tray.setContextMenu(contextMenu)
 	switch(command) {
 		case 'up': 
-							 boxCheck = settings.get('boxupdated')
+							 boxCheck = store.get('boxupdate')
 							 if (boxCheck === true) {
 							 	boxChecking()
 							 }
@@ -587,9 +591,9 @@ function runMachine(contextMenu, menuItem, command)
 							 break
 		case 'provision': machine.provision(function(err, out) { responseOutput(out,err) })
 							 break
-    case 'suspend': machine.suspend(function(err, out) { responseOutput(out,err) })
+    	case 'suspend': machine.suspend(function(err, out) { responseOutput(out,err) })
 							 break
-	  case 'resume': machine.resume(function(err, out) {responseOutput(out,err) })
+	  	case 'resume': machine.resume(function(err, out) {responseOutput(out,err) })
 							 break							 
 		case 'halt': machine.halt(function(err, out) {responseOutput(out,err) })
 							 break
@@ -650,19 +654,16 @@ app.on('before-quit', () => {
 })
 
 function loadSettings () {
-	const dir = app.getPath('userData')
-	const settingsFile = '${dir}/config.json'
-	settings = new AppSettings(settingsFile)
-	i18next.changeLanguage(settings.get('language'))
-	consoler = settings.get('consoleview')
+	i18next.changeLanguage(store.get('language'))
+	consoler = store.get('consoleview')
 	if (consoler === true) {
 		process.env.NODE_DEBUG = true
 	}
 }
 
 ipcMain.on('save-setting', function (event, key, value) {
-  settings.set(key, value)
-  settingsWin.webContents.send('renderSettings', settings.data)
+  store.set(key,value)
+  settingsWin.webContents.send('renderSettings', store.store)
   buildMenu()
 })
 
@@ -679,25 +680,19 @@ ipcMain.on('set-default-settings', function (event, data) {
   }
   dialog.showMessageBox(options, function (index) {
     if (index === 0) {
-      saveDefaultsFor(data)
-      settingsWin.webContents.send('renderSettings', settings.data)
+      saveDefaults()
+      settingsWin.webContents.send('renderSettings', store.store)
     }
   })
 })
 
 ipcMain.on('send-settings', function (event) {
-  settingsWin.webContents.send('renderSettings', settings.data)
-})
-
-ipcMain.on('show-debug', function (event) {
-  const dir = app.getPath('userData')
-  const settingsFile = '${dir}/config.json'
-  aboutWin.webContents.send('debugInfo', settingsFile)
+  settingsWin.webContents.send('renderSettings', store.store)
 })
 
 ipcMain.on('change-language', function (event, language) {
   i18next.changeLanguage(language)
   if (settingsWin) {
-    settingsWin.webContents.send('renderSettings', settings.data)
+    settingsWin.webContents.send('renderSettings', store.store)
   }
 })

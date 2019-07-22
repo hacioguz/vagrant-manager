@@ -108,6 +108,7 @@
   "license": "MIT",
   "dependencies": {
     "electron-log": "^2.2.17",
+    "electron-store": "^4.0.0",
     "electron-updater": "^2.21.8",
     "event": "^1.0.0",
     "heartbeats": "^5.0.1",
@@ -125,7 +126,7 @@
     "babel-eslint": "^8.0.3",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
-    "electron": "^2.0.8",
+    "electron": "^5.0.7",
     "electron-builder": "^19.55.1",
     "electron-is-dev": "^1.0.1",
     "electron-unhandled": "^1.1.0",
