@@ -1,16 +1,15 @@
 language: node_js
 
-matrix:
-  include:
-  - os: linux
-    dist: xenial
-    sudo: required
-  - os: osx
+os:
+  - linux
+  - osx
 
 node_js: "10"
 
-services: 
-  - xvfb
+addons:
+  apt:
+    packages:
+      - xvfb
 
 cache:
   yarn: true
@@ -20,11 +19,11 @@ cache:
     - $HOME/.cache/electron-builder
 
 before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update && sudo apt-get install -q libxss-dev; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install yarn; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update && sudo apt-get install -q libxss-dev yarn; fi
 
 before_script:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then xvfb-run --server-args="-screen 0 1024x768x24" make test; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then xvfb-run yarn test; else yarn test; fi
 
 script:
   - npm install -g istanbul
