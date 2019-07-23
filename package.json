@@ -68,7 +68,8 @@
       "packageCategory": "Development",
       "target": [
         "AppImage",
-        "deb"
+        "deb",
+        "snap"
       ]
     }
   },
