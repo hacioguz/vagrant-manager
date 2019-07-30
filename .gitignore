@@ -5,3 +5,4 @@ dist
 coverage
 .bundle
 .vscode
+.nyc_output
