@@ -25,7 +25,10 @@
     "artifactName": "${name}-${arch}.${ext}",
     "copyright": "© 2019 Absalom Media",
     "mac": {
-      "category": "public.app-category.developer-tools"
+      "hardenedRuntime": true, 
+      "category": "public.app-category.developer-tools",
+      "entitlements": "build/entitlements.plist",
+      "entitlementsInherit": "build/entitlements.plist"
     },
     "dmg": {
       "title": "Vagrant Manager",
