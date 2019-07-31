@@ -4,7 +4,7 @@ os:
   - linux
   - osx
 
-node_js: "12.0.0"
+node_js: '8.2.1'
 
 services:
   - xvfb
@@ -28,7 +28,8 @@ after_success:
 
 deploy:
   provider: releases
-  api_key: '$GITHUB_API_KEY'
+  api_key: 
+    secure: '$GITHUB_API_KEY'
   file:
     - 'dist/vagrant-manager.dmg'
     - 'dist/vagrant-manager.appx'
