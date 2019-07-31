@@ -51,7 +51,8 @@
         "nsis",
         "nsis-web",
         "7z",
-        "zip"
+        "zip",
+        "portable"
       ]
     },
     "nsis": {
