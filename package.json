@@ -10,6 +10,7 @@
     "postinstall": "electron-builder install-app-deps",
     "pack-all": "electron-builder --dir -mwl --x64 --ia32",
     "dist-all": "electron-builder -mwl --x64 --ia32",
+    "release": "build",
     "pack": "electron-builder --dir",
     "dist": "electron-builder --x64 --ia32",
     "test": "mocha test",
@@ -24,6 +25,11 @@
     "appId": "com.electron.vagrant-manager",
     "artifactName": "${name}-${arch}.${ext}",
     "copyright": "© 2019 Absalom Media",
+    "publish": {
+      "provider": "github",
+      "vPrefixedTagName": false,
+      "releaseType": "release"
+    },
     "mac": {
       "hardenedRuntime": true, 
       "category": "public.app-category.developer-tools",

@@ -23,7 +23,7 @@ script:
   - npm install -g nyc
   - npx nyc mocha
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then yarn pack; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then yarn dist-all; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then travis_wait 30 yarn dist-all; fi
 
 notifications:
   email:
