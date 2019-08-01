@@ -27,7 +27,7 @@ test_script:
   - node --version
   - npm --version
   - npx nyc mocha
-  - yarn dist
+  - yarn pack
 
 after_test:
 - bash <(curl -s https://codecov.io/bash)

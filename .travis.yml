@@ -9,13 +9,20 @@ node_js: '8.16.0'
 services:
   - xvfb
 
+cache:
+  yarn: true
+  directories:
+    - node_modules
+    - $HOME/.cache/electron
+    - $HOME/.cache/electron-builder
+
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update && sudo apt-get install -q libxss-dev; fi
 
 script:
   - npm install -g nyc
   - npx nyc mocha
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then yarn dist; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then yarn pack; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then yarn dist-all; fi
 
 notifications:
