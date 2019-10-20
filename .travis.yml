@@ -1,10 +1,27 @@
 language: node_js
 
+# https://github.com/nodejs/Release
+# Specify current LTS version here, which is used for publishing to npm
+node_js:
+  - 10 # EOL: April 2021
+
 os:
   - linux
-  - osx
 
-node_js: '10'
+# https://github.com/nodejs/Release
+matrix:
+  fast_finish: true
+  include:
+    - name: "Windows build"
+      os: windows
+      cache: false # windows cache uploads are slow
+      env: YARN_GPG=no # starts gpg-agent that never exits
+
+    - name: "macOS build"
+      os: osx
+
+    # Next node version
+    - node_js: 11 # EOL: June 2019
 
 services:
   - xvfb
@@ -17,13 +34,15 @@ cache:
     - $HOME/.cache/electron-builder
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update && sudo apt-get install -q libxss-dev; fi
+  - sudo apt-get -qq update && sudo apt-get install -q libxss-dev
+
+install:
+  - yarn --frozen-lockfile --non-interactive --network-timeout 300000
 
 script:
   - npm install -g nyc
   - npx nyc mocha
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then yarn pack; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then travis_wait 30 yarn dist-all; fi
+  - yarn pack
 
 notifications:
   email:
