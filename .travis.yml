@@ -34,7 +34,7 @@ cache:
     - $HOME/.cache/electron-builder
 
 before_install:
-  - sudo apt-get -qq update && sudo apt-get install -q libxss-dev
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update && sudo apt-get install -q libxss-dev; fi
 
 install:
   - yarn --frozen-lockfile --non-interactive --network-timeout 300000
@@ -42,7 +42,8 @@ install:
 script:
   - npm install -g nyc
   - npx nyc mocha
-  - yarn pack
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then yarn pack; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then travis_wait 30 yarn dist-all; fi
 
 notifications:
   email:
