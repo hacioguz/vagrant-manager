@@ -31,7 +31,7 @@
       "releaseType": "release"
     },
     "mac": {
-      "hardenedRuntime": true, 
+      "hardenedRuntime": true,
       "category": "public.app-category.developer-tools",
       "entitlements": "build/entitlements.plist",
       "entitlementsInherit": "build/entitlements.plist"
@@ -117,16 +117,16 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "^8.0.3",
-    "chai": "^4.1.2",
+    "babel-eslint": "^10.0.3",
+    "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "electron": "^5.0.7",
-    "electron-builder": "^21.1.5",
-    "electron-is-dev": "^1.0.1",
-    "electron-unhandled": "^1.1.0",
-    "mocha": "^4.0.1",
-    "sinon": "^4.2.0",
-    "spectron": "^7.0.0",
-    "standard": "^10.0.3"
+    "electron": "^7.0.1",
+    "electron-builder": "^22.1.0",
+    "electron-is-dev": "^1.1.0",
+    "electron-unhandled": "^3.0.0",
+    "mocha": "^6.2.2",
+    "sinon": "^7.5.0",
+    "spectron": "^9.0.0",
+    "standard": "^14.3.1"
   }
 }
