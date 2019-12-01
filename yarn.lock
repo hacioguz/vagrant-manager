@@ -1188,10 +1188,10 @@ electron-publish@22.2.0:
     lazy-val "^1.0.4"
     mime "^2.4.4"
 
-electron-unhandled@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/electron-unhandled/-/electron-unhandled-3.0.0.tgz#15ff673e61cb57b935a46f9e23a6b7ee2c95eb65"
-  integrity sha512-QmR9m1oDLJF/uCjxSgI5fXB0gOd7UIi0nJzwwbNcAnNYQx4V2Xut1+I7XzzYb7KsjnrR5TWuiarndTu6IDQ3IA==
+electron-unhandled@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/electron-unhandled/-/electron-unhandled-3.0.1.tgz#34794326d850ac7bc1a1d2fe90f2b0fcd4d12c9c"
+  integrity sha512-eIK3LpT/1hrBK4dJjHEQLbTvI8XOflItCOtMzY2RIaRfGAXV0JfJoTe+Y59Q9b/87oXWmSD5p2Dnp2Nzgtlijg==
   dependencies:
     clean-stack "^2.1.0"
     electron-is-dev "^1.0.1"
