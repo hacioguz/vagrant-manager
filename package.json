@@ -120,7 +120,7 @@
     "babel-eslint": "^10.0.3",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "electron": "^7.0.1",
+    "electron": "^7.1.2",
     "electron-builder": "^22.2.0",
     "electron-is-dev": "^1.1.0",
     "electron-unhandled": "^3.0.1",
