@@ -124,7 +124,7 @@
     "electron-builder": "^22.2.0",
     "electron-is-dev": "^1.1.0",
     "electron-unhandled": "^3.0.2",
-    "mocha": "^6.2.2",
+    "mocha": "^7.0.0",
     "sinon": "^8.0.4",
     "spectron": "^9.0.0",
     "standard": "^14.3.1"
