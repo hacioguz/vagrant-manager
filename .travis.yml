@@ -19,11 +19,14 @@ matrix:
 
     - name: "macOS build"
       os: osx
-
+    
+    - name: "Packaging"
+      os: osx
+      
     # Next node LTS version
     - node_js: 13 # EOL: June 2019
   allow_failures:
-  - os: osx
+  - name: "Packaging"
 
 
 services:
@@ -46,7 +49,9 @@ script:
   - npm install -g nyc
   - npx nyc mocha
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then yarn pack; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then travis_wait 30 yarn dist-all; fi
+  - if [[ "$TRAVIS_JOB_NAME" == "macOS build" ]]; then yarn pack; fi
+  - if [[ "$TRAVIS_JOB_NAME" == "Packaging" ]]; then travis_wait 30 yarn dist-all; fi
+
 
 notifications:
   email:
