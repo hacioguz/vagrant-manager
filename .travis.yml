@@ -20,8 +20,11 @@ matrix:
     - name: "macOS build"
       os: osx
 
-    # Next node version
-    - node_js: 11 # EOL: June 2019
+    # Next node LTS version
+    - node_js: 13 # EOL: June 2019
+  allow_failures:
+  - os: osx
+
 
 services:
   - xvfb
