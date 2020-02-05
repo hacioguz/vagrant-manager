@@ -21,7 +21,7 @@ install:
   - npm install -g nyc
 
 build_script:
-  - yarn dist
+  - yarn pack
   
 test_script:
   - node --version
