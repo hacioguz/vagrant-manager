@@ -1,4 +1,4 @@
-const {app, Menu, Tray, ipcMain, nativeImage, BrowserWindow, shell, dialog} = require('electron')
+const {app, Menu, Tray, ipcMain, nativeImage, BrowserWindow, shell, powerMonitor, dialog} = require('electron')
 const i18next = require('i18next')
 const Backend = require('i18next-node-fs-backend')
 const vagrant = require('node-vagrant')
@@ -81,23 +81,31 @@ if(process.platform === 'darwin') {
     app.dock.hide()
 }
 
-if (process.platform === 'win32') {
-	process.on('SIGINT', function () {
+if (process.platform === "win32") {
+	var rl = require("readline").createInterface({
+	  input: process.stdin,
+	  output: process.stdout
+	});
+  
+	rl.on("SIGINT", function () {
+	  process.emit("SIGINT");
+	});
+  process.on("SIGINT", function () {
 	//graceful shutdown
-		vagrant.globalStatus(function(err, data) 
-		{
-		if (err) {
-			errorBox('Shutdown',err)
-			log.error(err)
-		} 
-		var jsonData = JSON.parse(JSON.stringify(data))
-		for(var index in jsonData) { 
-				machine = vagrant.create({ cwd: jsonData[index]['cwd']})
-				machine.halt(function(err, out) { responseOutput(out,err) })
-				}
-		})
-	}
-)}
+	vagrant.globalStatus(function(err, data) 
+	{
+	if (err) {
+		errorBox('Shutdown',err)
+		log.error(err)
+	} 
+	var jsonData = JSON.parse(JSON.stringify(data))
+	for(var index in jsonData) { 
+			machine = vagrant.create({ cwd: jsonData[index]['cwd']})
+			machine.halt(function(err, out) { responseOutput(out,err) })
+			}
+	})
+  });
+}
 
 function startI18next () {
 	i18next
@@ -129,15 +137,28 @@ function startI18next () {
 
 
   function startPowerMonitoring () {
-	const electron = require('electron')
-	electron.powerMonitor.on('suspend', () => {
+	powerMonitor.on('suspend', () => {
 		log.info('The system is going to sleep')
 	})
-	electron.powerMonitor.on('resume', () => {
+	powerMonitor.on('resume', () => {
 		log.info('The system is resuming')
 	})
-	}
+	powerMonitor.on('shutdown', () => {
+		vagrant.globalStatus(function(err, data) 
+		{
+		if (err) {
+			errorBox('Shutdown',err)
+			log.error(err)
+		} 
+		var jsonData = JSON.parse(JSON.stringify(data))
+		for(var index in jsonData) { 
+				machine = vagrant.create({ cwd: jsonData[index]['cwd']})
+				machine.halt(function(err, out) { responseOutput(out,err) })
+				}
+		})
+	})
 
+}
 	
 if (process.platform === 'win32') {
 	/*
