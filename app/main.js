@@ -35,7 +35,6 @@ const path = require('path')
 const proc = require('child_process')
 process.env.PATH = shellPath.sync()
 
-
 if (process.platform === 'win32') {
 /*
 autoUpdater.autoDownload = true
@@ -59,11 +58,13 @@ let settingsWin = null
 let settings
 var contextMenu 
 
+app.setAppUserModelId('net.absalomedia.vagrant-manager')
+
 global.shared = {
 	isNewVersion: false
   }
   
-  if (!gotTheLock) {
+if (!gotTheLock) {
 	log.info('Vagrant Manager is already running.')
 	app.quit()
 } else {
@@ -110,10 +111,12 @@ function startI18next () {
 	  }, function (err, t) {
 		if (err) {
 			log.error(err.stack)
-			errorBox('i18',err.stack)
+			errorBox('i18n',err.stack)
 		}
 		if (appIcon) {
-		  buildMenu()
+			loadSettings()
+			buildTray()
+			buildMenu()
 		}
 	  })
   }
