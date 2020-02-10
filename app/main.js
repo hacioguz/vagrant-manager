@@ -524,21 +524,21 @@ function buildMenu(event) {
 		sept(),
 		{
 			label: i18next.t('main.settings'),
-			click: function (menuItem)
+			click: function ()
 			{
 				showSettingsWindow()
 			}
 		},
 		{
 			label: i18next.t('main.add'),
-			click: function (menuItem)
+			click: function ()
 			{
 				addMachine()
 			}
 		},		
 		{
 			label: i18next.t('main.about'),
-			click: function (menuItem)
+			click: function ()
 			{
 				showAboutWindow()
 			}
@@ -560,7 +560,7 @@ function buildMenu(event) {
 		menu.push(
 			{
 				label: i18next.t('main.quit'),
-				click: function (menuItem)
+				click: function ()
 				{
 						app.quit()
 				}
