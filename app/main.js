@@ -1,6 +1,7 @@
 const {app, Menu, Tray, ipcMain, nativeImage, BrowserWindow, shell, powerMonitor, dialog} = require('electron')
 const i18next = require('i18next')
 const Backend = require('i18next-node-fs-backend')
+startI18next()
 const vagrant = require('node-vagrant')
 const heartbeats = require('heartbeats')
 let VersionChecker = require('./utils/versionChecker')
@@ -21,7 +22,7 @@ autoUpdater.setFeedURL(feed)
 */
 }
 	
-startI18next()
+
 
 log.transports.file.level = 'silly'
 log.transports.console.level = 'silly'
@@ -81,30 +82,18 @@ if(process.platform === 'darwin') {
     app.dock.hide()
 }
 
-if (process.platform === "win32") {
-	var rl = require("readline").createInterface({
+if (process.platform === 'win32') {
+	var rl = require('readline').createInterface({
 	  input: process.stdin,
 	  output: process.stdout
-	});
-  
-	rl.on("SIGINT", function () {
-	  process.emit("SIGINT");
-	});
-  process.on("SIGINT", function () {
-	//graceful shutdown
-	vagrant.globalStatus(function(err, data) 
-	{
-	if (err) {
-		errorBox('Shutdown',err)
-		log.error(err)
-	} 
-	var jsonData = JSON.parse(JSON.stringify(data))
-	for(var index in jsonData) { 
-			machine = vagrant.create({ cwd: jsonData[index]['cwd']})
-			machine.halt(function(err, out) { responseOutput(out,err) })
-			}
 	})
-  });
+  
+	rl.on('SIGINT', function () {
+	  process.emit('SIGINT')
+	})
+  process.on('SIGINT', function () {
+	shutDownState()
+  })
 }
 
 function startI18next () {
@@ -144,20 +133,9 @@ function startI18next () {
 		log.info('The system is resuming')
 	})
 	powerMonitor.on('shutdown', () => {
-		vagrant.globalStatus(function(err, data) 
-		{
-		if (err) {
-			errorBox('Shutdown',err)
-			log.error(err)
-		} 
-		var jsonData = JSON.parse(JSON.stringify(data))
-		for(var index in jsonData) { 
-				machine = vagrant.create({ cwd: jsonData[index]['cwd']})
-				machine.halt(function(err, out) { responseOutput(out,err) })
-				}
-		})
+		log.info('The system is shutting down')
+		shutDownState()
 	})
-
 }
 	
 if (process.platform === 'win32') {
@@ -239,6 +217,23 @@ function showSettingsWindow () {
     settingsWin = null
   })
 }
+
+function shutDownState () {
+	//graceful shutdown
+	vagrant.globalStatus(function(err, data) 
+	{
+	if (err) {
+		errorBox('Shutdown',err)
+		log.error(err)
+	} 
+	var jsonData = JSON.parse(JSON.stringify(data))
+	for(var index in jsonData) { 
+			machine = vagrant.create({ cwd: jsonData[index]['cwd']})
+			machine.halt(function(err, out) { responseOutput(out,err) })
+			}
+	})
+}
+
 
 function saveDefaults () {
 	store.set({  
@@ -355,8 +350,7 @@ function buildMenu(event) {
 	let menu = []
 		
 	tray.setImage(trayActive)
-	boxDetails( function(box)
-	{
+
 		if (global.shared.isNewVersion) {
 			menu.push({
 				label: i18next.t('main.downloadLatest'),
@@ -366,6 +360,8 @@ function buildMenu(event) {
 			})
 		}
 
+	boxDetails( function(box)
+	{
 		for(var index in box) {
 			menu.push(
 			{
@@ -520,7 +516,9 @@ function buildMenu(event) {
 			})
 		}
 
-		menu.push(
+	})
+	
+	menu.push(
 		sept(),
 		{
 			label: i18next.t('main.settings'),
@@ -569,10 +567,7 @@ function buildMenu(event) {
 		contextMenu = Menu.buildFromTemplate(menu)
 		tray.setToolTip(i18next.t('main.header'))
 		tray.setContextMenu(contextMenu)
-		return contextMenu
-
-	})
-	
+		return contextMenu	
 }
 
 function boxChecking() {
