@@ -1,6 +1,6 @@
 const {app, Menu, Tray, ipcMain, nativeImage, BrowserWindow, shell, powerMonitor, dialog} = require('electron')
 const i18next = require('i18next')
-const Backend = require('i18next-node-fs-backend')
+const Backend = require('i18next-sync-fs-backend')
 startI18next()
 const vagrant = require('node-vagrant')
 const heartbeats = require('heartbeats')
@@ -114,8 +114,6 @@ function startI18next () {
 			errorBox('i18n',err.stack)
 		}
 		if (appIcon) {
-			loadSettings()
-			buildTray()
 			buildMenu()
 		}
 	  })
@@ -241,7 +239,7 @@ function shutDownState () {
 function saveDefaults () {
 	store.set({  
 		language: 'en',
-		consoleview: false,
+		consoleview: true,
 		boxupdate: false,
 		notifyNewVersion: true
 	})
@@ -525,21 +523,21 @@ function buildMenu(event) {
 		sept(),
 		{
 			label: i18next.t('main.settings'),
-			click: function ()
+			click: function (menuItem)
 			{
 				showSettingsWindow()
 			}
 		},
 		{
 			label: i18next.t('main.add'),
-			click: function ()
+			click: function (menuItem)
 			{
 				addMachine()
 			}
 		},		
 		{
 			label: i18next.t('main.about'),
-			click: function ()
+			click: function (menuItem)
 			{
 				showAboutWindow()
 			}
@@ -552,7 +550,7 @@ function buildMenu(event) {
 				label: i18next.t('main.startAtLogin'),
 				type: 'checkbox',
 				checked: openAtLogin,
-				click: function () {
+				click: function (menuItem) {
 				app.setLoginItemSettings({openAtLogin: !openAtLogin})
 				}
 			})
@@ -561,7 +559,7 @@ function buildMenu(event) {
 		menu.push(
 			{
 				label: i18next.t('main.quit'),
-				click: function ()
+				click: function (menuItem)
 				{
 						app.quit()
 				}
