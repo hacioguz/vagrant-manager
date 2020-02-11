@@ -3,6 +3,7 @@ const i18next = require('i18next')
 const Backend = require('i18next-sync-fs-backend')
 startI18next()
 const vagrant = require('node-vagrant')
+const commandExists = require('command-exists')
 const heartbeats = require('heartbeats')
 let VersionChecker = require('./utils/versionChecker')
 const Store = require('electron-store')
@@ -78,24 +79,6 @@ if (!gotTheLock) {
 	})
 }
 
-
-if(process.platform === 'darwin') {
-    app.dock.hide()
-}
-
-if (process.platform === 'win32') {
-	var rl = require('readline').createInterface({
-	  input: process.stdin,
-	  output: process.stdout
-	})
-  
-	rl.on('SIGINT', function () {
-	  process.emit('SIGINT')
-	})
-  process.on('SIGINT', function () {
-	shutDownState()
-  })
-}
 
 function startI18next () {
 	i18next
@@ -312,6 +295,8 @@ function boxDetails(callback)
 {
 	var box = []
 
+	commandExists('vagrant').then(function(command) {
+
 	vagrant.globalStatus(function(err, data) 
 		{
 
@@ -340,7 +325,11 @@ function boxDetails(callback)
 			}	
 			return callback(box)
 		})
+	}).catch(function(){
+		return callback(box)
+	})
 }
+
 
 function buildTray() {
 	tray = new Tray(trayActive)
