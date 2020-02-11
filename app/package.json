@@ -28,7 +28,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "electron-log": "^3.0.8",
+    "electron-log": "^4.0.6",
     "electron-store": "^5.1.0",
     "electron-updater": "^4.2.0",
     "event": "^1.0.0",
