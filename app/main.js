@@ -204,6 +204,7 @@ function showSettingsWindow () {
 
 function shutDownState () {
 	//graceful shutdown
+	commandExists('vagrant').then(function(command) {
 	vagrant.globalStatus(function(err, data) 
 	{
 	if (err) {
@@ -215,7 +216,8 @@ function shutDownState () {
 			machine = vagrant.create({ cwd: jsonData[index]['cwd']})
 			machine.halt(function(err, out) { responseOutput(out,err) })
 			}
-	})
+		})
+	}).catch(function(command) {})
 }
 
 
