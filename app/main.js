@@ -1,3 +1,4 @@
+require('v8-compile-cache')
 const {app, Menu, Tray, ipcMain, nativeImage, BrowserWindow, shell, powerMonitor, dialog} = require('electron')
 const i18next = require('i18next')
 const Backend = require('i18next-sync-fs-backend')
