@@ -5,8 +5,8 @@ const Backend = require('i18next-sync-fs-backend')
 startI18next()
 const vagrant = require('node-vagrant')
 const commandExists = require('command-exists')
+const commandExistsSync = require('command-exists').sync;
 const heartbeats = require('heartbeats')
-let VersionChecker = require('./utils/versionChecker')
 const Store = require('electron-store')
 const store = new Store()
 const log = require('electron-log')
@@ -14,12 +14,13 @@ log.transports.file.format = '{h}:{i}:{s}:{ms} {text}'
 log.transports.file.maxSize = 5 * 1024 * 1024
 log.transports.console.format = '{h}:{i}:{s}:{ms} {text}'
 
+const server = 'hazel-server-nzhfigowai.now.sh'
+const feed = `${server}/update/${process.platform}/${app.getVersion()}`
+const versioner = `${server}/update/win32/${app.getVersion()}`
+
 if (process.platform === 'win32') {
 /*
 const autoUpdater = require('electron')
-const server = 'hazel-server-nzhfigowai.now.sh'
-const feed = `${server}/update/${process.platform}/${app.getVersion()}`
-
 autoUpdater.setFeedURL(feed)
 */
 }
@@ -57,6 +58,7 @@ let appIcon = null
 let aboutWin = null
 let tray = null
 let settingsWin = null
+let versionTracker = versioner.name
 let settings
 var contextMenu 
 
@@ -80,6 +82,10 @@ if (!gotTheLock) {
 	})
 }
 
+if(versionTracker !== app.getVersion()) {
+	global.shared.isNewVersion = true
+	console.log(versionTracker)
+}
 
 function startI18next () {
 	i18next
@@ -290,6 +296,10 @@ function sept()
 	return text
 }
 
+function downloadLatestUpdate() {
+	
+}
+
 function getUserHome() {
 	return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME']
 }
@@ -343,6 +353,13 @@ function buildMenu(event) {
 	let menu = []
 		
 	tray.setImage(trayActive)
+
+	if (commandExistsSync('vagrant')) {} else {
+		menu.push(
+			{
+				label: i18next.t('main.getVagrant'),
+			})
+	}
 
 		if (global.shared.isNewVersion) {
 			menu.push({
