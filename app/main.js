@@ -1,5 +1,5 @@
 require('v8-compile-cache')
-const {app, Menu, Tray, ipcMain, nativeImage, BrowserWindow, shell, powerMonitor, dialog} = require('electron')
+const {app, Menu, Tray, ipcMain, ipcRenderer, nativeImage, BrowserWindow, shell, powerMonitor, dialog} = require('electron')
 const i18next = require('i18next')
 const Backend = require('i18next-sync-fs-backend')
 startI18next()
@@ -58,7 +58,8 @@ let tray = null
 let settingsWin = null
 let versionTracker = versioner.name
 let settings
-var contextMenu 
+var contextMenu
+let mainWindow
 
 app.setAppUserModelId('net.absalomedia.vagrant-manager')
 
@@ -295,7 +296,8 @@ function sept()
 }
 
 function downloadLatestUpdate() {
-	
+	const newURL = 'https://github.com/absalomedia/vagrant-manager/releases/latest/download/vagrant-manager'+ platformPackage()
+    ipcRenderer.send('download-item', {url: newURL}) 	
 }
 
 function downloadVagrant() {
@@ -739,4 +741,15 @@ ipcMain.on('change-language', function (event, language) {
   if (settingsWin) {
     settingsWin.webContents.send('renderSettings', store.store)
   }
+})
+
+ipcMain.on('download-item', async (event, {url}) => {
+	event.sender.send('download-success', url)
+	console.log(url)
+	const win = BrowserWindow.getFocusedWindow();
+	console.log(await download(win, url));
+})
+
+ipcRenderer.on('download-success', (event, arg) => {
+    console.log(arg)
 })
