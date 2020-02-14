@@ -4,7 +4,6 @@ const i18next = require('i18next')
 const Backend = require('i18next-sync-fs-backend')
 startI18next()
 const vagrant = require('node-vagrant')
-const commandExists = require('command-exists')
 const commandExistsSync = require('command-exists').sync
 const heartbeats = require('heartbeats')
 const Store = require('electron-store')
@@ -210,7 +209,7 @@ function showSettingsWindow () {
 
 function shutDownState () {
 	//graceful shutdown
-	commandExists('vagrant').then(function(command) {
+	if (commandExistsSync('vagrant')) {
 	vagrant.globalStatus(function(err, data) 
 	{
 	if (err) {
@@ -223,7 +222,7 @@ function shutDownState () {
 			machine.halt(function(err, out) { responseOutput(out,err) })
 			}
 		})
-	}).catch(function(command) {})
+	}
 }
 
 
@@ -297,7 +296,7 @@ function sept()
 
 function downloadLatestUpdate() {
 	const newURL = 'https://github.com/absalomedia/vagrant-manager/releases/latest/download/vagrant-manager'+ platformPackage()
-    ipcRenderer.send('download-item', {url: newURL}) 	
+    ipcMain.send('download-item', {url: newURL}) 	
 }
 
 function downloadVagrant() {
@@ -325,8 +324,6 @@ function boxDetails(callback)
 {
 	var box = []
 
-	commandExists('vagrant').then(function(command) {
-
 	vagrant.globalStatus(function(err, data) 
 		{
 
@@ -334,6 +331,7 @@ function boxDetails(callback)
 				errorBox(err)
 				log.error(err)
 			}
+			console.log(JSON.stringify(data))
 		
 			var jsonData = JSON.parse(JSON.stringify(data))
 			for(var index in jsonData) { 
@@ -355,9 +353,6 @@ function boxDetails(callback)
 			}	
 			return callback(box)
 		})
-	}).catch(function(){
-		return callback(box)
-	})
 }
 
 
@@ -368,7 +363,7 @@ function buildTray() {
 
 function buildMenu(event) {
 	let menu = []
-		
+
 	tray.setImage(trayActive)
 
 	if (commandExistsSync('vagrant')) {} else {
@@ -389,6 +384,8 @@ function buildMenu(event) {
 				}
 			})
 		}
+
+	if (commandExistsSync('vagrant')) {
 
 	boxDetails( function(box)
 	{
@@ -546,8 +543,9 @@ function buildMenu(event) {
 			})
 		}
 
-	})
-	
+		})
+	}
+
 	menu.push(
 		sept(),
 		{
@@ -681,7 +679,7 @@ function trackMenu () {
 					app.relaunch()
 					app.exit()
 						}
-		 			}
+					 }
 			})
 	})
 }
@@ -750,6 +748,6 @@ ipcMain.on('download-item', async (event, {url}) => {
 	console.log(await download(win, url));
 })
 
-ipcRenderer.on('download-success', (event, arg) => {
+ipcMain.on('download-success', (event, arg) => {
     console.log(arg)
 })
