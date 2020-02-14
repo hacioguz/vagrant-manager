@@ -45,6 +45,7 @@
     "yes": "Так"
   },
   "process": {
+    "getVagrant": "Встановити Бродячий ",
     "newVersion": "Нова версія доступна!"
   },
   "settings": {

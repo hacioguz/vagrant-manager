@@ -45,6 +45,7 @@
     "yes": "Ae"
   },
   "process": {
+    "getVagrant": "Tāuta Vagrant",
     "newVersion": "Kei te wātea te putanga hou!"
   },
   "settings": {
