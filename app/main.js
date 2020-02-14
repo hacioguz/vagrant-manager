@@ -5,7 +5,7 @@ const Backend = require('i18next-sync-fs-backend')
 startI18next()
 const vagrant = require('node-vagrant')
 const commandExists = require('command-exists')
-const commandExistsSync = require('command-exists').sync;
+const commandExistsSync = require('command-exists').sync
 const heartbeats = require('heartbeats')
 const Store = require('electron-store')
 const store = new Store()
@@ -25,8 +25,6 @@ autoUpdater.setFeedURL(feed)
 */
 }
 	
-
-
 log.transports.file.level = 'silly'
 log.transports.console.level = 'silly'
 
@@ -300,6 +298,23 @@ function downloadLatestUpdate() {
 	
 }
 
+function downloadVagrant() {
+	
+}
+
+
+function platformPackage() {
+	var ext = ''
+	if (process.platform === 'darwin') {
+		ext = '.dmg'
+	}
+	if (process.platform === 'win32') {
+		ext = '.exe'
+	}
+
+	return ext
+}
+
 function getUserHome() {
 	return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME']
 }
@@ -357,7 +372,10 @@ function buildMenu(event) {
 	if (commandExistsSync('vagrant')) {} else {
 		menu.push(
 			{
-				label: i18next.t('main.getVagrant'),
+				label: i18next.t('process.getVagrant'),
+				click: function () {
+					downloadVagrant()
+				}
 			})
 	}
 
