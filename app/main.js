@@ -369,15 +369,7 @@ function buildMenu(event) {
 
 	tray.setImage(trayActive)
 
-	if (commandExistsSync('vagrant')) {} else {
-		menu.push(
-			{
-				label: i18next.t('process.getVagrant'),
-				click: function () {
-					downloadVagrant()
-				}
-			})
-	}
+	if (commandExistsSync('vagrant')) {
 
 		if (global.shared.isNewVersion) {
 			menu.push({
@@ -543,7 +535,6 @@ function buildMenu(event) {
 				boxStatus(index,i18next.t('main.status'),box,'state')
 				]
 			})
-			console.log(menu)
 		}
 	})
 
@@ -583,6 +574,18 @@ function buildMenu(event) {
 				}
 			})
 		}
+
+
+	} else {
+		menu.push(
+			{
+				label: i18next.t('process.getVagrant'),
+				click: function () {
+					downloadVagrant()
+				}
+			})
+	}
+
 
 		menu.push(
 			{
