@@ -324,6 +324,8 @@ function boxDetails(callback)
 {
 	var box = []
 
+	if (commandExistsSync('vagrant')) {
+
 	vagrant.globalStatus(function(err, data) 
 		{
 
@@ -331,7 +333,6 @@ function boxDetails(callback)
 				errorBox(err)
 				log.error(err)
 			}
-			console.log(JSON.stringify(data))
 		
 			var jsonData = JSON.parse(JSON.stringify(data))
 			for(var index in jsonData) { 
@@ -350,9 +351,11 @@ function boxDetails(callback)
 			consoler = store.get('consoleview')
 			if (consoler === true) {
 				log.info(box)
-			}	
+			}
 			return callback(box)
+			
 		})
+	}	
 }
 
 
@@ -385,10 +388,9 @@ function buildMenu(event) {
 			})
 		}
 
-	if (commandExistsSync('vagrant')) {
-
 	boxDetails( function(box)
 	{
+
 		for(var index in box) {
 			menu.push(
 			{
@@ -541,10 +543,9 @@ function buildMenu(event) {
 				boxStatus(index,i18next.t('main.status'),box,'state')
 				]
 			})
+			console.log(menu)
 		}
-
-		})
-	}
+	})
 
 	menu.push(
 		sept(),
@@ -591,11 +592,11 @@ function buildMenu(event) {
 						app.quit()
 				}
 			})
-
+		
 		contextMenu = Menu.buildFromTemplate(menu)
 		tray.setToolTip(i18next.t('main.header'))
 		tray.setContextMenu(contextMenu)
-		return contextMenu	
+		return contextMenu
 }
 
 function boxChecking() {
