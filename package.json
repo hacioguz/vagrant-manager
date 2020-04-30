@@ -120,7 +120,7 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "electron": "^8.2.4",
-    "electron-builder": "^22.5.1",
+    "electron-builder": "^22.6.0",
     "electron-is-dev": "^1.2.0",
     "electron-unhandled": "^3.0.2",
     "mocha": "^7.1.2",
