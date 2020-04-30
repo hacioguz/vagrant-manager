@@ -32,7 +32,7 @@
     "electron-dl": "^3.0.0",
     "electron-log": "^4.0.6",
     "electron-store": "^5.1.0",
-    "electron-updater": "^4.2.0",
+    "electron-updater": "^4.2.2",
     "event": "^1.0.0",
     "heartbeats": "^5.0.1",
     "i18next": "^19.0.0",
