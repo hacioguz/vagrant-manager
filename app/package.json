@@ -44,7 +44,7 @@
     "open": "^7.0.0",
     "shell-path": "^2.1.0",
     "shelljs": "^0.8.4",
-    "v8-compile-cache": "^2.1.0",
+    "v8-compile-cache": "^2.1.1",
     "snyk": "^1.320.3"
   },
   "scripts": {
