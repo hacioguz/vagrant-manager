@@ -41,7 +41,7 @@
     "jquery": "^3.5.1",
     "node-fetch": "^2.6.0",
     "node-vagrant": "^1.4.0",
-    "open": "^7.0.0",
+    "open": "^7.0.4",
     "shell-path": "^2.1.0",
     "shelljs": "^0.8.4",
     "v8-compile-cache": "^2.1.1",
