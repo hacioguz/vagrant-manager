@@ -30,7 +30,7 @@
   "dependencies": {
     "command-exists": "^1.2.8",
     "electron-dl": "^3.0.1",
-    "electron-log": "^4.0.6",
+    "electron-log": "^4.2.2",
     "electron-store": "^5.2.0",
     "electron-updater": "^4.3.2",
     "event": "^1.0.0",
