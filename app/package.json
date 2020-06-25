@@ -35,7 +35,7 @@
     "electron-updater": "^4.3.2",
     "event": "^1.0.0",
     "heartbeats": "^5.0.1",
-    "i18next": "^19.4.5",
+    "i18next": "^19.5.0",
     "i18next-sync-fs-backend": "^1.1.1",
     "install-peers": "^1.0.3",
     "jquery": "^3.5.1",
