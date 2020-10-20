@@ -1,12 +1,12 @@
 {
   "about": {
-    "checking": "Controleren...",
-    "copyright": "Auteursrecht",
-    "downloading": "Downloaden...",
-    "latestVersuon": "de laatste versie:",
-    "sponsor": "Gesponsord door",
+    "checking": "Kontrollerer ...",
+    "copyright": "Opphavsrett",
+    "downloading": "Nedlasting ...",
+    "latestVersion": "den nyeste versjonen:",
+    "sponsor": "Sponset av",
     "vm": "Vagrant Manager",
-    "vmApp": "Beheer uw zwerfmachines",
+    "vmApp": "Administrer vagrantmaskiner"
   },
   "main": {
     "about": "Om",
@@ -45,8 +45,8 @@
     "yes": "Ya"
   },
   "process": {
-    "getVagrant": "Download Vagrant",
-    "newVersion": "Nieuwe versie is beschikbaar!",
+    "getVagrant": " Vagrant Downloaden",
+    "newVersion": "Ny versjon er tilgjengelig!"
   },
   "settings": {
     "boxupdate": "Automatisch bijwerken vak",
