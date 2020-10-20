@@ -10,6 +10,7 @@ It has now been translated into the following languages:
 
 * ربى
 * Čeština
+* Dansk
 * Deutsch
 * Ελληνικά
 * English
