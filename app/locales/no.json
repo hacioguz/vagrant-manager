@@ -1,1 +1,58 @@
-{}
+{
+  "About": {
+    "checking": "Kontrollerer ...",
+    "copyright": "Copyright",
+    "downloading": "Laster ned ...",
+    "latestVersion": "den siste versjonen:",
+    "sponsor": "Sponset av",
+    "vm": "Vagrant Manager",
+    "vmApp": "Administrer dine vandrende maskiner"
+  },
+  "main": {
+    "about": "Om",
+    "aboutVM": "Om | Vagrant Manager",
+    "add": "Add",
+    "areYouSure": "Er du sikker?",
+    "box": "Box",
+    "console": "Konsoll",
+    "destroy": "Destroy",
+    "downloadLatest": "Last ned siste",
+    "expunge": "Expunge",
+    "halt": "Halt",
+    "header": "Vagrant Manager",
+    "list": "List",
+    "no": "Nei",
+    "plugin": "Plugin",
+    "pop": "Pop",
+    "provider": "Provider",
+    "provision": "Provision",
+    "push": "Push",
+    "quit": "Quit",
+    "reload": "Last på nytt",
+    "repair": "Reparasjon av plugin",
+    "repairer": "Reparer",
+    "resetToDefaults": "Tilbakestill til standardinnstillinger",
+    "resume": "Fortsett",
+    "settings": "Innstillinger",
+    "snapshot": "Snapshot",
+    "startAtLogin": "Auto start",
+    "status": "Status",
+    "suspend": "Suspend",
+    "up": "Upp",
+    "update": "Plugin Update",
+    "updater": "Update",
+    "version": "V {{version}}",
+    "yes": "Yes"
+  },
+  "process": {
+    "getVagrant": "Last ned Vagrant",
+    "newVersion": "Ny versjon er tilgjengelig!"
+  },
+  "settings": {
+    "boxupdate": "Oppdater boksen automatisk",
+    "consoleview": "Aktiver konsoll",
+    "language": "Språk",
+    "resetToDefaults": "Tilbakestill til standardinnstillinger",
+    "settings": "Innstillinger"
+  }
+}

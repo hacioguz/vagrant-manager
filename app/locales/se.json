@@ -21,28 +21,28 @@
     "halt": "Halt",
     "header": "Vagrant Manager",
     "list": "List",
-    "Nej nej",
+    "no": "Nej",
     "plugin": "Plugin",
     "pop": "Pop",
     "provider": "Provider",
     "provision": "Provision",
-    "tryck tryck",
+    "push": "Tryck",
     "quit": "Avsluta",
     "reload": "Ladda om",
     "repair": "Plugin Repair",
     "reparatör": "Reparera",
     "resetToDefaults": "Återställ till standardvärden",
-    "CV": "CV",
+    "ip": "CV",
     "inställningar": "Inställningar",
     "snapshot": "Snapshot",
     "startAtLogin": "Auto start",
     "status": "Status",
     "suspend": "Suspend",
-    "upp upp",
+    "up": "Upp",
     "update": "Plugin Update",
     "updater": "Uppdatera",
     "version": "V {{version}}",
-    "Jaja"
+    "yes":"Ja"
   },
   "bearbeta": {
     "getVagrant": "Ladda ner Vagrant",
@@ -51,7 +51,7 @@
   "inställningar": {
     "boxupdate": "Uppdatera rutan automatiskt",
     "consoleview": "Aktivera konsol",
-    "språk": "Språk",
+    "language": "Språk",
     "resetToDefaults": "Återställ till standardvärden",
     "inställningar": "Inställningar"
   }
