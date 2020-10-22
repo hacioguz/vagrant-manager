@@ -1,1 +1,58 @@
-{}
+{
+  "about": {
+    "checking": "Kontrollerar ...",
+    "copyright": "Copyright",
+    "downloading": "Hämtar ...",
+    "latestVersion": "den senaste versionen:",
+    "sponsor": "Sponsrad av",
+    "vm": "Vagrant Manager",
+    "vmApp": "Hantera dina vagrerande maskiner"
+  },
+  "main": {
+    "about": "Om",
+    "aboutVM": "Om | Vagrant Manager",
+    "add": "Add",
+    "areYouSure": "Är du säker?",
+    "box": "Box",
+    "console": "Console",
+    "förstör": "Förstör",
+    "downloadLatest": "Ladda ner senaste",
+    "expunge": "Expunge",
+    "halt": "Halt",
+    "header": "Vagrant Manager",
+    "list": "List",
+    "Nej nej",
+    "plugin": "Plugin",
+    "pop": "Pop",
+    "provider": "Provider",
+    "provision": "Provision",
+    "tryck tryck",
+    "quit": "Avsluta",
+    "reload": "Ladda om",
+    "repair": "Plugin Repair",
+    "reparatör": "Reparera",
+    "resetToDefaults": "Återställ till standardvärden",
+    "CV": "CV",
+    "inställningar": "Inställningar",
+    "snapshot": "Snapshot",
+    "startAtLogin": "Auto start",
+    "status": "Status",
+    "suspend": "Suspend",
+    "upp upp",
+    "update": "Plugin Update",
+    "updater": "Uppdatera",
+    "version": "V {{version}}",
+    "Jaja"
+  },
+  "bearbeta": {
+    "getVagrant": "Ladda ner Vagrant",
+    "newVersion": "Ny version är tillgänglig!"
+  },
+  "inställningar": {
+    "boxupdate": "Uppdatera rutan automatiskt",
+    "consoleview": "Aktivera konsol",
+    "språk": "Språk",
+    "resetToDefaults": "Återställ till standardvärden",
+    "inställningar": "Inställningar"
+  }
+}
