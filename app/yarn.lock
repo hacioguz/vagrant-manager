@@ -845,10 +845,10 @@ duplexify@^3.5.0, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-electron-dl@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/electron-dl/-/electron-dl-3.0.3.tgz#e457a8e0b7b671433dde89497c1370a1eec2f675"
-  integrity sha512-eh1zDc+cffWQ0wVjZj7YGSq5qSYsD2vxIeojJt2hoV0/2fOlLv57pqeRkVfrDrocVYRwAytphctunTXRKj1GmA==
+electron-dl@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/electron-dl/-/electron-dl-3.1.0.tgz#38d31f426a3b8a90e9c35ac03e74e10c2bf52d3e"
+  integrity sha512-nY3vvxX5w11+cFT6JkJwMHtH6dk5sPtjRtzjaj4NrS9CyYF3atvVt8yMfZtXruULU1JAuxEEf2B8O6YgXs9xsQ==
   dependencies:
     ext-name "^5.0.0"
     pupa "^2.0.1"
