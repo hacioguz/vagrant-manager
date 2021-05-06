@@ -1,0 +1,58 @@
+{
+  "about": {
+    "checking": "Kontrol ediliyor ...",
+    "copyright": "Telif hakkı",
+    "downloading": "İndiriliyor ...",
+    "latestVersion": "son sürüm:",
+    "sponsor": "Sponsor",
+    "vm": "Vagrant Yönetici",
+    "vmApp": "Vagrant makinelerinizi yönetin"
+  },
+  "main": {
+    "about": "Hakkında",
+    "aboutVM": "Hakkında | Vagrant Yönetici",
+    "add": "Ekle",
+    "areYouSure": "Emin misiniz?",
+    "box": "Kutu",
+    "console": "Konsol",
+    "destroy": "Yoket",
+    "downloadLatest": "Güncel sürümü indir",
+    "expunge": "Kaldır",
+    "halt": "Kapat",
+    "header": "Vagrant Yönetici",
+    "list": "Liste",
+    "no": "Hayır",
+    "plugin": "Eklenti",
+    "pop": "İşlet",
+    "provider": "Sağlayıcı",
+    "provision": "Koşul",
+    "push": "Zorla",
+    "quit": "Çıkış",
+    "reload": "Yeniden yükle",
+    "repair": "Eklentiyi Onar",
+    "repairer": "Onar",
+    "resetToDefaults": "Reset to defaults",
+    "resume": "Sürdür",
+    "settings": "Ayarlar",
+    "snapshot": "Anlık durum görüntüsü",
+    "startAtLogin": "Otomatik başlat",
+    "status": "Durum",
+    "suspend": "Askıya al",
+    "up": "Çalıştır",
+    "update": "Eklentiyi Güncelle",
+    "updater": "Güncelle",
+    "version": "sürüm {{version}}",
+    "yes": "Evet"
+  },
+  "process": {
+    "getVagrant": "Vagrant İndir",
+    "newVersion": "Yeni sürüm mevcut!"
+  },
+  "settings": {
+    "boxupdate": "Kutuyu otomatik olarak güncelle",
+    "consoleview": "Konsolu etkinleştir",
+    "language": "Dil",
+    "resetToDefaults": "Varsayılanlara dön",
+    "settings": "Ayarlar"
+  }
+}
