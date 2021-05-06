@@ -27,6 +27,7 @@ It has now been translated into the following languages:
 * Svenska
 * Português
 * தமிழ்
+* Türkçe
 * Українець
 * 简体中文
 
